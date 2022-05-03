@@ -1,5 +1,5 @@
 package obstacles;
 
-public class Spike {
+public class Spike extends Trap {
 
 }

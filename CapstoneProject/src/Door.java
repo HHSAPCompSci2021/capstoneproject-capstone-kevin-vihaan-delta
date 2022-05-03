@@ -1,4 +1,8 @@
 
-public class Door {
 
+
+
+public class Door extends Shape{
+
+	
 }
