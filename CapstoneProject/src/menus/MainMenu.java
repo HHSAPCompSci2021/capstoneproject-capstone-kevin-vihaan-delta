@@ -1,5 +1,11 @@
 package menus;
+import java.awt.Point;
+import java.awt.Rectangle;
 
-public class MainMenu {
+import core.DrawingSurface;
+
+
+
+public class MainMenu extends Screen {
 
 }
