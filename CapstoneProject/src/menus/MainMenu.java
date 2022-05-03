@@ -31,5 +31,21 @@ public class MainMenu extends Screen {
 		float w = surface.textWidth(str);
 		surface.text(str, shopButton.x+shopButton.width/2-w/2, shopButton.y+shopButton.height/2);
 		
+		
+		
+		surface.rect(quitButton.x, quitButton.y, quitButton.width, quitButton.height,10,10,10,10);
+		surface.fill(0);
+		String str2 = "Quit";
+		float x = surface.textWidth(str);
+		surface.text(str, quitButton.x+quitButton.width/2-w/2, quitButton.y+quitButton.height/2);
+		
+		
+		surface.rect(chooseLevelButton.x, chooseLevelButton.y, chooseLevelButton.width, chooseLevelButton.height,10,10,10,10);
+		surface.fill(0);
+		String str3 = "Choose Level";
+		float y = surface.textWidth(str);
+		surface.text(str, chooseLevelButton.x+chooseLevelButton.width/2-w/2, chooseLevelButton.y+chooseLevelButton.height/2);
+		
+		
 	}
 }
