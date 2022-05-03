@@ -1,5 +1,5 @@
 package obstacles;
 
-public class Trap {
+public class Trap { 
 
 }
