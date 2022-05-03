@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 
 import processing.core.PApplet;
 
-public class DrawingSurface {
+public class DrawingSurface extends PApplet{
 //	private Level board;
 	
 	public DrawingSurface() {
