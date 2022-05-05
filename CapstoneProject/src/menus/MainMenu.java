@@ -1,8 +1,9 @@
 package menus;
 import java.awt.Point;
 import java.awt.Rectangle;
-
+import processing.core.PApplet;
 import core.DrawingSurface;
+import menus.ScreenSwitcher;
 
 
 
@@ -48,5 +49,11 @@ public class MainMenu extends Screen {
 		surface.text(str3, chooseLevelButton.x+chooseLevelButton.width/2-y/2, chooseLevelButton.y+chooseLevelButton.height/2);
 		
 		
+	}
+	
+	public void mousePressed() {
+		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
+		if (chooseLevelButton.contains(p))
+			surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
 	}
 }
