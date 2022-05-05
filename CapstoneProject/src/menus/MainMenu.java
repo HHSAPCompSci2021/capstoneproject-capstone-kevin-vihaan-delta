@@ -38,14 +38,14 @@ public class MainMenu extends Screen {
 		surface.fill(0);
 		String str2 = "Quit";
 		float x = surface.textWidth(str2);
-		surface.text(str2, quitButton.x+quitButton.width/2-w/2, quitButton.y+quitButton.height/2);
+		surface.text(str2, quitButton.x+quitButton.width/2-x/2, quitButton.y+quitButton.height/2);
 		
 		surface.fill(255);
 		surface.rect(chooseLevelButton.x, chooseLevelButton.y, chooseLevelButton.width, chooseLevelButton.height,10,10,10,10);
 		surface.fill(0);
 		String str3 = "Choose \nLevel";
 		float y = surface.textWidth(str3);
-		surface.text(str3, chooseLevelButton.x+chooseLevelButton.width/2-2*w/3, chooseLevelButton.y+chooseLevelButton.height/2);
+		surface.text(str3, chooseLevelButton.x+chooseLevelButton.width/2-y/2, chooseLevelButton.y+chooseLevelButton.height/2);
 		
 		
 	}
