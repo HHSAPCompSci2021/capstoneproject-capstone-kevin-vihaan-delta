@@ -6,7 +6,7 @@ import core.DrawingSurface;
 
 /**
  * 
- * @author kevinvalenica and vihaanchinthakindi
+ * @author kevinvalencia and vihaanchinthakindi
  * Represents a menu of Levels from which the user can choose to play a level
  *
  */

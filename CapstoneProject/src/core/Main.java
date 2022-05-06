@@ -10,7 +10,7 @@ import processing.core.PApplet;
 
 /**
  * 
- * @author kevinvalenica and vihaanchinthakindi 
+ * @author kevinvalencia and vihaanchinthakindi 
  *	Runs the program
  */
 public class Main {
