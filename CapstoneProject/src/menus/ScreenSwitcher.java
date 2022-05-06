@@ -4,6 +4,7 @@ package menus;
  * 
  * @author vihaanchinthakindi and kevinvalencia
  * The interface in which is used to change screens
+ * 
  */
 public interface ScreenSwitcher {
 	/**
@@ -29,4 +30,6 @@ public interface ScreenSwitcher {
 	 * Abstract method that serves as role of switching the screen
 	 */
 	public void switchScreen(int i);
+	
+	
 }
