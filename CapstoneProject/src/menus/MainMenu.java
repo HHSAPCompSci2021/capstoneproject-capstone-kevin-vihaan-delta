@@ -67,6 +67,6 @@ public class MainMenu extends Screen {
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (chooseLevelButton.contains(p))
-			surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
+			surface.switchScreen(ScreenSwitcher.LEVELCHOOSER_SCREEN);
 	}
 }

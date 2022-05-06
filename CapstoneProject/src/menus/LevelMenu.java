@@ -1,5 +1,6 @@
 package menus;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 
 import core.DrawingSurface;
@@ -50,5 +51,10 @@ public class LevelMenu extends Screen {
 		surface.textSize(30);
 		surface.text(str1, level2.x + level2.width / 2 - w1 / 2, level2.y + level2.height / 2);
 
+	}
+	public void mousePressed() {
+		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
+		if (level1.contains(p))
+			surface.switchScreen(ScreenSwitcher.LEVEL_ONE);
 	}
 }

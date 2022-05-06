@@ -14,7 +14,7 @@ public interface ScreenSwitcher {
 	/**
 	 * GAME_SCREEN has associated integer value of 1 for access.
 	 */
-	public static final int GAME_SCREEN = 1;
+	public static final int LEVEL_ONE = 1;
 	/**
 	 * SHOP_SCREEN has associated integer value of 2 for access.
 	 */
