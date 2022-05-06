@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.Door;
 import core.DrawingSurface;
 import core.Player;
 import menus.Screen;
@@ -20,7 +21,7 @@ public class LevelOne extends Screen {
 	private DrawingSurface surface;
 	
 	private Rectangle screenRect;
-
+	private Door door;
 	private Player user;
 	private List<Obstacle> obstacles;
 	
