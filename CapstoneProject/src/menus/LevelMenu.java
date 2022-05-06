@@ -8,7 +8,7 @@ public class LevelMenu extends Screen {
 
 	private DrawingSurface surface;
 
-	private Rectangle screenRect;
+	//private Rectangle screenRect;
 	private Rectangle level1;
 	private Rectangle level2;
 /**
@@ -19,7 +19,7 @@ public class LevelMenu extends Screen {
 	public LevelMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
-		screenRect = new Rectangle(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+	//	screenRect = new Rectangle(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		level2 = new Rectangle(300, 100, 100, 100);
 		level1 = new Rectangle(100, 100, 100, 100);
 		// TODO Auto-generated constructor stub
