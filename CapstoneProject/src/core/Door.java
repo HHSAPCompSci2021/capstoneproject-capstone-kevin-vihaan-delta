@@ -4,7 +4,7 @@ package core;
 
 /**
  * 
- * @author vihaanchinthakindi & kevinvalencia
+ * @author vihaanchinthakindi and kevinvalencia
  * Door class represents at the end of each Revolve level that prompts the user back to the menu.
  *
  */

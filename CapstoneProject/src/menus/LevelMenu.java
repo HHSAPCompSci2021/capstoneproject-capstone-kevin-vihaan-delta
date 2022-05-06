@@ -4,6 +4,12 @@ import java.awt.Rectangle;
 
 import core.DrawingSurface;
 
+/**
+ * 
+ * @author kevinvalenica and vihaanchinthakindi
+ * Represents a menu of Levels from which the user can choose to play a level
+ *
+ */
 public class LevelMenu extends Screen {
 
 	private DrawingSurface surface;

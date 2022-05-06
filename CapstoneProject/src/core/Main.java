@@ -7,8 +7,18 @@ import javax.swing.JFrame;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
+
+/**
+ * 
+ * @author kevinvalenica and vihaanchinthakindi 
+ *	Runs the program
+ */
 public class Main {
 
+	/**
+	 * Creates a window for the program to run in
+	 * @param args The command line arguments
+	 */
 	public static void main(String[] args) {
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);

@@ -14,27 +14,20 @@ import menus.ScreenSwitcher;
 //add shop menu
 /**
  * 
- * @author vihaanchinthakindi & kevinvalencia
+ * @author vihaanchinthakindi and kevinvalencia
  * DrawingSurface classes manages what goes onto the window.
  *
  */
 public class DrawingSurface extends PApplet implements ScreenSwitcher{
 	private Screen activeScreen;
 	/**
-	 * ratioX & ratioY determine the ratios of the screen to be maintained.
+	 * ratioX and ratioY determine the ratios of the screen to be maintained.
 	 */
 	public float ratioX, ratioY;
 	private ArrayList<Screen> screens;
 
 	/**
 	 * constructor initializes fields
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 
 	 */
 	public DrawingSurface() {
@@ -49,14 +42,14 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher{
 		activeScreen = screens.get(0);
 	}
 	/**
-	 * sets up each  screen
+	 * Sets up each  screen
 	 */
 	public void setup() {
 		for (Screen s : screens)
 			s.setup();
 	}
 	/**
-	 * draws the window with the screen that is currently active
+	 * Draws the window with the screen that is currently active
 	 */
 	public void draw() { 
 		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
@@ -72,7 +65,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher{
 		
 	}
 	/**
-	 * performs the action if the mouse is pressed
+	 * Performs the action if the mouse is pressed
 	 */
 	public void mousePressed() {
 		activeScreen.mousePressed();
@@ -95,6 +88,11 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher{
 	}
 	
 	@Override
+	/**
+	 * 
+	 * @param i index of which screen to switch
+	 * Switches active screen to screen at index i
+	 */
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 	}

@@ -6,7 +6,11 @@ import core.DrawingSurface;
 import menus.ScreenSwitcher;
 
 
-
+/**
+ * 
+ * @author kevinvalencia and vihaanchinthakindi
+ * Represents the main screen from which the user will navigate to either play the game, go to the shop, or quit
+ */
 public class MainMenu extends Screen {
 	
 	private DrawingSurface surface;
