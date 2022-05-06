@@ -18,7 +18,7 @@ import menus.ScreenSwitcher;
  * DrawingSurface classes manages what goes onto the window.
  *
  */
-public class DrawingSurface extends PApplet{
+public class DrawingSurface extends PApplet implements ScreenSwitcher{
 	private Screen activeScreen;
 	/**
 	 * ratioX & ratioY determine the ratios of the screen to be maintained.
@@ -28,6 +28,14 @@ public class DrawingSurface extends PApplet{
 
 	/**
 	 * constructor initializes fields
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
 	 */
 	public DrawingSurface() {
 		screens = new ArrayList<Screen>();
@@ -86,7 +94,7 @@ public class DrawingSurface extends PApplet{
 		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
 	}
 	
-	
+	@Override
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 	}
