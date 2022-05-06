@@ -5,6 +5,6 @@ package obstacles;
  * Represents a type of trap, spike, which is stationary and can kill the player
  *
  */
-public class Spike extends Trap {
+public class Spike extends Obstacle {
 
 }
