@@ -11,7 +11,11 @@ public class LevelMenu extends Screen {
 	private Rectangle screenRect;
 	private Rectangle level1;
 	private Rectangle level2;
-
+/**
+ * 
+ * @param surface takes in a DrawingSurface to perform drawing with
+ * Initializes all buttons
+ */
 	public LevelMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
@@ -20,7 +24,9 @@ public class LevelMenu extends Screen {
 		level1 = new Rectangle(100, 100, 100, 100);
 		// TODO Auto-generated constructor stub
 	}
-
+/**
+ * Draws the LevelMenu with  buttons indicating specific levels.
+ */
 	public void draw() {
 		surface.background(0, 255, 255);
 		surface.rect(level1.x, level1.y, level1.width, level1.height, 10, 10, 10, 10);

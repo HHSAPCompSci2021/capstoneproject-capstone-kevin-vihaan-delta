@@ -13,7 +13,11 @@ public class MainMenu extends Screen {
 	private Rectangle chooseLevelButton;
 	private Rectangle shopButton;
 	private Rectangle quitButton;
-
+	/**
+	 * 
+	 * @param surface takes in a DrawingSurface to perform drawing with
+	 * Initializes all buttons
+	 */
 	public MainMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
@@ -22,6 +26,9 @@ public class MainMenu extends Screen {
 		chooseLevelButton = new Rectangle(800/2-100,800/2-200,200,100);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * Draws the MainMenu with  buttons indicating the ShopMenu, LevelMenu, and quit button
+	 */
 	public void draw() {
 
 		surface.background(255,255,255);
@@ -50,7 +57,9 @@ public class MainMenu extends Screen {
 		
 		
 	}
-	
+	/**
+	 * Determines if a button is pressed
+	 */
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (chooseLevelButton.contains(p))

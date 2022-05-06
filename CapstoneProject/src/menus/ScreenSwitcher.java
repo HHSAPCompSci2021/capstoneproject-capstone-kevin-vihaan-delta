@@ -1,6 +1,10 @@
 package menus;
 
-
+/**
+ * 
+ * @author vihaanchinthakindi & kevinvalencia
+ * The interface in which is used to change screens
+ */
 public interface ScreenSwitcher {
 	public static final int MENU_SCREEN = 0;
 	public static final int GAME_SCREEN = 1;
