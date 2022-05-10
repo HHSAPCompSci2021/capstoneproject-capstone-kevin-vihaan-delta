@@ -34,7 +34,7 @@ public class LevelOne extends Screen {
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
 		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
-		obstacles.add(new Wall(52,0,DRAWING_WIDTH,50));
+		obstacles.add(new Wall(52,0,DRAWING_WIDTH/2,50));
 		
 		
 		
@@ -62,10 +62,16 @@ public class LevelOne extends Screen {
 	}
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR.png"), 200, 200, 50, 50);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), 200, 200, 50, 100);
 	}
-	
-	
+	public void spawnNewSpike()
+	{
+		
+	}
+	public void spawnNewSaw() 
+	{
+		
+	}
 	
 	
 	
