@@ -11,7 +11,10 @@ import core.DrawingSurface;
 import core.Player;
 import menus.Screen;
 import obstacles.Obstacle;
+import obstacles.Saw;
+import obstacles.Spike;
 import obstacles.Wall;
+import screens.ScreenSwitcher;
 
 
 
@@ -24,6 +27,8 @@ public class LevelOne extends Screen {
 	private Door door;
 	private Player user;
 	private List<Obstacle> obstacles;
+	private Spike spike;
+	private Saw saw;
 	
 	
 	public LevelOne(DrawingSurface surface) {
@@ -41,24 +46,31 @@ public class LevelOne extends Screen {
 	}
 	public void setup()
 	{
+		spawnNewPlayer();
 		spawnNewDoor();
+		spawnNewSpike();
+		spawnNewSaw();
 	}
 	
 	public void draw()
 	{
 		
 		surface.background(211,211,211);
-		
+		user.draw(surface);
 		door.draw(surface);
+		spike.draw(surface);
+		saw.draw(surface);
+		
 		for (Obstacle c : obstacles)
 		{
 			c.draw(surface);
 		}
 		
+	
 	}
 	public void spawnNewPlayer()
 	{
-		
+		user = new Player(surface.loadImage("img/PLAYER.png"), 500, 200, 50, 100);
 	}
 	public void spawnNewDoor()
 	{
@@ -66,11 +78,11 @@ public class LevelOne extends Screen {
 	}
 	public void spawnNewSpike()
 	{
-		
+		spike = new Spike(surface.loadImage("img/SPIKE.png"),300,100,50,50);
 	}
 	public void spawnNewSaw() 
 	{
-		
+		saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);
 	}
 	
 	
