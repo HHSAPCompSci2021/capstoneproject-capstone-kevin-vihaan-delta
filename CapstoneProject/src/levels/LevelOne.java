@@ -41,11 +41,12 @@ public class LevelOne extends Screen {
 		
 	}
 	
-	public void draw(DrawingSurface surface)
+	public void draw()
 	{
+		
 		surface.background(0,15,255);
 		
-		surface.fill(0);
+		
 		for (Obstacle c : obstacles)
 		{
 			c.draw(surface);
