@@ -25,20 +25,38 @@ public class LevelOne extends Screen {
 	private Player user;
 	private List<Obstacle> obstacles;
 	
-	
 	public LevelOne(DrawingSurface surface) {
 		super(800, 600);
 		
 		this.surface = surface;
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall());
+		obstacles.add(new Wall(100,100,100,100));
 		
 		
 		
 	}
-
-
+	public void setup()
+	{
+		
+	}
+	
+	public void draw(DrawingSurface surface)
+	{
+		surface.background(0,15,255);
+		
+		surface.fill(0);
+		for (Obstacle c : obstacles)
+		{
+			c.draw(surface);
+		}
+		
+	}
+	public void spawnNewPlayer()
+	{
+		
+	}
+	
 	
 	
 	
