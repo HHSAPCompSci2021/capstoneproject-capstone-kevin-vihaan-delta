@@ -31,7 +31,8 @@ public class LevelOne extends Screen {
 		this.surface = surface;
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall(100,100,100,100));
+		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
+		obstacles.add(new Wall(52,0,DRAWING_WIDTH,50));
 		
 		
 		
@@ -44,7 +45,7 @@ public class LevelOne extends Screen {
 	public void draw()
 	{
 		
-		surface.background(0,15,255);
+		surface.background(211,211,211);
 		
 		
 		for (Obstacle c : obstacles)
