@@ -69,4 +69,5 @@ public class MainMenu extends Screen {
 		if (chooseLevelButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVELCHOOSER_SCREEN);
 	}
+	//add same if for other buttons
 }

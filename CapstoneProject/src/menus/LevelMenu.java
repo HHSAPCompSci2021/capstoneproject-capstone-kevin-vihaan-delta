@@ -56,5 +56,6 @@ public class LevelMenu extends Screen {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (level1.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_ONE);
+		
 	}
 }
