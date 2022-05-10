@@ -1,4 +1,7 @@
 package obstacles;
+
+import processing.core.PImage;
+
 /**
  * 
  * @author kevinvalencia and vihaanchinthakindi
@@ -6,5 +9,10 @@ package obstacles;
  *
  */
 public class Spike extends Obstacle {
+
+	public Spike(PImage img, int x, int y, int w, int h) {
+		super(img, x, y, w, h);
+		// TODO Auto-generated constructor stub
+	}
 
 }
