@@ -25,10 +25,12 @@ public class LevelOne extends Screen {
 	private Player user;
 	private List<Obstacle> obstacles;
 	
+	
 	public LevelOne(DrawingSurface surface) {
 		super(800, 600);
 		
 		this.surface = surface;
+		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
 		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
@@ -39,7 +41,7 @@ public class LevelOne extends Screen {
 	}
 	public void setup()
 	{
-		
+		spawnNewDoor();
 	}
 	
 	public void draw()
@@ -47,7 +49,7 @@ public class LevelOne extends Screen {
 		
 		surface.background(211,211,211);
 		
-		
+		door.draw(surface);
 		for (Obstacle c : obstacles)
 		{
 			c.draw(surface);
@@ -57,6 +59,10 @@ public class LevelOne extends Screen {
 	public void spawnNewPlayer()
 	{
 		
+	}
+	public void spawnNewDoor()
+	{
+		door = new Door(surface.loadImage("img/GRAYDOOR.png"), 200, 200, 50, 50);
 	}
 	
 	
