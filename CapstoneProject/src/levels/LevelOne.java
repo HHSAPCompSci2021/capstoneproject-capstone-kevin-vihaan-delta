@@ -14,7 +14,7 @@ import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;
 import obstacles.Wall;
-import screens.ScreenSwitcher;
+import menus.ScreenSwitcher;
 
 
 
