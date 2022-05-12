@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import levels.LevelOne;
 import processing.core.PApplet;
-
+import core.Main;
 import menus.MainMenu;
 import menus.LevelMenu;
 import menus.Screen;
@@ -73,6 +73,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher{
 		
 		activeScreen.draw();
 		
+	
 		pop();
 		
 	}
@@ -122,5 +123,26 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher{
 	 */
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
+		if (i==1) {
+			try {
+			Main.playMusic(false, "Trash");
+			Main.playMusic(true, "/Music/synthwave2.wav");
+			}
+			catch (NullPointerException e) {
+				
+			}
+			
+		}
+		
+		if (i==0) {
+			try {
+			Main.playMusic(false, "Trash");
+			Main.playMusic(true, "/Music/synthwave.wav");
+			}
+			catch (NullPointerException e) {
+				
+			}
+			
+		}
 	}
 }
