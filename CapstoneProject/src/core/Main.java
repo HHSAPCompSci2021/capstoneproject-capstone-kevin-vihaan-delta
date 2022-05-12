@@ -89,8 +89,7 @@ public class Main {
 				}
 			} while (window.isActive());
 
-		}
-		else {
+		} else {
 			clip.close();
 		}
 	}
