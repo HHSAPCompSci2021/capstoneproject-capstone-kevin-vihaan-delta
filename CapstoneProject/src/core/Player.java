@@ -15,17 +15,18 @@ import processing.core.PImage;
 public class Player extends Obstacle{
 
 	private double xVel, yVel;
-	public boolean onSurface;
+	public boolean onSurface, canJump;
 	public Player(PImage img, int x, int y, int w, int h) {
 		super(img, x, y, w, h);
 		 yVel = 0;
 		 xVel = 0;
 		 onSurface = false;
-		// TODO Auto-generated constructor stub
+		 canJump = false;
+	
 	}
 	
 	public void jump() {
-		if (onSurface) {
+		if (onSurface && canJump) {
 			yVel =-3;
 		}
 		//super.moveByAmount(0, -50);
@@ -52,9 +53,11 @@ public void act(List<Obstacle> obstacles) {
 			yVel = 0;
 			if ( y < s.y)
 			{
+				canJump = true;
 				y = s.y-super.height;
 			} else 
 			{
+				canJump = false;
 				x = s.x+super.width+25;
 			}
 			
