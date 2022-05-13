@@ -3,6 +3,7 @@ package core;
 import java.util.List;
 
 import obstacles.Obstacle;
+import obstacles.Spike;
 import processing.core.PImage;
 
 
@@ -14,15 +15,20 @@ import processing.core.PImage;
 public class Player extends Obstacle{
 
 	private double xVel, yVel;
+	public boolean onSurface;
 	public Player(PImage img, int x, int y, int w, int h) {
 		super(img, x, y, w, h);
 		 yVel = 0;
 		 xVel = 0;
+		 onSurface = false;
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void jump() {
-		super.moveByAmount(0, -50);
+		if (onSurface) {
+			yVel =-3;
+		}
+		//super.moveByAmount(0, -50);
 	}
 	
 public void move(int dir) {
@@ -32,6 +38,7 @@ public void move(int dir) {
 	}
 
 public void act(List<Obstacle> obstacles) {
+	onSurface = false;
 	yVel +=0.1;
 	
 	x += xVel;
@@ -39,11 +46,17 @@ public void act(List<Obstacle> obstacles) {
 	
 	for (Obstacle s : obstacles)
 	{
-		if (super.intersects(s))
+		if (super.intersects(s) &&! (s instanceof Spike))
 		{
-			yVel = 0;
-			y = s.y-super.height;
 			
+			yVel = 0;
+			if ( y < s.y)
+			{
+				y = s.y-super.height;
+			}
+			
+			
+			onSurface = true;
 		}
 	}
 }

@@ -31,6 +31,7 @@ public class LevelOne extends Screen {
 	private Spike spike2;
 	private Spike spike3;
 	private Spike spike4;
+	private Spike spike5;
 	
 	private Saw saw;
 	
@@ -45,7 +46,7 @@ public class LevelOne extends Screen {
 		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
 		obstacles.add(new Wall(52,0,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
 		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
-		obstacles.add(new Wall(DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
+		obstacles.add(new Wall(DRAWING_WIDTH/2+150,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
 		
 	
 		
@@ -59,7 +60,8 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike2,DRAWING_WIDTH/2+30,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
-		spawnNewSaw();
+		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
+		//spawnNewSaw();
 	}
 	
 	public void draw()
@@ -70,7 +72,7 @@ public class LevelOne extends Screen {
 		door.draw(surface);
 	//	spike1.draw(surface);
 		
-		saw.draw(surface);
+	//	saw.draw(surface);
 		
 		for (Obstacle c : obstacles)
 		{
@@ -91,14 +93,21 @@ public class LevelOne extends Screen {
 		
 		user.act(obstacles);
 
-		if (spike1 != null )
+
+		
+		for (Obstacle c : obstacles)
 		{
-			if (spike1.intersects(user))
-			spawnNewPlayer();
+			if (user.intersects(c) && (c instanceof Spike) )
+			{
+			
+				spawnNewPlayer();
+			}
 		}
 		
-		if (!screenRect.intersects(user))
-			spawnNewPlayer();
+//		if (!screenRect.intersects(user))
+//		
+//			spawnNewPlayer();
+			
 	
 	}
 	public void spawnNewPlayer()
