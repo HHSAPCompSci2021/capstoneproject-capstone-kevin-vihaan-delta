@@ -15,7 +15,18 @@ import processing.core.PImage;
 public class Player extends Obstacle{
 
 	private double xVel, yVel;
+	/**
+	 * variables to determine if player canJump or is onsurface
+	 */
 	public boolean onSurface, canJump;
+	/**
+	 * 
+	 * @param img Image of Player
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param w width
+	 * @param h height
+	 */
 	public Player(PImage img, int x, int y, int w, int h) {
 		super(img, x, y, w, h);
 		 yVel = 0;
@@ -24,7 +35,9 @@ public class Player extends Obstacle{
 		 canJump = false;
 	
 	}
-	
+	/**
+	 * makes the player jump
+	 */
 	public void jump() {
 		if (onSurface && canJump) {
 			yVel =-3;
@@ -32,11 +45,19 @@ public class Player extends Obstacle{
 		//super.moveByAmount(0, -50);
 	}
 	
+	/**
+	 * moves the player by Direction amount
+	 * @param dir amount to move by
+	 */
 public void move(int dir) {
 		
 		super.moveByAmount(dir*2, 0);
 		
 	}
+/**
+ * makes the player act
+ * @param obstacles obstacles in the Level that user plays on
+ */
 
 public void act(List<Obstacle> obstacles) {
 	onSurface = false;
@@ -67,7 +88,11 @@ public void act(List<Obstacle> obstacles) {
 		}
 	}
 }
-
+/**
+ * Method meant to stop collisions into walls
+ * @param x x-coordinate of wall
+ * @param y y-coordinate of wall;
+ */
 public void bounce(double x,double y) {
 	x = x;
 	y = y;

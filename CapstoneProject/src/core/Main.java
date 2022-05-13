@@ -53,12 +53,16 @@ public class Main {
 		}
 
 	}
-
+/**
+ * Method plays music
+ * @param shouldOpen variable to determine whether music plays or doesnt
+ * @param fileData String representing location of the music file
+ */
 	public static void playMusic(boolean shouldOpen, String fileData) {
 		if (shouldOpen) {
-			Mixer.Info[] mixInfos = AudioSystem.getMixerInfo();
+			Mixer.Info[] audioTypes = AudioSystem.getMixerInfo();
 
-			mixer = AudioSystem.getMixer(mixInfos[0]);
+			mixer = AudioSystem.getMixer(audioTypes[0]);
 			DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
 			try {
 				clip = (Clip) mixer.getLine(dataInfo);
@@ -69,15 +73,11 @@ public class Main {
 			}
 
 			try {
-				URL soundURL = Main.class.getResource(fileData);
-				AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundURL);
+				URL info = Main.class.getResource(fileData);
+				AudioInputStream audioStream = AudioSystem.getAudioInputStream(info);
 				clip.open(audioStream);
-			} catch (LineUnavailableException lol) {
+			} catch (LineUnavailableException | UnsupportedAudioFileException | IOException lol) {
 				lol.printStackTrace();
-			} catch (UnsupportedAudioFileException lol1) {
-				lol1.printStackTrace();
-			} catch (IOException lol3) {
-				lol3.printStackTrace();
 			}
 			clip.start();
 

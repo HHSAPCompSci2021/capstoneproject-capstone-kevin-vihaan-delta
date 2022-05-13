@@ -14,7 +14,11 @@ import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;
 import obstacles.Wall;
-
+/**
+ * Class represents leveltwo
+ * @author vihaanchinthakindi and kevinvalencia
+ *
+ */
 public class LevelTwo extends Screen {
 	private DrawingSurface surface;
 	
@@ -26,7 +30,10 @@ public class LevelTwo extends Screen {
 	private Spike spike3;
 	
 	private Saw saw;
-
+/**
+ * Constructs walls
+ * @param surface DrawingSurface object
+ */
 	public LevelTwo(DrawingSurface surface) {
 		super(800, 600);
 
@@ -44,7 +51,9 @@ public class LevelTwo extends Screen {
 		
 		// TODO Auto-generated constructor stub
 	}
-
+/**
+ * Sets up player, spike, door
+ */
 	public void setup() {
 		spawnNewPlayer();
 		spawnNewDoor();
@@ -54,7 +63,9 @@ public class LevelTwo extends Screen {
 		
 
 	}
-
+/**
+ * draws the level
+ */
 	public void draw() {
 		surface.background(211, 211, 211);
 		user.draw(surface);
@@ -102,22 +113,37 @@ public class LevelTwo extends Screen {
 			}
 		}
 	}
+	/**
+	 * spawns new player
+	 */
 	public void spawnNewPlayer()
 	{
 		user = new Player(surface.loadImage("img/PLAYER.png"), 60,500, 25, 50);
 	}
+	/**
+	 * spawns new door
+	 */
 	public void spawnNewDoor()
 	{
 		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+200, DRAWING_HEIGHT-150, 50, 100);
 	}
-	
+	/**
+	 * spawns new spike
+	 * @param spike spike to be spawned
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width  width of spike
+	 * @param height  height of spike
+	 */
 	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
 		
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
 	
-
+/**
+ * spawns in new saw
+ */
 	public void spawnNewSaw() 
 	{
 	saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);

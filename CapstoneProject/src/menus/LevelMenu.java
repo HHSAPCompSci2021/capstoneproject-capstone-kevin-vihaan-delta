@@ -13,7 +13,7 @@ import core.DrawingSurface;
  */
 public class LevelMenu extends Screen {
 
-	private DrawingSurface surface;
+	//private DrawingSurface surface;
 
 	//private Rectangle screenRect;
 	private Rectangle level1;

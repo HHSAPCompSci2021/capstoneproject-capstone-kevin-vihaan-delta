@@ -17,11 +17,15 @@ import obstacles.Wall;
 import menus.ScreenSwitcher;
 
 
-
+/**
+ * 
+ * @author vihaanchinthakindi and kevinvalencia
+ *Class Represents LevelOne
+ */
 
 public class LevelOne extends Screen {
 
-	private DrawingSurface surface;
+	//private DrawingSurface surface;
 	
 	private Rectangle screenRect;
 	private Door door;
@@ -35,7 +39,10 @@ public class LevelOne extends Screen {
 	
 	private Saw saw;
 	
-	
+	/**
+	 * Initializes level
+	 * @param surface Drawingsurface object
+	 */
 	public LevelOne(DrawingSurface surface) {
 		super(800, 600);
 		
@@ -53,6 +60,9 @@ public class LevelOne extends Screen {
 		obstacles.add(new Wall(DRAWING_WIDTH/2-80,0,DRAWING_WIDTH/2+28,50 ));
 		
 	}
+	/**
+	 * Sets up all components with images
+	 */
 	public void setup()
 	{
 		spawnNewPlayer();
@@ -64,7 +74,9 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
 		//spawnNewSaw();
 	}
-	
+	/**
+	 * draws the window, checks intersections
+	 */
 	public void draw()
 	{
 		
@@ -116,28 +128,50 @@ public class LevelOne extends Screen {
 			
 	
 	}
+	/**
+	 * spawns new player
+	 */
 	public void spawnNewPlayer()
 	{
 		user = new Player(surface.loadImage("img/PLAYER.png"), 60,500, 25, 50);
 	}
+	/**
+	 * spawns new door
+	 */
 	public void spawnNewDoor()
 	{
 		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+100, DRAWING_WIDTH/4-100, 50, 100);
 	}
-	
+	/**
+	 * spawns new spike
+	 * @param spike object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of spike
+	 * @param height height of spike
+	 */
 	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
 		
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
 	
-
+/**
+ * spawns in new saw
+ */
 	public void spawnNewSaw() 
 	{
 		saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);
 	}
-	
-	
+	/**
+	 * rotates the level
+	 */
+	public void rotate() {
+		
+		surface.rotate(90);
+		
+		
+	}
 	
 	
 }

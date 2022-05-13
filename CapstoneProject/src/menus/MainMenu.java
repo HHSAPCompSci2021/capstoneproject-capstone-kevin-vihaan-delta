@@ -13,7 +13,7 @@ import menus.ScreenSwitcher;
  */
 public class MainMenu extends Screen {
 	
-	private DrawingSurface surface;
+	//private DrawingSurface surface;
 	private Rectangle chooseLevelButton;
 	private Rectangle shopButton;
 	private Rectangle quitButton;

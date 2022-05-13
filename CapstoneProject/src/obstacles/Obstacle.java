@@ -48,4 +48,7 @@ public class Obstacle extends Rectangle2D.Double {
 		}
 	}
 	
+	
+	
+	
 }

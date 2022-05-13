@@ -1,4 +1,7 @@
 package menus;
+
+import core.DrawingSurface;
+
 /**
  * 
  * @author kevinvalencia and vihaanchinthakindi
@@ -11,6 +14,7 @@ public abstract class Screen {
 	 * DRAWING_WIDTH and DRAWING_HEIGHT descrie the dimensions of the Screen
 	 */
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
+	public DrawingSurface surface;
 	
 	/**
 	 * 
@@ -39,6 +43,10 @@ public abstract class Screen {
 	 * Act when the mouse is pressed
 	 */
 	public void mousePressed() {
+		
+	}
+	public void rotate() {
+		// TODO Auto-generated method stub
 		
 	}
 	

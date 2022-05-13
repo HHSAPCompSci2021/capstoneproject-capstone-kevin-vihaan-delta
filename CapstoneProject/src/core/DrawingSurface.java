@@ -117,6 +117,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			key = 0;
 			switchScreen(0);
 		}
+		if (key == KeyEvent.VK_1) {
+			activeScreen.rotate();
+		}
 	}
 
 	public void keyReleased() {
@@ -140,6 +143,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			try {
 				Main.playMusic(false, "Trash");
 				Main.playMusic(true, "/Music/synthwave2.wav");
+				
+				
 			} catch (NullPointerException e) {
 
 			}
