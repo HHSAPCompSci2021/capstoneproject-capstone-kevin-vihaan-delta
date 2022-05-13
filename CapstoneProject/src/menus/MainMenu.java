@@ -68,6 +68,13 @@ public class MainMenu extends Screen {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (chooseLevelButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVELCHOOSER_SCREEN);
+		if (shopButton.contains(p)) {
+			surface.switchScreen(ScreenSwitcher.SHOP_SCREEN);
+			
+		}
+		if (quitButton.contains(p)) {
+			surface.exit();
+		}
 	}
 	//add same if for other buttons
 }

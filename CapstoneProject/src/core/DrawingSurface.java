@@ -12,6 +12,7 @@ import menus.MainMenu;
 import menus.LevelMenu;
 import menus.Screen;
 import menus.ScreenSwitcher;
+import menus.ShopMenu;
 
 //add shop menu
 /**
@@ -45,7 +46,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		LevelOne screen2 = new LevelOne(this);
 		screens.add(screen2);
 
-		LevelMenu screen3 = new LevelMenu(this);
+		ShopMenu screen3 = new ShopMenu(this);
 		screens.add(screen3);
 
 		LevelMenu screen4 = new LevelMenu(this);
@@ -106,8 +107,11 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 	public void keyPressed() {
 		keys.add(keyCode);
-		if (key == KeyEvent.VK_Q) // This prevents a processing program from closing on escape key
+		
+		if (key == KeyEvent.VK_ESCAPE) {
+			key = 0;
 			switchScreen(0);
+		}
 	}
 
 	public void keyReleased() {
