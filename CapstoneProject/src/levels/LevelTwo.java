@@ -98,7 +98,7 @@ public class LevelTwo extends Screen {
 			}
 			
 			if (user.intersects(c) && (c instanceof Wall)) {
-				user.bounce();
+				user.bounce(c.x,c.y);
 			}
 		}
 	}

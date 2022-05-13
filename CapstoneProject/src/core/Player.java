@@ -68,8 +68,8 @@ public void act(List<Obstacle> obstacles) {
 	}
 }
 
-public void bounce() {
-	xVel = -xVel;
-	yVel = -yVel;
+public void bounce(double x,double y) {
+	x = x;
+	y = y;
 }
 }

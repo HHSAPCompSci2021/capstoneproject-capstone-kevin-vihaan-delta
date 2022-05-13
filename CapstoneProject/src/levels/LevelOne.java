@@ -105,6 +105,7 @@ public class LevelOne extends Screen {
 			}
 			
 			if (user.intersects(door)) {
+				spawnNewPlayer();
 				surface.switchScreen(0);
 			}
 		}
