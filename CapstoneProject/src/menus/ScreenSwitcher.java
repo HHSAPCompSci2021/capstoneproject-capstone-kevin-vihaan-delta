@@ -23,6 +23,11 @@ public interface ScreenSwitcher {
 	 * LEVELCHOOSER_SCREEN has associated integer value of 3 for access.
 	 */
 	public static final int LEVELCHOOSER_SCREEN = 3;
+	/**
+	 * LEVEL_TWO has screen int of 4
+	 */
+	
+	public static final int LEVEL_TWO = 4;
 	
 	/**
 	 * 

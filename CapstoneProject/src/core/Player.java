@@ -60,4 +60,9 @@ public void act(List<Obstacle> obstacles) {
 		}
 	}
 }
+
+public void bounce() {
+	xVel = -xVel;
+	yVel = -yVel;
+}
 }

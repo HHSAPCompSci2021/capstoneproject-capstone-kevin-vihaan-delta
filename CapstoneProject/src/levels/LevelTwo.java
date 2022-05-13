@@ -1,8 +1,7 @@
 package levels;
 
 import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,65 +9,54 @@ import core.Door;
 import core.DrawingSurface;
 import core.Player;
 import menus.Screen;
+import menus.ScreenSwitcher;
 import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;
 import obstacles.Wall;
-import menus.ScreenSwitcher;
 
-
-
-
-public class LevelOne extends Screen {
-
+public class LevelTwo extends Screen {
 	private DrawingSurface surface;
 	
-	private Rectangle screenRect;
 	private Door door;
 	private Player user;
 	private List<Obstacle> obstacles;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
-	private Spike spike4;
-	private Spike spike5;
 	
 	private Saw saw;
-	
-	
-	public LevelOne(DrawingSurface surface) {
+
+	public LevelTwo(DrawingSurface surface) {
 		super(800, 600);
-		
+
 		this.surface = surface;
 		
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
-		obstacles.add(new Wall(52,0,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
-		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
-		obstacles.add(new Wall(DRAWING_WIDTH/2+150,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
+		obstacles.add(new Wall(0, 0, 50, DRAWING_HEIGHT));
+		obstacles.add(new Wall(52, 0, DRAWING_WIDTH / 3, DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
+		obstacles.add(new Wall(0, DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
+		obstacles.add(new Wall(DRAWING_WIDTH / 2 + 150, DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2+90, 50));
+
+		obstacles.add(new Wall(DRAWING_WIDTH - 50, DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
+		obstacles.add(new Wall(DRAWING_WIDTH / 2 + 50, DRAWING_HEIGHT / 4 + 50, 200, 200));
+		obstacles.add(new Wall(DRAWING_WIDTH / 2 - 80, 0, DRAWING_WIDTH / 2 + 28, 50));
 		
-		obstacles.add(new Wall(DRAWING_WIDTH-50,DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
-		obstacles.add(new Wall(DRAWING_WIDTH/2+50,DRAWING_HEIGHT/4+50,200,200 ));
-		obstacles.add(new Wall(DRAWING_WIDTH/2-80,0,DRAWING_WIDTH/2+28,50 ));
-		
+		// TODO Auto-generated constructor stub
 	}
-	public void setup()
-	{
+
+	public void setup() {
 		spawnNewPlayer();
 		spawnNewDoor();
 		spawnNewSpike(spike1,DRAWING_WIDTH/2,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike2,DRAWING_WIDTH/2+30,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
-		//spawnNewSaw();
-	}
-	
-	public void draw()
-	{
 		
-		surface.background(211,211,211);
+
+	}
+
+	public void draw() {
+		surface.background(211, 211, 211);
 		user.draw(surface);
 		door.draw(surface);
 	//	spike1.draw(surface);
@@ -98,22 +86,21 @@ public class LevelOne extends Screen {
 		
 		for (Obstacle c : obstacles)
 		{
-			if (user.intersects(c) && (c instanceof Spike) )
+			if (user.intersects(c) && (c instanceof Spike  || c instanceof Saw ) )
 			{
 			
 				spawnNewPlayer();
 			}
 			
 			if (user.intersects(door)) {
+				spawnNewPlayer();
 				surface.switchScreen(0);
 			}
-		}
-		
-//		if (!screenRect.intersects(user))
-//		
-//			spawnNewPlayer();
 			
-	
+			if (user.intersects(c) && (c instanceof Wall)) {
+				user.bounce();
+			}
+		}
 	}
 	public void spawnNewPlayer()
 	{
@@ -121,7 +108,7 @@ public class LevelOne extends Screen {
 	}
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+100, DRAWING_WIDTH/4-100, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+200, DRAWING_HEIGHT-150, 50, 100);
 	}
 	
 	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
@@ -133,10 +120,6 @@ public class LevelOne extends Screen {
 
 	public void spawnNewSaw() 
 	{
-		saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);
+	saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);
 	}
-	
-	
-	
-	
 }
