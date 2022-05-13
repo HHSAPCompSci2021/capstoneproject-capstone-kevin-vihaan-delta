@@ -53,7 +53,11 @@ public void act(List<Obstacle> obstacles) {
 			if ( y < s.y)
 			{
 				y = s.y-super.height;
+			} else 
+			{
+				x = s.x+super.width+25;
 			}
+			
 			
 			
 			onSurface = true;
