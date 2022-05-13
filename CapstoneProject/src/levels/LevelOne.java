@@ -48,8 +48,9 @@ public class LevelOne extends Screen {
 		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
 		obstacles.add(new Wall(DRAWING_WIDTH/2+150,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
 		
-	
-		
+		obstacles.add(new Wall(DRAWING_WIDTH-50,DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
+		obstacles.add(new Wall(DRAWING_WIDTH/2+50,DRAWING_HEIGHT/4+50,200,200 ));
+		obstacles.add(new Wall(DRAWING_WIDTH/2-80,0,DRAWING_WIDTH/2+28,50 ));
 		
 	}
 	public void setup()
@@ -116,7 +117,7 @@ public class LevelOne extends Screen {
 	}
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), 200, 200, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+100, DRAWING_WIDTH/4-100, 50, 100);
 	}
 	
 	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
