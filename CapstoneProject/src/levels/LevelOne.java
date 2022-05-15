@@ -65,6 +65,7 @@ public class LevelOne extends Screen {
 	 */
 	public void setup()
 	{
+		spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
 		spawnNewPlayer();
 		spawnNewDoor();
 		spawnNewSpike(spike1,DRAWING_WIDTH/2,DRAWING_HEIGHT-50,30,50);
@@ -72,7 +73,8 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
-		//spawnNewSaw();
+		
+		
 	}
 	/**
 	 * draws the window, checks intersections
@@ -110,7 +112,7 @@ public class LevelOne extends Screen {
 		
 		for (Obstacle c : obstacles)
 		{
-			if (user.intersects(c) && (c instanceof Spike) )
+			if (user.intersects(c) && ((c instanceof Spike) || c instanceof Saw))
 			{
 			
 				spawnNewPlayer();
@@ -159,9 +161,10 @@ public class LevelOne extends Screen {
 /**
  * spawns in new saw
  */
-	public void spawnNewSaw() 
+	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) 
 	{
-		saw = new Saw(surface.loadImage("img/SAW.png"),100,100,50,50);
+		saw = new Saw(surface.loadImage("img/SAW.png"),x,y,width,height);
+		obstacles.add(saw);
 	}
 	/**
 	 * rotates the level

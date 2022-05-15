@@ -3,6 +3,7 @@ package core;
 import java.util.List;
 
 import obstacles.Obstacle;
+import obstacles.Saw;
 import obstacles.Spike;
 import processing.core.PImage;
 
@@ -68,7 +69,7 @@ public void act(List<Obstacle> obstacles) {
 	
 	for (Obstacle s : obstacles)
 	{
-		if (super.intersects(s) &&! (s instanceof Spike))
+		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw))
 		{
 			
 			yVel = 0;
