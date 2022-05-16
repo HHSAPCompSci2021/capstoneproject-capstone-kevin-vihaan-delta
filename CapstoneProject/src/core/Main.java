@@ -6,6 +6,8 @@ import java.net.URL;
 
 import javax.swing.JFrame;
 
+import jay.jaysound.JayLayer;
+import jay.jaysound.JayLayerListener;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
@@ -21,12 +23,26 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * 
  * @author kevinvalencia and vihaanchinthakindi Runs the program
  */
-public class Main {
+public class Main implements JayLayerListener {
 
 	public static Mixer mixer;
 	public static Clip clip;
 	public static JFrame window;
+	private JayLayer sound;
 
+	
+	public Main() {
+		sound = new JayLayer("audio/","audio/", false);
+		sound.addPlayList();
+		sound.addSong(0, "game1.mp3");
+		sound.changePlayList(0);
+		sound.addJayLayerListener(this);
+		System.out.println(sound.isPlaying());
+		
+		
+		
+		
+	}
 	/**
 	 * Creates a window for the program to run in
 	 * 
@@ -35,7 +51,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		DrawingSurface drawing = new DrawingSurface();
-
+		
 		PApplet.runSketch(new String[] { "" }, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
@@ -46,11 +62,8 @@ public class Main {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 		window.setVisible(true);
-		try {
-			playMusic(true, "/Music/synthwave.wav");
-		} catch (NullPointerException e) {
-
-		}
+		Main player = new Main();
+		
 
 	}
 /**
@@ -93,5 +106,25 @@ public class Main {
 			clip.close();
 		}
 	}
+@Override
+public void musicStarted() {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void musicStopped() {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void playlistEnded() {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void songEnded() {
+	// TODO Auto-generated method stub
+	
+}
 
 }
