@@ -86,15 +86,15 @@ public class LevelTwo extends Screen {
 		// spike1.draw(surface);
 		
 		// saw.draw(surface);
-
+		surface.rotate((float) (angle));
 		for (Obstacle c : obstacles) {
 			c.draw(surface);
-			surface.rotate((float) (angle));
+			
 		}
 		
 		
-		surface.fill(255);
-		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
+//		surface.fill(255);
+//		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
 		if (surface.isPressed(KeyEvent.VK_ESCAPE)) {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 			return;
@@ -178,6 +178,6 @@ public class LevelTwo extends Screen {
 		obstacles.add(coin);
 	}
 	public void rotate(double angle1) {
-		angle = angle1;
+		angle += angle1;
 	}
 }

@@ -26,6 +26,8 @@ import menus.ShopMenu;
  *Class Represents LevelOne
  */
 
+
+
 public class LevelOne extends Screen {
 
 	//private DrawingSurface surface;
@@ -54,6 +56,7 @@ public class LevelOne extends Screen {
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
+		
 		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
 		obstacles.add(new Wall(52,0,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
 		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
@@ -100,7 +103,7 @@ public class LevelOne extends Screen {
 			surface.rotate((float)angle);
 		}
 		
-		super.draw();
+	
 		if (surface.isPressed(KeyEvent.VK_ESCAPE)) {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 			return;
@@ -198,7 +201,7 @@ public class LevelOne extends Screen {
 	public void rotate(double angle1) {
 		
 		
-		angle = angle1;
+		angle += angle1;
 		
 	}
 	

@@ -37,7 +37,7 @@ public abstract class Screen {
 	 */
 	public void draw() {
 		surface.fill(255);
-		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
+		surface.text("Coins: " + ShopMenu.coinsCollected,-380 , -370);
 		
 	}
 	

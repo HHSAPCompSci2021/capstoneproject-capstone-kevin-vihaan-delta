@@ -15,12 +15,12 @@ public class LevelThree extends Screen {
 	private boolean hasRotated;
 	public LevelThree(DrawingSurface surface) {
 		super(800, 800);
-		angle = 0;
+		
 		this.surface = surface;
 		hasRotated = false;
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/16,DRAWING_HEIGHT));
-//		obstacles.add(new Wall(52,0,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/16,DRAWING_HEIGHT)); 
+		obstacles.add(new Wall(52,20,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
 //		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
 		
 	}
@@ -29,29 +29,29 @@ public class LevelThree extends Screen {
 		spawnNewCoin(coin,100,700,30,30);
 	}
 	public void draw() {
+		
 		surface.background(211,211,211);
 		
+		surface.rotate((float) angle);
 		
 		for (Obstacle c : obstacles)
 		{
 			
 			c.draw(surface);
-			if (hasRotated)
-			{
-				System.out.println("f");
-				
-				
-				hasRotated = false;
-			}
+			
+			
 			
 		}
+		
+		
+		
 	}
 
 	public void rotate(double angle1)
 	{
-		System.out.println("i");
-		angle = angle1;
-		hasRotated = true;
+	
+		angle += angle1;
+		
 	}
 	
 	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)

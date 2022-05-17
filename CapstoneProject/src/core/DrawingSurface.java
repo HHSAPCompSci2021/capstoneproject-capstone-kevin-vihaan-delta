@@ -87,7 +87,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 		translate(400,400);
 		activeScreen.draw();
-
+		
 		pop();
 
 	}

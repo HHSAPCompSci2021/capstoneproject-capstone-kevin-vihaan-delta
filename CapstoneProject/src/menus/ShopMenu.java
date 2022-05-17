@@ -67,9 +67,6 @@ public class ShopMenu extends Screen {
 			coinsCollected-=3;
 			bought = true;
 			
-		} else {
-			bought = false;
-			
 		}
 
 	}
