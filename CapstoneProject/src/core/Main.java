@@ -29,11 +29,13 @@ public class Main implements JayLayerListener {
 
 	public static JFrame window;
 	private static JayLayer sound;
-	public static int currentPlaylist;
+	
 	//ArrayList<String> soundEffects = new ArrayList<String>();
 	//ArrayList<String> songs = new ArrayList<String>();
 
-	
+	/**
+	 * constructor to initialize all Music elements, and start playing MainMenu song.
+	 */
 	public Main() {
 		
 		//songs.add("game1.mp3");
@@ -65,7 +67,7 @@ public class Main implements JayLayerListener {
 		
 		sound.changePlayList(0);
 		sound.addJayLayerListener(this);
-		currentPlaylist = 0;
+	
 		sound.nextSong();
 	
 		System.out.println(sound.isPlaying());
@@ -98,18 +100,15 @@ public class Main implements JayLayerListener {
 
 	}
 /**
- * Method plays music
- * @param shouldOpen variable to determine whether music plays or doesnt
- * @param fileData String representing location of the music file
+ * Stops current song, and changes the Song to the one in the list corresponding to parameter
+ * @param i index of the song to be played
  */
-
-	
 public static void changeSong( int i) {
 	if (i ==4) {
 		
 	sound.stopSong();
 	sound.changePlayList(i);
-	currentPlaylist = i;
+	
 	
 	
 	
@@ -134,37 +133,54 @@ public static void changeSong( int i) {
 	else {
 	sound.stopSong();
 	sound.changePlayList(i);
-	currentPlaylist = i;
+	
 	
 	
 	sound.nextSong();
 	}
 }
+/**
+ * plays specified soundeffect
+ * @param i index of soundEffect to be played
+ */
 public static void playSoundEffect(int i) {
 	sound.playSoundEffect(i);
 	//sound.
 	
 }
-
+/**
+ * stops the current song
+ */
 public static void stopSong() {
 	sound.stopSong();
 }
 @Override
+/**
+ * handles what to do when music stopped, nothing happens in this program
+ */
 public void musicStopped() {
-	// TODO Auto-generated method stub
+	
 	
 }
 @Override
+/**
+ * handles what to do when playlist ends, nothing happens in this program
+ */
 public void playlistEnded() {
 	// TODO Auto-generated method stub
 	
 }
 @Override
+/**
+ * handles what to do when Song ends, nothing happens in this program
+ */
 public void songEnded() {
 	// TODO Auto-generated method stub
 	
 }
-@Override
+/**
+ * handles what to do when music starts, nothing happens in this program
+ */
 public void musicStarted() {
 	// TODO Auto-generated method stub
 	
