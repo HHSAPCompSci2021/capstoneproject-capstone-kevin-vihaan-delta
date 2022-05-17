@@ -45,7 +45,7 @@ public class LevelTwo extends Screen {
 	 * @param surface DrawingSurface object
 	 */
 	public LevelTwo(DrawingSurface surface) {
-		super(800, 600);
+		super(800, 800);
 
 		this.surface = surface;
 

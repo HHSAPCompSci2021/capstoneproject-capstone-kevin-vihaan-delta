@@ -28,7 +28,9 @@ public interface ScreenSwitcher {
 	 */
 	
 	public static final int LEVEL_TWO = 4;
+
 	
+	public static final int LEVEL_THREE = 5;
 	/**
 	 * 
 	 * @param i index of which screen to switch

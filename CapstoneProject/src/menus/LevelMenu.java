@@ -7,33 +7,37 @@ import core.DrawingSurface;
 
 /**
  * 
- * @author kevinvalencia and vihaanchinthakindi
- * Represents a menu of Levels from which the user can choose to play a level
+ * @author kevinvalencia and vihaanchinthakindi Represents a menu of Levels from
+ *         which the user can choose to play a level
  *
  */
 public class LevelMenu extends Screen {
 
-	//private DrawingSurface surface;
+	// private DrawingSurface surface;
 
-	//private Rectangle screenRect;
+	// private Rectangle screenRect;
 	private Rectangle level1;
 	private Rectangle level2;
-/**
- * 
- * @param surface takes in a DrawingSurface to perform drawing with
- * Initializes all buttons
- */
+	private Rectangle level3;
+
+	/**
+	 * 
+	 * @param surface takes in a DrawingSurface to perform drawing with Initializes
+	 *                all buttons
+	 */
 	public LevelMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
-	//	screenRect = new Rectangle(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+		// screenRect = new Rectangle(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		level2 = new Rectangle(300, 100, 100, 100);
 		level1 = new Rectangle(100, 100, 100, 100);
+		level3 = new Rectangle(500, 100, 100, 100);
 		// TODO Auto-generated constructor stub
 	}
-/**
- * Draws the LevelMenu with  buttons indicating specific levels.
- */
+
+	/**
+	 * Draws the LevelMenu with buttons indicating specific levels.
+	 */
 	public void draw() {
 		surface.background(0, 255, 255);
 		surface.rect(level1.x, level1.y, level1.width, level1.height, 10, 10, 10, 10);
@@ -51,13 +55,23 @@ public class LevelMenu extends Screen {
 		surface.textSize(30);
 		surface.text(str1, level2.x + level2.width / 2 - w1 / 2, level2.y + level2.height / 2);
 
+		String str3 = "Level 3";
+		float w2 = surface.textWidth(str3);
+	
+		surface.textSize(30);
+		surface.text(str3, level3.x + level3.width / 2 - w2 / 2, level3.y + level3.height / 2);
+		surface.fill(255);
+		surface.rect(level3.x, level3.y, level3.width, level3.height, 10, 10, 10, 10);
 	}
+
 	public void mousePressed() {
-		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
+		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX, surface.mouseY));
 		if (level1.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_ONE);
 		if (level2.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_TWO);
-		
+		if (level3.contains(p))
+			surface.switchScreen(ScreenSwitcher.LEVEL_THREE);
+
 	}
 }
