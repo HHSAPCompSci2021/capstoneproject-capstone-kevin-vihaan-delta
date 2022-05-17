@@ -31,7 +31,7 @@ public class ShopMenu extends Screen {
 		super(800, 800);
 		this.surface = surface;
 		powerup1 = new Rectangle(800 / 2 - 350, 800 / 2 - 50, 200, 350);
-		//coinsCollected = 25;
+		coinsCollected = 25;
 		bought = false;
 	}
 
@@ -40,7 +40,8 @@ public class ShopMenu extends Screen {
 	 */
 	public void draw() {
 		surface.background(255, 255, 255);
-		super.draw();
+		surface.fill(0);
+		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
 		surface.fill(0);
 		surface.text("Item will display green if purchase successful.",20 , 90);
 		surface.text("Can only Buy Once.",20 , 60);
