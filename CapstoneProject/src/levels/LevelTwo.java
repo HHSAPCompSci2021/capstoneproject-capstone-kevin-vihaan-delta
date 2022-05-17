@@ -5,16 +5,19 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.Coin;
 import core.Door;
 import core.DrawingSurface;
 import core.Main;
 import core.Player;
 import menus.Screen;
 import menus.ScreenSwitcher;
+import menus.ShopMenu;
 import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;
 import obstacles.Wall;
+
 
 /**
  * Class represents leveltwo
@@ -31,6 +34,7 @@ public class LevelTwo extends Screen {
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
+	private Coin coin;
 
 	private Saw saw;
 
@@ -66,6 +70,7 @@ public class LevelTwo extends Screen {
 		spawnNewSpike(spike1, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 50, 30, 50);
 		spawnNewSpike(spike2, DRAWING_WIDTH / 2 + 30, DRAWING_HEIGHT - 50, 30, 50);
 		spawnNewSpike(spike3, DRAWING_WIDTH / 2 + 60, DRAWING_HEIGHT - 50, 30, 50);
+		spawnNewCoin(coin,100,500,30,30);
 
 	}
 
@@ -84,8 +89,9 @@ public class LevelTwo extends Screen {
 		for (Obstacle c : obstacles) {
 			c.draw(surface);
 		}
-		super.draw();
-
+		
+		surface.fill(255);
+		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
 		if (surface.isPressed(KeyEvent.VK_ESCAPE)) {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 			return;
@@ -99,7 +105,8 @@ public class LevelTwo extends Screen {
 
 		user.act(obstacles);
 
-		for (Obstacle c : obstacles) {
+		for (int i = obstacles.size()-1; i >= 0; i--) {
+			Obstacle c  = obstacles.get(i);
 			if (user.intersects(c) && (c instanceof Spike || c instanceof Saw)) {
 			Main.changeSong(4);
 				spawnNewPlayer();
@@ -113,6 +120,12 @@ public class LevelTwo extends Screen {
 
 			if (user.intersects(c) && (c instanceof Wall)) {
 				user.bounce(c.x, c.y);
+			}
+			
+			if (user.intersects(c) && (c instanceof Coin)) {
+				ShopMenu.coinsCollected++;
+				System.out.println(ShopMenu.coinsCollected);
+				obstacles.remove(obstacles.get(i));
 			}
 		}
 	}
@@ -152,5 +165,11 @@ public class LevelTwo extends Screen {
 	 */
 	public void spawnNewSaw() {
 		saw = new Saw(surface.loadImage("img/SAW.png"), 100, 100, 50, 50);
+	}
+	
+	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
+	{
+		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
+		obstacles.add(coin);
 	}
 }

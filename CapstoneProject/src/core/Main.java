@@ -70,7 +70,7 @@ public class Main implements JayLayerListener {
 	
 		sound.nextSong();
 	
-		System.out.println(sound.isPlaying());
+		//System.out.println(sound.isPlaying());
 		
 		
 		
