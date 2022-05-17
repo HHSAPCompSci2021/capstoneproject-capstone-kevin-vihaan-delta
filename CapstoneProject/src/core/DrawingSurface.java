@@ -79,7 +79,6 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		scale(ratioX, ratioY);
 
 		activeScreen.draw();
-		
 
 		pop();
 
@@ -117,7 +116,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			key = 0;
 			switchScreen(0);
 		}
+
 		if (key == KeyEvent.VK_1) {
+			System.out.println("hi");
 			activeScreen.rotate();
 		}
 	}
@@ -141,30 +142,27 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		activeScreen = screens.get(i);
 		if (i == 1) {
 			Main.stopSong();
-			
 
 		}
 
 		if (i == 0) {
-			
+
 			Main.changeSong(0);
-			
+
 		}
 		if (i == 4) {
 			Main.stopSong();
-			
-			
+
 		}
 		if (i == 3) {
 			Main.stopSong();
 			Main.changeSong(2);
-			
-			
+
 		}
 		if (i == 2) {
 			Main.stopSong();
 			Main.changeSong(1);
-			
+
 		}
 	}
 }

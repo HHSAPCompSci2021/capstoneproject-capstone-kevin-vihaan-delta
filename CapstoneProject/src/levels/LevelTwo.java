@@ -119,7 +119,9 @@ public class LevelTwo extends Screen {
 			}
 
 			if (user.intersects(c) && (c instanceof Wall)) {
-				user.bounce(c.x, c.y);
+				
+				user.bounce();
+				
 			}
 			
 			if (user.intersects(c) && (c instanceof Coin)) {

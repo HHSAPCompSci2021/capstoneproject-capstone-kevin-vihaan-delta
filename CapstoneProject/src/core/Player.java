@@ -97,8 +97,8 @@ public void act(List<Obstacle> obstacles) {
  * @param x x-coordinate of wall
  * @param y y-coordinate of wall;
  */
-public void bounce(double x1,double y1) {
-	x = x1;
-	y = y1;
+public void bounce() {
+	yVel = -yVel;
+	xVel = -xVel;
 }
 }
