@@ -77,7 +77,7 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
-		spawnNewCoin(coin,100,500,30,30);
+		spawnNewCoin(coin,100,700,30,30);
 		
 	}
 	/**
