@@ -3,6 +3,7 @@ package core;
 import java.awt.Dimension;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -25,18 +26,41 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Main implements JayLayerListener {
 
-	public static Mixer mixer;
-	public static Clip clip;
+
 	public static JFrame window;
-	private JayLayer sound;
+	private static JayLayer sound;
+	public static int currentPlaylist;
+	ArrayList<String> soundEffects = new ArrayList<String>();
+	//ArrayList<String> songs = new ArrayList<String>();
 
 	
 	public Main() {
+		
+		//songs.add("game1.mp3");
+		soundEffects.add("door.mp3");
+		soundEffects.add("death.mp3");
+		
+		
 		sound = new JayLayer("audio/","audio/", false);
 		sound.addPlayList();
-		sound.addSong(0, "game1.mp3");
+		sound.addSong(0, "Vice.mp3");
+		sound.addSoundEffects(soundEffects);
+		//playlist 0
+		
+		sound.addPlayList();
+		sound.addSong(1, "synthwave1.mp3");
+		
+		
+		sound.addPlayList();
+		sound.addSong(2, "synthwave3.mp3");
+		
+		
+		
 		sound.changePlayList(0);
 		sound.addJayLayerListener(this);
+		currentPlaylist = 0;
+		sound.nextSong();
+	
 		System.out.println(sound.isPlaying());
 		
 		
@@ -71,45 +95,25 @@ public class Main implements JayLayerListener {
  * @param shouldOpen variable to determine whether music plays or doesnt
  * @param fileData String representing location of the music file
  */
-	public static void playMusic(boolean shouldOpen, String fileData) {
-		if (shouldOpen) {
-			Mixer.Info[] audioTypes = AudioSystem.getMixerInfo();
 
-			mixer = AudioSystem.getMixer(audioTypes[0]);
-			DataLine.Info dataInfo = new DataLine.Info(Clip.class, null);
-			try {
-				clip = (Clip) mixer.getLine(dataInfo);
-			}
-
-			catch (LineUnavailableException lol) {
-				lol.printStackTrace();
-			}
-
-			try {
-				URL info = Main.class.getResource(fileData);
-				AudioInputStream audioStream = AudioSystem.getAudioInputStream(info);
-				clip.open(audioStream);
-			} catch (LineUnavailableException | UnsupportedAudioFileException | IOException lol) {
-				lol.printStackTrace();
-			}
-			clip.start();
-
-			do {
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException ie) {
-					ie.printStackTrace();
-				}
-			} while (window.isActive());
-
-		} else {
-			clip.close();
-		}
-	}
-@Override
-public void musicStarted() {
-	// TODO Auto-generated method stub
 	
+public static void changeSong( int i) {
+	sound.stopSong();
+	sound.changePlayList(i);
+	currentPlaylist = i;
+	
+	
+	sound.nextSong();
+	
+}
+public static void playSoundEffect(int i) {
+	sound.playSoundEffect(i);
+	//sound.
+	
+}
+
+public static void stopSong() {
+	sound.stopSong();
 }
 @Override
 public void musicStopped() {
@@ -123,6 +127,11 @@ public void playlistEnded() {
 }
 @Override
 public void songEnded() {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void musicStarted() {
 	// TODO Auto-generated method stub
 	
 }

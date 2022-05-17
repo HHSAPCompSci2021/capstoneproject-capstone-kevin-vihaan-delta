@@ -9,6 +9,7 @@ import java.util.List;
 import core.Coin;
 import core.Door;
 import core.DrawingSurface;
+import core.Main;
 import core.Player;
 import menus.Screen;
 import obstacles.Obstacle;
@@ -116,15 +117,16 @@ public class LevelOne extends Screen {
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
-			
+				Main.playSoundEffect(1);
 				spawnNewPlayer();
 				setup();
 				ShopMenu.coinsCollected--;
 			}
 			
 			if (user.intersects(door)) {
+				Main.playSoundEffect(0);
 				spawnNewPlayer();
-				surface.switchScreen(0);
+				surface.switchScreen(3);
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
 			{

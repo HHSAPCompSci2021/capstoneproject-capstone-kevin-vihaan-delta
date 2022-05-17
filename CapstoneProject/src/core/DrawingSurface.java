@@ -25,7 +25,7 @@ import menus.ShopMenu;
 public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 	private ArrayList<Integer> keys;
-	private Screen activeScreen;
+	public Screen activeScreen;
 	/**
 	 * ratioX and ratioY determine the ratios of the screen to be maintained.
 	 */
@@ -52,8 +52,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 		LevelMenu screen4 = new LevelMenu(this);
 		screens.add(screen4);
-		
-		
+
 		LevelTwo screen5 = new LevelTwo(this);
 		screens.add(screen5);
 		// add shop menu
@@ -112,7 +111,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 	public void keyPressed() {
 		keys.add(keyCode);
-		
+
 		if (key == KeyEvent.VK_ESCAPE) {
 			key = 0;
 			switchScreen(0);
@@ -140,26 +139,31 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 		if (i == 1) {
-			try {
-				Main.playMusic(false, "Trash");
-				Main.playMusic(true, "/Music/synthwave2.wav");
-				
-				
-			} catch (NullPointerException e) {
-
-			}
+			Main.changeSong(1);
 
 		}
 
 		if (i == 0) {
-			try {
-
-				Main.playMusic(false, "Trash");
-				Main.playMusic(true, "/Music/synthwave.wav");
-			} catch (NullPointerException e) {
-
-			}
-
+			
+			Main.changeSong(0);
+			
+		}
+		if (i == 4) {
+			Main.changeSong(2);
+			//Main.stopSong();
+			
+		}
+		if (i == 3) {
+			Main.stopSong();
+			Main.changeSong(0);
+			
+			
+		}
+		if (i == 2) {
+			Main.stopSong();
+			//Main.changeSong(0);
+			//Main.stopSong();
+			
 		}
 	}
 }
