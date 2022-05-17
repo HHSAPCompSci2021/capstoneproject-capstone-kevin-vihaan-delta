@@ -155,7 +155,7 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewPlayer()
 	{
-		user = new Player(surface.loadImage("img/PLAYER.png"), 60,500, 25, 50);
+		user = new Player(surface.loadImage("img/PLAYER.png"), 60,700, 25, 50);
 	}
 	/**
 	 * spawns new door

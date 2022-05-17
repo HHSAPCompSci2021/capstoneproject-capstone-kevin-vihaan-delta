@@ -116,7 +116,7 @@ public static void changeSong( int i) {
 	
 	try {
 		
-		Thread.sleep(940);
+		Thread.sleep(840);
 		
 		sound.stopSong();
 		
