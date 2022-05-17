@@ -14,7 +14,9 @@ import processing.core.PImage;
  *Class representing the Player and all the functions that it haves.
  */
 public class Player extends Obstacle{
-
+	
+	
+	public static double jumpHeight;
 	private double xVel, yVel;
 	/**
 	 * variables to determine if player canJump or is onsurface
@@ -34,6 +36,7 @@ public class Player extends Obstacle{
 		 xVel = 0;
 		 onSurface = false;
 		 canJump = false;
+		 jumpHeight = 3;
 	
 	}
 	/**
@@ -41,7 +44,7 @@ public class Player extends Obstacle{
 	 */
 	public void jump() {
 		if (onSurface && canJump) {
-			yVel =-3;
+			yVel =-jumpHeight;
 		}
 		//super.moveByAmount(0, -50);
 	}
@@ -69,7 +72,7 @@ public void act(List<Obstacle> obstacles) {
 	
 	for (Obstacle s : obstacles)
 	{
-		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw))
+		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw || s instanceof Coin))
 		{
 			
 			yVel = 0;

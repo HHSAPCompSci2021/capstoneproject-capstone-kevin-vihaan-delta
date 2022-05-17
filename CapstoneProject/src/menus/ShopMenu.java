@@ -4,6 +4,7 @@ package menus;
 import java.awt.Rectangle;
 
 import core.DrawingSurface;
+import core.Player;
 
 /**
  * 
@@ -13,11 +14,15 @@ import core.DrawingSurface;
 public class ShopMenu extends Screen {
 	private Rectangle powerup1;
 	private DrawingSurface surface;
+	public static int coinsCollected;
+	
+	
 
 	public ShopMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
 		powerup1 = new Rectangle(800/2-350,800/2-50,200,350);
+		coinsCollected = 0;
 	}
 
 	public void draw() {
@@ -31,5 +36,16 @@ public class ShopMenu extends Screen {
 		float x = surface.textWidth(str2);
 		surface.text(str2, powerup1.x+powerup1.width/2-x/2, powerup1.y+powerup1.height/2);
 	}
+	
+	public void buyJumpBoost()
+	{
+		if (coinsCollected == 3)
+		{
+			Player.jumpHeight += 3;
+		}
+		
+		
+	}
+	
 	
 }

@@ -10,6 +10,8 @@ import processing.core.PImage;
  */
 public class Obstacle extends Rectangle2D.Double { 
 	private PImage image;
+	
+	
 	public Obstacle(int x, int y, int w, int h) {
 		this(null, x, y, w, h);
 	}

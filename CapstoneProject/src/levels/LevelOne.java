@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import core.Coin;
 import core.Door;
 import core.DrawingSurface;
 import core.Player;
@@ -15,6 +16,7 @@ import obstacles.Saw;
 import obstacles.Spike;
 import obstacles.Wall;
 import menus.ScreenSwitcher;
+import menus.ShopMenu;
 
 
 /**
@@ -30,13 +32,13 @@ public class LevelOne extends Screen {
 	private Rectangle screenRect;
 	private Door door;
 	private Player user;
-	private List<Obstacle> obstacles;
+	private ArrayList<Obstacle> obstacles;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
 	private Spike spike4;
 	private Spike spike5;
-	
+	private Coin coin;
 	private Saw saw;
 	
 	/**
@@ -73,7 +75,7 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
-		
+		spawnNewCoin(coin,100,500,30,30);
 		
 	}
 	/**
@@ -110,18 +112,30 @@ public class LevelOne extends Screen {
 
 
 		
-		for (Obstacle c : obstacles)
+		for (int i = obstacles.size()-1; i >= 0; i--)
 		{
-			if (user.intersects(c) && ((c instanceof Spike) || c instanceof Saw))
+			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
 			
 				spawnNewPlayer();
+				setup();
+				ShopMenu.coinsCollected--;
 			}
 			
 			if (user.intersects(door)) {
 				spawnNewPlayer();
 				surface.switchScreen(0);
 			}
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
+			{
+				
+				ShopMenu.coinsCollected++;
+				
+				obstacles.remove(obstacles.get(i));
+				
+			}
+			
+		
 		}
 		
 //		if (!screenRect.intersects(user))
@@ -156,6 +170,12 @@ public class LevelOne extends Screen {
 		
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
+	}
+	
+	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
+	{
+		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
+		obstacles.add(coin);
 	}
 	
 /**
