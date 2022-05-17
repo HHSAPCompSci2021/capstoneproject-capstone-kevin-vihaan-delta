@@ -129,6 +129,10 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			//System.out.println("HI");
 			activeScreen.rotate(Math.PI/2);
 		}
+		if (key == KeyEvent.VK_2) {
+			//System.out.println("HI");
+			activeScreen.rotate(-Math.PI/2);
+		}
 	}
 
 	public void keyReleased() {
