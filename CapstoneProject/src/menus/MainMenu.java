@@ -48,7 +48,8 @@ public class MainMenu extends Screen {
 		//surface.background(255,255,255);
 		surface.background(image);
 		//surface.background
-	
+	super.draw();
+	surface.fill(255);
 		
 		surface.rect(shopButton.x, shopButton.y, shopButton.width, shopButton.height, 10, 10, 10, 10);
 		surface.fill(0);

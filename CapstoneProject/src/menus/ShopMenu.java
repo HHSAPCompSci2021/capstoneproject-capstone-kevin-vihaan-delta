@@ -31,7 +31,7 @@ public class ShopMenu extends Screen {
 		super(800, 800);
 		this.surface = surface;
 		powerup1 = new Rectangle(800 / 2 - 350, 800 / 2 - 50, 200, 350);
-		coinsCollected = 0;
+		//coinsCollected = 25;
 		bought = false;
 	}
 
@@ -40,8 +40,10 @@ public class ShopMenu extends Screen {
 	 */
 	public void draw() {
 		surface.background(255, 255, 255);
+		super.draw();
 		surface.fill(0);
-		surface.text("Item will display green if purchase successful.",20 , 30);
+		surface.text("Item will display green if purchase successful.",20 , 90);
+		surface.text("Can only Buy Once.",20 , 60);
 		if (bought) {
 			surface.fill(0, 128, 0);
 		}
@@ -59,11 +61,14 @@ public class ShopMenu extends Screen {
 	 * buys JumpBoost item for player
 	 */
 	public void buyJumpBoost() {
-		if (coinsCollected == 3) {
-			Player.jumpHeight += 3;
+		if (coinsCollected >= 3 && bought == false) {
+			Player.jumpHeight += 1;
+			coinsCollected-=3;
 			bought = true;
+			
 		} else {
 			bought = false;
+			
 		}
 
 	}
@@ -71,6 +76,7 @@ public class ShopMenu extends Screen {
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX, surface.mouseY));
 		if (powerup1.contains(p))
+			
 			buyJumpBoost();
 
 	}

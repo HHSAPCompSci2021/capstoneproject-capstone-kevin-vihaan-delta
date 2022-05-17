@@ -37,7 +37,7 @@ public class LevelMenu extends Screen {
 	public void draw() {
 		surface.background(0, 255, 255);
 		surface.rect(level1.x, level1.y, level1.width, level1.height, 10, 10, 10, 10);
-
+		super.draw();
 		surface.fill(0);
 		String str = "Level 1";
 		float w = surface.textWidth(str);

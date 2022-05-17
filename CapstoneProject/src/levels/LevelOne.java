@@ -86,6 +86,7 @@ public class LevelOne extends Screen {
 	{
 		
 		surface.background(211,211,211);
+		
 		user.draw(surface);
 		door.draw(surface);
 	//	spike1.draw(surface);
@@ -97,7 +98,7 @@ public class LevelOne extends Screen {
 			c.draw(surface);
 		}
 		
-		
+		super.draw();
 		if (surface.isPressed(KeyEvent.VK_ESCAPE)) {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 			return;
@@ -132,10 +133,11 @@ public class LevelOne extends Screen {
 			{
 				
 				ShopMenu.coinsCollected++;
-				
+				System.out.println(ShopMenu.coinsCollected);
 				obstacles.remove(obstacles.get(i));
 				
 			}
+			
 			
 		
 		}

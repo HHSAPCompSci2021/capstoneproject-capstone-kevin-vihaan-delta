@@ -84,6 +84,7 @@ public class LevelTwo extends Screen {
 		for (Obstacle c : obstacles) {
 			c.draw(surface);
 		}
+		super.draw();
 
 		if (surface.isPressed(KeyEvent.VK_ESCAPE)) {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
