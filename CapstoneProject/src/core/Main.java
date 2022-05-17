@@ -30,21 +30,21 @@ public class Main implements JayLayerListener {
 	public static JFrame window;
 	private static JayLayer sound;
 	public static int currentPlaylist;
-	ArrayList<String> soundEffects = new ArrayList<String>();
+	//ArrayList<String> soundEffects = new ArrayList<String>();
 	//ArrayList<String> songs = new ArrayList<String>();
 
 	
 	public Main() {
 		
 		//songs.add("game1.mp3");
-		soundEffects.add("door.mp3");
-		soundEffects.add("death.mp3");
+		//soundEffects.add("door.mp3");
+		//soundEffects.add("death.mp3");
 		
 		
 		sound = new JayLayer("audio/","audio/", false);
 		sound.addPlayList();
 		sound.addSong(0, "Vice.mp3");
-		sound.addSoundEffects(soundEffects);
+		
 		//playlist 0
 		
 		sound.addPlayList();
@@ -53,6 +53,13 @@ public class Main implements JayLayerListener {
 		
 		sound.addPlayList();
 		sound.addSong(2, "synthwave3.mp3");
+		
+		sound.addPlayList();
+		sound.addSong(3, "realDoor.mp3");
+		
+		sound.addPlayList();
+		sound.addSong(4, "death.mp3");
+		
 		
 		
 		
@@ -98,13 +105,40 @@ public class Main implements JayLayerListener {
 
 	
 public static void changeSong( int i) {
+	if (i ==4) {
+		
+	sound.stopSong();
+	sound.changePlayList(i);
+	currentPlaylist = i;
+	
+	
+	
+	sound.nextSong();
+	
+	try {
+		
+		Thread.sleep(940);
+		
+		sound.stopSong();
+		
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+	
+	
+	
+	
+	else {
 	sound.stopSong();
 	sound.changePlayList(i);
 	currentPlaylist = i;
 	
 	
 	sound.nextSong();
-	
+	}
 }
 public static void playSoundEffect(int i) {
 	sound.playSoundEffect(i);

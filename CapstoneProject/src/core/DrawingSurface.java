@@ -139,7 +139,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 		if (i == 1) {
-			Main.changeSong(1);
+			Main.stopSong();
+			
 
 		}
 
@@ -149,20 +150,19 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			
 		}
 		if (i == 4) {
-			Main.changeSong(2);
-			//Main.stopSong();
+			Main.stopSong();
+			
 			
 		}
 		if (i == 3) {
 			Main.stopSong();
-			Main.changeSong(0);
+			Main.changeSong(2);
 			
 			
 		}
 		if (i == 2) {
 			Main.stopSong();
-			//Main.changeSong(0);
-			//Main.stopSong();
+			Main.changeSong(1);
 			
 		}
 	}

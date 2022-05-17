@@ -117,14 +117,14 @@ public class LevelOne extends Screen {
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
-				Main.playSoundEffect(1);
+				Main.changeSong(4);
 				spawnNewPlayer();
 				setup();
 				ShopMenu.coinsCollected--;
 			}
 			
 			if (user.intersects(door)) {
-				Main.playSoundEffect(0);
+				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
 			}

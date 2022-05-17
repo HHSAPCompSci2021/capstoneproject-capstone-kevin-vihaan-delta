@@ -74,10 +74,11 @@ public class LevelTwo extends Screen {
 	 */
 	public void draw() {
 		surface.background(211, 211, 211);
+		
 		user.draw(surface);
 		door.draw(surface);
 		// spike1.draw(surface);
-
+		
 		// saw.draw(surface);
 
 		for (Obstacle c : obstacles) {
@@ -99,12 +100,12 @@ public class LevelTwo extends Screen {
 
 		for (Obstacle c : obstacles) {
 			if (user.intersects(c) && (c instanceof Spike || c instanceof Saw)) {
-				Main.playSoundEffect(1);
+			Main.changeSong(4);
 				spawnNewPlayer();
 			}
 
 			if (user.intersects(door)) {
-				Main.playSoundEffect(0);
+				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
 			}
@@ -119,6 +120,7 @@ public class LevelTwo extends Screen {
 	 * spawns new player
 	 */
 	public void spawnNewPlayer() {
+		
 		user = new Player(surface.loadImage("img/PLAYER.png"), 60, 500, 25, 50);
 	}
 
