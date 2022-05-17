@@ -47,6 +47,7 @@ public class LevelMenu extends Screen {
 		float w = surface.textWidth(str);
 		surface.textSize(30);
 		surface.text(str, level1.x + level1.width / 2 - w / 2, level1.y + level1.height / 2);
+		
 		surface.fill(255);
 		surface.rect(level2.x, level2.y, level2.width, level2.height, 10, 10, 10, 10);
 		surface.fill(0);
@@ -55,13 +56,17 @@ public class LevelMenu extends Screen {
 		surface.textSize(30);
 		surface.text(str1, level2.x + level2.width / 2 - w1 / 2, level2.y + level2.height / 2);
 
+		
+		
+		surface.fill(255);
+		surface.rect(level3.x, level3.y, level3.width, level3.height, 10, 10, 10, 10);
+	surface.fill(0);
 		String str3 = "Level 3";
 		float w2 = surface.textWidth(str3);
 	
 		surface.textSize(30);
 		surface.text(str3, level3.x + level3.width / 2 - w2 / 2, level3.y + level3.height / 2);
-		surface.fill(255);
-		surface.rect(level3.x, level3.y, level3.width, level3.height, 10, 10, 10, 10);
+		
 	}
 
 	public void mousePressed() {
