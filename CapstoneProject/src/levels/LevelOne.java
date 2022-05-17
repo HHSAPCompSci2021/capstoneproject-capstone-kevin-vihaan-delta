@@ -41,6 +41,7 @@ public class LevelOne extends Screen {
 	private Spike spike5;
 	private Coin coin;
 	private Saw saw;
+	private double angle;
 	
 	/**
 	 * Initializes level
@@ -96,6 +97,7 @@ public class LevelOne extends Screen {
 		for (Obstacle c : obstacles)
 		{
 			c.draw(surface);
+			surface.rotate((float)angle);
 		}
 		
 		super.draw();
@@ -193,10 +195,10 @@ public class LevelOne extends Screen {
 	/**
 	 * rotates the level
 	 */
-	public void rotate() {
+	public void rotate(double angle1) {
 		
-		surface.rotate(90);
 		
+		angle = angle1;
 		
 	}
 	

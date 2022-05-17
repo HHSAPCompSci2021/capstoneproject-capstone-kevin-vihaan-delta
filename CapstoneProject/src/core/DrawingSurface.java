@@ -118,8 +118,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		}
 
 		if (key == KeyEvent.VK_1) {
-			System.out.println("hi");
-			activeScreen.rotate();
+			//System.out.println("HI");
+			activeScreen.rotate(Math.PI/2);
 		}
 	}
 
@@ -148,7 +148,11 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		if (i == 0) {
 
 			Main.changeSong(0);
-
+			/*LevelOne level1 = new LevelOne(this);
+			screens.set(1, level1);
+			LevelTwo level2 = new LevelTwo(this);
+			screens.set(4, level2);
+			*/
 		}
 		if (i == 4) {
 			Main.stopSong();

@@ -46,7 +46,7 @@ public abstract class Screen {
 	public void mousePressed() {
 		
 	}
-	public void rotate() {
+	public void rotate(double d) {
 		// TODO Auto-generated method stub
 		
 	}

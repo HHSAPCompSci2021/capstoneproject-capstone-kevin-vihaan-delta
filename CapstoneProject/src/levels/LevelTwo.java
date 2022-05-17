@@ -35,6 +35,7 @@ public class LevelTwo extends Screen {
 	private Spike spike2;
 	private Spike spike3;
 	private Coin coin;
+	private double angle;
 
 	private Saw saw;
 
@@ -88,7 +89,9 @@ public class LevelTwo extends Screen {
 
 		for (Obstacle c : obstacles) {
 			c.draw(surface);
+			surface.rotate((float) (angle));
 		}
+		
 		
 		surface.fill(255);
 		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
@@ -173,5 +176,8 @@ public class LevelTwo extends Screen {
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
+	}
+	public void rotate(double angle1) {
+		angle = angle1;
 	}
 }
