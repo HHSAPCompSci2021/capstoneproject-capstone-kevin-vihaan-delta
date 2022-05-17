@@ -59,13 +59,13 @@ public class LevelMenu extends Screen {
 		
 		
 		surface.fill(255);
-		surface.rect(level3.x, level3.y, level3.width, level3.height, 10, 10, 10, 10);
+		surface.rect(100, -300, level3.width, level3.height, 10, 10, 10, 10);
 	surface.fill(0);
 		String str3 = "Level 3";
 		float w2 = surface.textWidth(str3);
 	
 		surface.textSize(30);
-		surface.text(str3, level3.x + level3.width / 2 - w2 / 2, level3.y + level3.height / 2);
+		surface.text(str3, 100 + level3.width / 2 - w2 / 2, -300 + level3.height / 2);
 		
 	}
 
