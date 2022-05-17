@@ -76,6 +76,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	 * Draws the window with the screen that is currently active
 	 */
 	public void draw() {
+		
+		
 		ratioX = (float) width / activeScreen.DRAWING_WIDTH;
 		ratioY = (float) height / activeScreen.DRAWING_HEIGHT;
 
@@ -83,6 +85,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 		scale(ratioX, ratioY);
 
+		translate(400,400);
 		activeScreen.draw();
 
 		pop();
