@@ -124,6 +124,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			key = 0;
 			switchScreen(0);
 		}
+		
 
 		if (key == KeyEvent.VK_1) {
 			//System.out.println("HI");

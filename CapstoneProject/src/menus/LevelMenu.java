@@ -40,21 +40,21 @@ public class LevelMenu extends Screen {
 	 */
 	public void draw() {
 		surface.background(0, 255, 255);
-		surface.rect(level1.x, level1.y, level1.width, level1.height, 10, 10, 10, 10);
+		surface.rect(-100, -300, level2.width, level2.height, 10, 10, 10, 10);
 		super.draw();
 		surface.fill(0);
-		String str = "Level 1";
+		String str = "Level 2";
 		float w = surface.textWidth(str);
 		surface.textSize(30);
-		surface.text(str, level1.x + level1.width / 2 - w / 2, level1.y + level1.height / 2);
+		surface.text(str, -100 + level2.width / 2 - w / 2, -300 + level2.height / 2);
 		
 		surface.fill(255);
-		surface.rect(level2.x, level2.y, level2.width, level2.height, 10, 10, 10, 10);
+		surface.rect(-300, -300, level1.width, level1.height, 10, 10, 10, 10);
 		surface.fill(0);
-		String str1 = "Level 2";
+		String str1 = "Level 1";
 		float w1 = surface.textWidth(str);
 		surface.textSize(30);
-		surface.text(str1, level2.x + level2.width / 2 - w1 / 2, level2.y + level2.height / 2);
+		surface.text(str1, -300 + level1.width / 2 - w1 / 2, -300 + level1.height / 2);
 
 		
 		
