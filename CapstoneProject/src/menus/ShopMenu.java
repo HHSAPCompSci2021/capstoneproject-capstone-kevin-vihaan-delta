@@ -30,7 +30,7 @@ public class ShopMenu extends Screen {
 	public ShopMenu(DrawingSurface surface) {
 		super(800, 800);
 		this.surface = surface;
-		powerup1 = new Rectangle(800 / 2 - 350, 800 / 2 - 50, 200, 350);
+		powerup1 = new Rectangle(50, 350, 200, 350);
 		coinsCollected = 25;
 		bought = false;
 	}
@@ -41,21 +41,21 @@ public class ShopMenu extends Screen {
 	public void draw() {
 		surface.background(255, 255, 255);
 		surface.fill(0);
-		surface.text("Coins: " + ShopMenu.coinsCollected,20 , 30);
+		surface.text("Coins: " + ShopMenu.coinsCollected,-380 , -370);
 		surface.fill(0);
-		surface.text("Item will display green if purchase successful.",20 , 90);
-		surface.text("Can only Buy Once.",20 , 60);
+		surface.text("Item will display green if purchase successful.",-380 , -310);
+		surface.text("Can only Buy Once.",-380 , -340);
 		if (bought) {
 			surface.fill(0, 128, 0);
 		}
 		else {
 			surface.fill(128);
 		}
-		surface.rect(powerup1.x, powerup1.y, powerup1.width, powerup1.height, 10, 10, 10, 10);
+		surface.rect(-350, -50, powerup1.width, powerup1.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String str2 = "Jump Boost";
 		float x = surface.textWidth(str2);
-		surface.text(str2, powerup1.x + powerup1.width / 2 - x / 2, powerup1.y + powerup1.height / 2);
+		surface.text(str2, -350 + powerup1.width / 2 - x / 2, -50 + powerup1.height / 2);
 	}
 
 	/**
