@@ -17,7 +17,7 @@ public class Player extends Obstacle{
 	
 	
 	public static double jumpHeight;
-	private double xVel, yVel;
+	private double xVel, yVel, gravity;
 	/**
 	 * variables to determine if player canJump or is onsurface
 	 */
@@ -37,6 +37,7 @@ public class Player extends Obstacle{
 		 onSurface = false;
 		 canJump = false;
 		 jumpHeight = 3;
+		 gravity = 0.03;
 	
 	}
 	/**

@@ -75,7 +75,7 @@ public class LevelThree extends Screen {
 	public void draw() {
 		
 		surface.background(211,211,211);
-		
+		user.draw(surface);
 		surface.rotate((float) angle);
 		
 		for (Obstacle c : obstacles)
@@ -168,7 +168,7 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	public void spawnNewPlayer()
 	{
 		user = new Player(surface.loadImage("img/PLAYERSIDE.png"), -DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
-		obstacles.add(user);
+		//obstacles.add(user);
 	}
 	/**
 	 * spawns new door
