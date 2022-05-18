@@ -54,7 +54,7 @@ public class LevelOne extends Screen {
 		
 		this.surface = surface;
 		
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
+		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
 		
 		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/16,DRAWING_HEIGHT)); 
@@ -94,6 +94,15 @@ public class LevelOne extends Screen {
 		user.draw(surface);
 		surface.rotate((float)angle);
 		
+		System.out.println(angle);
+		
+		if ( angle != 0 )
+		{
+			System.out.println(true);
+		rotateObstacles(obstacles, angle);
+		angle = 0;
+		}
+	//	System.out.println(door.x);
 		
 		
 		for (Obstacle c : obstacles)
@@ -121,7 +130,7 @@ public class LevelOne extends Screen {
 		user.act(obstacles);
 
 
-		
+		//anothe rarraylist wit things that need t be deleted
 		for (int i = obstacles.size()-1; i >= 0; i--)
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
@@ -147,7 +156,11 @@ public class LevelOne extends Screen {
 				obstacles.remove(obstacles.get(i));
 				
 			}
-			
+			if ( !user.intersects(screenRect))
+			{
+				System.out.println("hi");
+				spawnNewPlayer();
+			}
 			
 		
 		}
@@ -165,13 +178,14 @@ public class LevelOne extends Screen {
 	{
 		user = new Player(surface.loadImage("img/PLAYER.png"), -DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+700, 25, 50);
 		obstacles.add(user);
+		
 	}
 	/**
 	 * spawns new door
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/2+100, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4-50, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300, -DRAWING_HEIGHT/2+600, 50, 100);
 		obstacles.add(door);
 	}
 	/**
@@ -211,6 +225,27 @@ public class LevelOne extends Screen {
 		angle += angle1;
 		
 	}
-	
+	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
+	{
+		
+		double temp = 0;
+		for (Obstacle c : list)
+		{
+			temp = c.x;
+			c.x = c.x * Math.cos(angle3) - c.y*Math.sin(angle3);
+			c.y = c.y*Math.cos(angle3)  + temp*Math.sin(angle3);
+			
+		if ( angle % Math.PI/2 == 0 && angle % Math.PI != 0)
+		{
+			double temp1 = c.height;
+			c.height = c.width;
+			c.width = temp1;
+		}
+			
+				
+			
+			
+		}
+	}
 	
 }
