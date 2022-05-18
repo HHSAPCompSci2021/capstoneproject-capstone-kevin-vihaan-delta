@@ -35,6 +35,8 @@ public class LevelOne extends Screen {
 	private Rectangle screenRect;
 	private Door door;
 	private Player user;
+	private int iX;
+	private int iY;
 	private ArrayList<Obstacle> obstacles;
 	private Spike spike1;
 	private Spike spike2;
@@ -53,7 +55,8 @@ public class LevelOne extends Screen {
 		super(800, 800);
 		
 		this.surface = surface;
-		
+		iX = -DRAWING_WIDTH/2+60;
+		iY = -DRAWING_HEIGHT/2+700;
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
 		
@@ -175,8 +178,10 @@ public class LevelOne extends Screen {
 	 * spawns new player
 	 */
 	public void spawnNewPlayer()
+	
 	{
-		user = new Player(surface.loadImage("img/PLAYER.png"), -DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+700, 25, 50);
+		
+		user = new Player(surface.loadImage("img/PLAYER.png"), iX,iY, 25, 50);
 		obstacles.add(user);
 		
 	}
@@ -225,6 +230,11 @@ public class LevelOne extends Screen {
 		angle += angle1;
 		
 	}
+	public void rotateSpawn()
+	{
+		int temp = iX;
+		iX = iX*Math.cos(angle) - iY*Math.sin(angle);
+	}
 	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
 	{
 		
@@ -240,6 +250,8 @@ public class LevelOne extends Screen {
 			double temp1 = c.height;
 			c.height = c.width;
 			c.width = temp1;
+			
+			
 		}
 			
 				
