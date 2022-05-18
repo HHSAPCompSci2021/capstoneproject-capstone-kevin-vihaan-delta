@@ -57,14 +57,14 @@ public class LevelOne extends Screen {
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
 		
-		obstacles.add(new Wall(0,0,50,DRAWING_HEIGHT));
-		obstacles.add(new Wall(52,0,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
-		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
-		obstacles.add(new Wall(DRAWING_WIDTH/2+150,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
-		
-		obstacles.add(new Wall(DRAWING_WIDTH-50,DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
-		obstacles.add(new Wall(DRAWING_WIDTH/2+50,DRAWING_HEIGHT/4+50,200,200 ));
-		obstacles.add(new Wall(DRAWING_WIDTH/2-80,0,DRAWING_WIDTH/2+28,50 ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/16,DRAWING_HEIGHT)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 + 52,-DRAWING_HEIGHT/2,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
+//		
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/4+50,200,200 ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2-80,0,-DRAWING_HEIGHT/2+DRAWING_WIDTH/2+28,50 ));
 		
 	}
 	/**
@@ -75,12 +75,12 @@ public class LevelOne extends Screen {
 		spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
 		spawnNewPlayer();
 		spawnNewDoor();
-		spawnNewSpike(spike1,DRAWING_WIDTH/2,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike2,DRAWING_WIDTH/2+30,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike3,DRAWING_WIDTH/2+60,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike4,DRAWING_WIDTH/2+90,DRAWING_HEIGHT-50,30,50);
-		spawnNewSpike(spike5,DRAWING_WIDTH/2+120,DRAWING_HEIGHT-50,30,50);
-		spawnNewCoin(coin,100,700,30,30);
+		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
+		spawnNewSpike(spike2,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
+		spawnNewSpike(spike3,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
+		spawnNewSpike(spike4,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
+		spawnNewSpike(spike5,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+120,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
+		spawnNewCoin(coin,-DRAWING_WIDTH/2+100,-DRAWING_HEIGHT/2+700,30,30);
 		
 	}
 	/**
@@ -91,16 +91,17 @@ public class LevelOne extends Screen {
 		
 		surface.background(211,211,211);
 		
-		user.draw(surface);
-		door.draw(surface);
+//		user.draw(surface);
+//		door.draw(surface);
 	//	spike1.draw(surface);
 		
 	//	saw.draw(surface);
+		surface.rotate((float)angle);
 		
 		for (Obstacle c : obstacles)
 		{
 			c.draw(surface);
-			surface.rotate((float)angle);
+			
 		}
 		
 	
@@ -158,14 +159,16 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewPlayer()
 	{
-		user = new Player(surface.loadImage("img/PLAYER.png"), 60,700, 25, 50);
+		user = new Player(surface.loadImage("img/PLAYER.png"), -DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+700, 25, 50);
+		obstacles.add(user);
 	}
 	/**
 	 * spawns new door
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH/2+100, DRAWING_WIDTH/4-100, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/2+100, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4-100, 50, 100);
+		obstacles.add(door);
 	}
 	/**
 	 * spawns new spike

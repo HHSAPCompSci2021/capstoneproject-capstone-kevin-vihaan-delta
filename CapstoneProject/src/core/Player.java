@@ -72,7 +72,7 @@ public void act(List<Obstacle> obstacles) {
 	
 	for (Obstacle s : obstacles)
 	{
-		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw || s instanceof Coin))
+		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw || s instanceof Coin || s instanceof Player))
 		{
 			
 			yVel = 0;
