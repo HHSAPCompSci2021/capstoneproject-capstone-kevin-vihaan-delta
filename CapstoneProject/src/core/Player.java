@@ -80,7 +80,14 @@ public void act(List<Obstacle> obstacles) {
 			{
 				canJump = true;
 				y = s.y-super.height;
-			} else 
+			} else if (x < s.x)
+			{
+				canJump = false;
+				x = s.x-super.width;
+			}
+			
+			
+			else 
 			{
 				canJump = false;
 				x = s.x+super.width+25;

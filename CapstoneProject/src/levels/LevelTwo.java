@@ -48,16 +48,16 @@ public class LevelTwo extends Screen {
 		super(800, 800);
 
 		this.surface = surface;
-
+// -DRAWING_WIDTH/2     -DRAWING_HEIGHT/2    
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall(0, 0, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall(52, 0, DRAWING_WIDTH / 3, DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
-		obstacles.add(new Wall(0, DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
-		obstacles.add(new Wall(DRAWING_WIDTH / 2 + 100, DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 + 90, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
+		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3, DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 100,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 + 90, 50));
 // above is one which door is on
-		obstacles.add(new Wall(DRAWING_WIDTH - 50, DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
-		obstacles.add(new Wall(DRAWING_WIDTH / 2 + 50, DRAWING_HEIGHT / 4 + 50, 200, 200));
-		obstacles.add(new Wall(DRAWING_WIDTH / 2 - 80, 0, DRAWING_WIDTH / 2 + 28, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH - 50, -DRAWING_HEIGHT/2+DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 50,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT / 4 + 50, 200, 200));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 - 80, 0, -DRAWING_HEIGHT/2+DRAWING_WIDTH / 2 + 28, 50));
 
 		// TODO Auto-generated constructor stub
 	}
@@ -112,7 +112,8 @@ public class LevelTwo extends Screen {
 			Obstacle c  = obstacles.get(i);
 			if (user.intersects(c) && (c instanceof Spike || c instanceof Saw)) {
 			Main.changeSong(4);
-				spawnNewPlayer();
+				//spawnNewPlayer();
+				setup();
 			}
 
 			if (user.intersects(door)) {

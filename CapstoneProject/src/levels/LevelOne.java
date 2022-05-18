@@ -91,16 +91,18 @@ public class LevelOne extends Screen {
 		
 		surface.background(211,211,211);
 		
-//		user.draw(surface);
-//		door.draw(surface);
-	//	spike1.draw(surface);
-		
-	//	saw.draw(surface);
+		user.draw(surface);
 		surface.rotate((float)angle);
+		
+		
 		
 		for (Obstacle c : obstacles)
 		{
+			if (! (c instanceof Player))
+			{
 			c.draw(surface);
+		
+			}
 			
 		}
 		
@@ -124,9 +126,11 @@ public class LevelOne extends Screen {
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
-				Main.changeSong(4);
-				spawnNewPlayer();
+			 Main.changeSong(4);
+				
+			 	//spawnNewPlayer();
 				setup();
+			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
 			
@@ -139,7 +143,7 @@ public class LevelOne extends Screen {
 			{
 				
 				ShopMenu.coinsCollected++;
-				System.out.println(ShopMenu.coinsCollected);
+			
 				obstacles.remove(obstacles.get(i));
 				
 			}
