@@ -171,7 +171,7 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/2+100, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4-100, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/2+100, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4-50, 50, 100);
 		obstacles.add(door);
 	}
 	/**
