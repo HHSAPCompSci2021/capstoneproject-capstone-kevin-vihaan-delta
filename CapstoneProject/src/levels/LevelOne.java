@@ -161,8 +161,11 @@ public class LevelOne extends Screen {
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
 			{
-				
+				if (Coin.doubleValue) {
+					ShopMenu.coinsCollected += 2;
+				} else {
 				ShopMenu.coinsCollected++;
+				}
 			
 				obstacles.remove(obstacles.get(i));
 				i--;
@@ -170,7 +173,7 @@ public class LevelOne extends Screen {
 			}
 			if ( !user.intersects(screenRect))
 			{
-				System.out.println("hi");
+				
 				spawnNewPlayer();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 

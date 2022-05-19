@@ -10,8 +10,11 @@ import processing.core.PImage;
 public class Coin extends Obstacle { //extends shape
 
 	
+	public static boolean doubleValue;
+	
 	public Coin(PImage img, int x, int y, int w, int h) {
 		super(img, x, y, w, h);
+		doubleValue = false;
 		// TODO Auto-generated constructor stub
 	}
 	
