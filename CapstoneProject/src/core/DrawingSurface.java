@@ -179,7 +179,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		if (i == 2) {
 			Main.stopSong();
 			Main.changeSong(1);
-
+ 
 		}
 		if (i==5) {
 			Main.stopSong();

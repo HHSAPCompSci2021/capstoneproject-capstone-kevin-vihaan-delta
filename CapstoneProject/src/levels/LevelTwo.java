@@ -14,7 +14,9 @@ import menus.ShopMenu;
 import obstacles.Coin;
 import obstacles.Door;
 import obstacles.Obstacle;
+import obstacles.PowerCoin;
 import obstacles.Saw;
+import obstacles.SpeedBoost;
 import obstacles.Spike;
 import obstacles.Wall;
 
@@ -27,7 +29,7 @@ import obstacles.Wall;
  */
 public class LevelTwo extends Screen {
 	private DrawingSurface surface;
-
+	private Rectangle screenRect;
 	private Door door;
 	private Player user;
 	private List<Obstacle> obstacles;
@@ -48,6 +50,7 @@ public class LevelTwo extends Screen {
 		super(800, 800);
 
 		this.surface = surface;
+		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 // -DRAWING_WIDTH/2     -DRAWING_HEIGHT/2    
 		obstacles = new ArrayList<Obstacle>();
 		obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
@@ -132,6 +135,27 @@ public class LevelTwo extends Screen {
 				ShopMenu.coinsCollected++;
 				System.out.println(ShopMenu.coinsCollected);
 				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
+			if ( !user.intersects(screenRect))
+			{
+				System.out.println("hi");
+				spawnNewPlayer();
+			}
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
+			{
+				
+				ShopMenu.coinsCollected += 10;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
+			{
+				Player.speedMultiplier += 0.5;
+				obstacles.remove(obstacles.get(i));
+				i--;
 			}
 		}
 	}
@@ -141,7 +165,8 @@ public class LevelTwo extends Screen {
 	 */
 	public void spawnNewPlayer() {
 		
-		user = new Player(surface.loadImage("img/PLAYER.png"), 60, 700, 25, 50);
+		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
+		obstacles.add(user);
 	}
 
 	/**
