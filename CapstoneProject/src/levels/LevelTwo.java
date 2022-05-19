@@ -5,14 +5,14 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Coin;
-import core.Door;
 import core.DrawingSurface;
 import core.Main;
 import core.Player;
 import menus.Screen;
 import menus.ScreenSwitcher;
 import menus.ShopMenu;
+import obstacles.Coin;
+import obstacles.Door;
 import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;

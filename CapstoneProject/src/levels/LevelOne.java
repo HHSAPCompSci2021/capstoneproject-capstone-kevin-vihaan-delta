@@ -6,12 +6,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Coin;
-import core.Door;
 import core.DrawingSurface;
 import core.Main;
 import core.Player;
 import menus.Screen;
+import obstacles.Coin;
+import obstacles.Door;
 import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;
@@ -233,7 +233,7 @@ public class LevelOne extends Screen {
 	public void rotateSpawn()
 	{
 		int temp = iX;
-		iX = iX*Math.cos(angle) - iY*Math.sin(angle);
+	//	iX = iX*Math.cos(angle) - iY*Math.sin(angle);
 	}
 	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
 	{

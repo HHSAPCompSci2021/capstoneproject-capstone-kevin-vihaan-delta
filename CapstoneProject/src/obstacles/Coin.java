@@ -1,6 +1,5 @@
-package core;
+package obstacles;
 
-import obstacles.Obstacle;
 import processing.core.PImage;
 
 /**

@@ -2,6 +2,8 @@ package core;
 
 import java.util.List;
 
+import obstacles.Coin;
+import obstacles.Door;
 import obstacles.Obstacle;
 import obstacles.Saw;
 import obstacles.Spike;

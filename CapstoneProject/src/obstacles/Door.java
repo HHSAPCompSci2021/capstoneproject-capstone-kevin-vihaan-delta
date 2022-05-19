@@ -1,6 +1,6 @@
-package core;
+package obstacles;
 import java.util.List;
-import obstacles.Obstacle;
+
 import processing.core.PImage;
 
 //add papplet awt rectangle
