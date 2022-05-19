@@ -91,6 +91,7 @@ public class LevelOne extends Screen {
 	//	spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+200, -DRAWING_HEIGHT/2+DRAWING_HEIGHT-100, 30,30);
 		//spawnNewPowerCoin(pCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50, 30,30);
 	spawnNewPowerCoin(pCoin,iX + 75, iY, 30,30);
+	spawnNewSpeedBoost(sCoin,iX + 100, iY, 30,30);
 	}
 	/**
 	 * draws the window, checks intersections
