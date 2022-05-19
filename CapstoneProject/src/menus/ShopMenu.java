@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import core.DrawingSurface;
 import core.Player;
+import processing.core.PImage;
 
 /**
  * 
@@ -15,6 +16,7 @@ import core.Player;
 public class ShopMenu extends Screen {
 	private Rectangle powerup1;
 	private DrawingSurface surface;
+	private PImage image;
 	/**
 	 * coins collected by the player, always same throughout program
 	 */
@@ -33,13 +35,23 @@ public class ShopMenu extends Screen {
 		powerup1 = new Rectangle(50, 350, 200, 350);
 		coinsCollected = 25;
 		bought = false;
+		
 	}
-
+	public void setup()
+	{
+		image = surface.loadImage("img/shopmenu.jpg");
+	}
 	/**
 	 * Draws the mainMenu
 	 */
 	public void draw() {
-		surface.background(255, 255, 255);
+		
+		
+		surface.image(image, -400, -400, 800, 800);
+		
+		//super.draw();
+		
+		
 		surface.fill(0);
 		surface.text("Coins: " + ShopMenu.coinsCollected,-380 , -370);
 		surface.fill(0);
