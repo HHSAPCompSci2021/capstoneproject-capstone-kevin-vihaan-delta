@@ -13,7 +13,9 @@ import menus.Screen;
 import obstacles.Coin;
 import obstacles.Door;
 import obstacles.Obstacle;
+import obstacles.PowerCoin;
 import obstacles.Saw;
+import obstacles.SpeedBoost;
 import obstacles.Spike;
 import obstacles.Wall;
 import menus.ScreenSwitcher;
@@ -46,6 +48,8 @@ public class LevelOne extends Screen {
 	private Coin coin;
 	private Saw saw;
 	private double angle;
+	private PowerCoin pCoin;
+	private SpeedBoost sCoin;
 	
 	/**
 	 * Initializes level
@@ -84,7 +88,9 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike4,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+120,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewCoin(coin,-DRAWING_WIDTH/2+100,-DRAWING_HEIGHT/2+700,30,30);
-		
+	//	spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+200, -DRAWING_HEIGHT/2+DRAWING_HEIGHT-100, 30,30);
+		//spawnNewPowerCoin(pCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50, 30,30);
+	spawnNewPowerCoin(pCoin,iX + 75, iY, 30,30);
 	}
 	/**
 	 * draws the window, checks intersections
@@ -150,6 +156,7 @@ public class LevelOne extends Screen {
 				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
+				Player.speedMultiplier = 1;
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
 			{
@@ -157,12 +164,27 @@ public class LevelOne extends Screen {
 				ShopMenu.coinsCollected++;
 			
 				obstacles.remove(obstacles.get(i));
+				i--;
 				
 			}
 			if ( !user.intersects(screenRect))
 			{
 				System.out.println("hi");
 				spawnNewPlayer();
+			}
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
+			{
+				
+				ShopMenu.coinsCollected += 10;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
+			{
+				Player.speedMultiplier += 0.5;
+				obstacles.remove(obstacles.get(i));
+				i--;
 			}
 			
 		
@@ -213,6 +235,16 @@ public class LevelOne extends Screen {
 		obstacles.add(coin);
 	}
 	
+	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x,int y, int width, int height)
+	{
+		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"),x,y,width,height);
+		obstacles.add(sCoin);
+	}
+	public void spawnNewPowerCoin(PowerCoin pCoin, int x,int y, int width, int height)
+	{
+		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);
+		obstacles.add(pCoin);
+	}
 /**
  * spawns in new saw
  */

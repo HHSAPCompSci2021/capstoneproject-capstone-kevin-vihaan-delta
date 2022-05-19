@@ -5,7 +5,9 @@ import java.util.List;
 import obstacles.Coin;
 import obstacles.Door;
 import obstacles.Obstacle;
+import obstacles.PowerCoin;
 import obstacles.Saw;
+import obstacles.SpeedBoost;
 import obstacles.Spike;
 import processing.core.PImage;
 
@@ -19,6 +21,7 @@ public class Player extends Obstacle{
 	
 	
 	public static double jumpHeight;
+	public static double speedMultiplier;
 	private double xVel, yVel, gravity;
 	/**
 	 * variables to determine if player canJump or is onsurface
@@ -40,6 +43,7 @@ public class Player extends Obstacle{
 		 canJump = false;
 		 jumpHeight = 3;
 		 gravity = 0.03;
+		 speedMultiplier = 1;
 	
 	}
 	/**
@@ -58,7 +62,7 @@ public class Player extends Obstacle{
 	 */
 public void move(int dir) {
 		
-		super.moveByAmount(dir*2, 0);
+		super.moveByAmount(dir*2*speedMultiplier, 0);
 		
 	}
 /**
@@ -75,7 +79,7 @@ public void act(List<Obstacle> obstacles) {
 	
 	for (Obstacle s : obstacles)
 	{
-		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw || s instanceof Coin || s instanceof Player || s instanceof Door))
+		if (super.intersects(s) && ! ( (s instanceof Spike) || s instanceof Saw || s instanceof Coin || s instanceof Player || s instanceof Door || s instanceof PowerCoin || s instanceof SpeedBoost))
 		{
 			
 			yVel = 0;
