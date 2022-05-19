@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import core.DrawingSurface;
+import processing.core.PImage;
 
 /**
  * 
@@ -19,6 +20,7 @@ public class LevelMenu extends Screen {
 	private Rectangle level1;
 	private Rectangle level2;
 	private Rectangle level3;
+	private PImage image;
 
 	/**
 	 * 
@@ -34,12 +36,20 @@ public class LevelMenu extends Screen {
 		level3 = new Rectangle(500, 100, 100, 100);
 		// TODO Auto-generated constructor stub
 	}
-
+	public void setup()
+	{
+		image = surface.loadImage("img/levelmenu.png");
+	}
 	/**
 	 * Draws the LevelMenu with buttons indicating specific levels.
 	 */
 	public void draw() {
-		surface.background(0, 255, 255);
+		
+		surface.image(image, -400, -400, 800, 800);
+		
+		super.draw();
+		
+	//	surface.background(0, 255, 255);
 		surface.rect(-100, -300, level2.width, level2.height, 10, 10, 10, 10);
 		super.draw();
 		surface.fill(0);
