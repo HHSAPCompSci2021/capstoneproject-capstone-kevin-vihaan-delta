@@ -61,7 +61,7 @@ public class Player extends Obstacle{
 	 * @param dir amount to move by
 	 */
 public void move(int dir) {
-		
+		if (onSurface)
 		super.moveByAmount(dir*2*speedMultiplier, 0);
 		
 	}
