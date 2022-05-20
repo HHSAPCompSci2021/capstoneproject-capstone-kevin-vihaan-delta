@@ -76,8 +76,10 @@ public class ShopMenu extends Screen {
 		surface.rect(-350, -50, powerup1.width, powerup1.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String str2 = "Jump Boost";
+		String str4 = "3 Coins";
 		float x = surface.textWidth(str2);
 		surface.text(str2, -350 + powerup1.width / 2 - x / 2, -50 + powerup1.height / 2);
+		surface.text(str4, -350 + powerup1.width / 2 - x / 2, -10 + powerup1.height / 2);
 		
 		if (bought2)
 		{
@@ -91,8 +93,10 @@ public class ShopMenu extends Screen {
 		surface.rect(-50, -50, powerup2.width, powerup2.height,10,10,10,10);
 		surface.fill(0);
 		String str3 ="x2 Coins";
+		String str5 = "5 Coins";
 		float x2 = surface.textWidth(str3);
 		surface.text(str3, -50+powerup2.width/2 - x/2, -50 + powerup2.height/2);
+		surface.text(str5, -50+powerup2.width/2 - x/2, -10 + powerup2.height/2);
 	}
 
 	/**
