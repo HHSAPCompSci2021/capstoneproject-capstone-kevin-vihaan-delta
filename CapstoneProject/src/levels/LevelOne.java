@@ -104,11 +104,11 @@ public class LevelOne extends Screen {
 		user.draw(surface);
 		surface.rotate((float)angle);
 		
-		System.out.println(angle);
+	//	System.out.println(angle);
 		
 		if ( angle != 0 )
 		{
-			System.out.println(true);
+			//System.out.println(true);
 		rotateObstacles(obstacles, angle);
 		angle = 0;
 		}
@@ -147,8 +147,8 @@ public class LevelOne extends Screen {
 			{
 			 Main.changeSong(4);
 				
-			 	//spawnNewPlayer();
-				setup();
+			 	spawnNewPlayer();
+				//setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
@@ -216,7 +216,7 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300, -DRAWING_HEIGHT/2+600, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300, -DRAWING_HEIGHT/2+650, 50, 100);
 		obstacles.add(door);
 	}
 	/**

@@ -51,6 +51,12 @@ public abstract class Screen {
 		// TODO Auto-generated method stub
 		
 	}
+	public double rotateXPoint(double x, double y, double angle) {
+		return x*Math.cos(angle)-y*Math.sin(angle);
+	}
+	public double rotateYPoint(double x,double y, double angle) {
+		return y*Math.cos(angle)+x*Math.sin(angle);
+	}
 	
 
 	

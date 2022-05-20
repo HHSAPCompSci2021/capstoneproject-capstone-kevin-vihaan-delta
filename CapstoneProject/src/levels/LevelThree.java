@@ -1,5 +1,6 @@
 package levels;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -12,7 +13,9 @@ import menus.ShopMenu;
 import obstacles.Coin;
 import obstacles.Door;
 import obstacles.Obstacle;
+import obstacles.PowerCoin;
 import obstacles.Saw;
+import obstacles.SpeedBoost;
 import obstacles.Spike;
 import obstacles.Wall;
 
@@ -22,6 +25,7 @@ public class LevelThree extends Screen {
 	private double angle;
 	private boolean hasRotated;
 	//set1
+	private Rectangle screenRect;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
@@ -42,7 +46,7 @@ public class LevelThree extends Screen {
 		hasRotated = false;
 		obstacles = new ArrayList<Obstacle>();
 
-		
+		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
@@ -107,8 +111,8 @@ public class LevelThree extends Screen {
 			{
 			 Main.changeSong(4);
 				
-			 	//spawnNewPlayer();
-				setup();
+			 	spawnNewPlayer();
+				//setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
@@ -117,15 +121,40 @@ public class LevelThree extends Screen {
 				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
+				Player.speedMultiplier = 1;
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
 			{
-				
+				if (Coin.doubleValue) {
+					ShopMenu.coinsCollected += 2;
+				} else {
 				ShopMenu.coinsCollected++;
+				}
 			
 				obstacles.remove(obstacles.get(i));
+				i--;
 				
 			}
+			if ( !user.intersects(screenRect))
+			{
+				
+				spawnNewPlayer();
+			}
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
+			{
+				
+				ShopMenu.coinsCollected += 10;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
+			{
+				Player.speedMultiplier += 0.5;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
 			
 			
 		

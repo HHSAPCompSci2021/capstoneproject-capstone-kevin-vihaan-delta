@@ -9,14 +9,14 @@ import processing.core.PImage;
  *
  */
 public class Obstacle extends Rectangle2D.Double { 
-	private PImage image;
+	public PImage image;
 	
 	
-	public Obstacle(int x, int y, int w, int h) {
+	public Obstacle(double x, double y, double w, double h) {
 		this(null, x, y, w, h);
 	}
 	
-	public Obstacle(PImage img, int x, int y, int w, int h) {
+	public Obstacle(PImage img, double x, double y, double w, double h) {
 		super(x,y,w,h);
 		image = img;
 	}
