@@ -104,7 +104,7 @@ public class LevelTwo extends Screen {
 			
 			obstacles.set(i, new Obstacle(c.image,c.x,c.y,c.width,c.height));
 			c.draw(surface);
-			
+			System.out.println(c.x);
 		}
 		
 		

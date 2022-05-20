@@ -32,10 +32,17 @@ public class LevelThree extends Screen {
 	private Spike spike4;
 	private Spike spike5;
 	
+	
+	private int iX;
+	private int iY;
+	
 	private Spike spike6;
 	private Spike spike7;
 	private Spike spike8;
 
+	private PowerCoin pCoin;
+	private SpeedBoost sCoin;
+	
 	private Door door;
 	private Player user;
 	
@@ -46,13 +53,15 @@ public class LevelThree extends Screen {
 		hasRotated = false;
 		obstacles = new ArrayList<Obstacle>();
 
+		iX =  -DRAWING_WIDTH/2+DRAWING_WIDTH-100;
+		iY = -DRAWING_HEIGHT/2+700;
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
-		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4,DRAWING_HEIGHT+100)); 
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-200,DRAWING_HEIGHT/4,DRAWING_HEIGHT/4)); 
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4,DRAWING_HEIGHT+100)); 
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-200,DRAWING_HEIGHT/4,DRAWING_HEIGHT/4)); 
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
 		
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4-10,DRAWING_HEIGHT/2)); 
 	///	obstacles.add(new Wall(52,20,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
@@ -72,6 +81,8 @@ public class LevelThree extends Screen {
 		spawnNewSpikeDown(spike7,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
 		spawnNewSpikeDown(spike8,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
 
+		spawnNewPowerCoin(pCoin,iX - 75, iY, 30,30);
+		spawnNewSpeedBoost(sCoin,iX - 100, iY, 30,30);
 		
 		spawnNewPlayer();
 		spawnNewDoor();
@@ -154,6 +165,20 @@ public class LevelThree extends Screen {
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
+			{
+				
+				ShopMenu.coinsCollected += 10;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
+			{
+				Player.speedMultiplier += 0.5;
+				obstacles.remove(obstacles.get(i));
+				i--;
+			}
 			
 			
 			
@@ -190,6 +215,17 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
+	}
+	
+	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x,int y, int width, int height)
+	{
+		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"),x,y,width,height);
+		obstacles.add(sCoin);
+	}
+	public void spawnNewPowerCoin(PowerCoin pCoin, int x,int y, int width, int height)
+	{
+		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);
+		obstacles.add(pCoin);
 	}
 	/**
 	 * spawns new player
