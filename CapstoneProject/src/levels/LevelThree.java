@@ -56,12 +56,12 @@ public class LevelThree extends Screen {
 		iX =  -DRAWING_WIDTH/2+DRAWING_WIDTH-100;
 		iY = -DRAWING_HEIGHT/2+700;
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4,DRAWING_HEIGHT+100)); 
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-200,DRAWING_HEIGHT/4,DRAWING_HEIGHT/4)); 
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4,DRAWING_HEIGHT+100)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-200,DRAWING_HEIGHT/4,DRAWING_HEIGHT/4)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
 		
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4-10,DRAWING_HEIGHT/2)); 
 	///	obstacles.add(new Wall(52,20,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
@@ -205,23 +205,53 @@ public class LevelThree extends Screen {
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
-	
+	/**
+	 * spawns new down spike
+	 * @param spike object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of spike
+	 * @param height height of spike
+	 */
 public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) {
 		
 		spike = new Spike(surface.loadImage("img/SPIKEDOWN.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
+/**
+ * spawns new coin
+ * @param coin object to spawn in
+ * @param x x-coordinate
+ * @param y y-coordinate
+ * @param width width of coin
+ * @param height height of coin
+ */
 	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
 	}
-	
+	/**
+	 * spawns new speedboost
+	 * @param sCoin object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of speedBoost
+	 * @param height height of speedBoost
+	 */
 	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x,int y, int width, int height)
 	{
 		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"),x,y,width,height);
 		obstacles.add(sCoin);
 	}
+	/**
+	 * spawns new powerCoin
+	 * @param pCoin object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of powerCoin
+	 * @param height height of powerCoin
+	 */
 	public void spawnNewPowerCoin(PowerCoin pCoin, int x,int y, int width, int height)
 	{
 		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);

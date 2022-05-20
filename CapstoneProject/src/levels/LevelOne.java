@@ -153,7 +153,7 @@ public class LevelOne extends Screen {
 				ShopMenu.coinsCollected--;
 			}
 			
-			if (user.intersects(door)) {
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
@@ -266,11 +266,20 @@ public class LevelOne extends Screen {
 		angle += angle1;
 		
 	}
+	/**
+	 * rotates spawn
+	 */
+
 	public void rotateSpawn()
 	{
 		int temp = iX;
 	//	iX = iX*Math.cos(angle) - iY*Math.sin(angle);
 	}
+	/**
+	 * rotates all obstacles to get correct points
+	 * @param list list of obstacles
+	 * @param angle3  angle that is rotated by
+	 */
 	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
 	{
 		

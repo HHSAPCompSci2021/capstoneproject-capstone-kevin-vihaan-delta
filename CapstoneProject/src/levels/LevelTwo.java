@@ -102,9 +102,9 @@ public class LevelTwo extends Screen {
 			c.x = super.rotateXPoint(c.x,c.y,angleDifference);
 			c.y = super.rotateYPoint(temp, c.y, angleDifference);
 			
-			obstacles.set(i, new Obstacle(c.image,c.x,c.y,c.width,c.height));
+		//	obstacles.set(i, new Obstacle(c.image,c.x,c.y,c.width,c.height));
 			c.draw(surface);
-			System.out.println(c.x);
+		
 		}
 		
 		
@@ -136,8 +136,8 @@ public class LevelTwo extends Screen {
 				ShopMenu.coinsCollected--;
 			}
 			
-			if (user.intersects(door)) {
-				System.out.println("test");
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
+				
 				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
@@ -217,12 +217,17 @@ public class LevelTwo extends Screen {
 		saw = new Saw(surface.loadImage("img/SAW.png"), 100, 100, 50, 50);
 		obstacles.add(saw);
 	}
-	
+	/**
+	 * spawns in new coin
+	 */
 	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
 	}
+	/**
+	 * changes the angle to rotate the screen
+	 */
 	public void rotate(double angle1) {
 		angle += angle1;
 		angleDifference = angle1;

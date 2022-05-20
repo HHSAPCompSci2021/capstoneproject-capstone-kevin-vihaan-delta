@@ -42,6 +42,9 @@ public class ShopMenu extends Screen {
 		bought2 = false;
 		
 	}
+	/**
+	 * sets up the shopMenu
+	 */
 	public void setup()
 	{
 		image = surface.loadImage("img/shopmenu.jpg");
@@ -111,6 +114,9 @@ public class ShopMenu extends Screen {
 		}
 
 	}
+	/**
+	 * method to buy coin multiplier
+	 */
 	public void buyCoinMultiplier()
 	{
 		if (coinsCollected >= 5 && bought2 == false)
@@ -122,7 +128,9 @@ public class ShopMenu extends Screen {
 			
 		}
 	}
-
+/**
+ * detects mouse pressing
+ */
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX, surface.mouseY));
 		if (powerup1.contains(p))
