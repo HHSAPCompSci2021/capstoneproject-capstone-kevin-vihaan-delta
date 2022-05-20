@@ -38,6 +38,7 @@ public class LevelTwo extends Screen {
 	private Spike spike3;
 	private Coin coin;
 	private double angle;
+	private double angleDifference;
 
 	private Saw saw;
 
@@ -53,14 +54,14 @@ public class LevelTwo extends Screen {
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 // -DRAWING_WIDTH/2     -DRAWING_HEIGHT/2    
 		obstacles = new ArrayList<Obstacle>();
-		obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3, DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
+		//obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
+		//obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3, DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 100,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 + 90, 50));
 // above is one which door is on
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH - 50, -DRAWING_HEIGHT/2+DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 50,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT / 4 + 50, 200, 200));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 - 80, 0, -DRAWING_HEIGHT/2+DRAWING_WIDTH / 2 + 28, 50));
+	//obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH - 50, -DRAWING_HEIGHT/2+DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
+	//	obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 50,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT / 4 + 50, 200, 200));
+	//	obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 - 80, 0, -DRAWING_HEIGHT/2+DRAWING_WIDTH / 2 + 28, 50));
 
 		// TODO Auto-generated constructor stub
 	}
@@ -85,14 +86,25 @@ public class LevelTwo extends Screen {
 		surface.background(211, 211, 211);
 		
 		user.draw(surface);
-		door.draw(surface);
+		//door.draw(surface);
 		// spike1.draw(surface);
-		
+		//System.out.println(angle);
 		// saw.draw(surface);
+		if (angle!=0) {
 		surface.rotate((float) (angle));
-		for (Obstacle c : obstacles) {
-			c.draw(surface);
+		rotate(0);
+		}
+		
+		for (int i = 0; i< obstacles.size();i++) {
+			Obstacle c = obstacles.get(i);
+			double temp = c.x;
+			//System.out.println(angleDifference+"ok");
+			c.x = super.rotateXPoint(c.x,c.y,angleDifference);
+			c.y = super.rotateYPoint(temp, c.y, angleDifference);
 			
+		//	obstacles.set(i, new Obstacle(c.image,c.x,c.y,c.width,c.height));
+			c.draw(surface);
+		
 		}
 		
 		
@@ -111,36 +123,41 @@ public class LevelTwo extends Screen {
 
 		user.act(obstacles);
 
+		
+		
 		for (int i = obstacles.size()-1; i >= 0; i--) {
-			Obstacle c  = obstacles.get(i);
-			if (user.intersects(c) && (c instanceof Spike || c instanceof Saw)) {
-			Main.changeSong(4);
-				//spawnNewPlayer();
-				setup();
+			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
+			{
+			 Main.changeSong(4);
+				
+			 	spawnNewPlayer();
+				//setup();
+			//	obstacles.remove(i);
+				ShopMenu.coinsCollected--;
 			}
-
-			if (user.intersects(door)) {
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
+				
 				Main.changeSong(3);
 				spawnNewPlayer();
 				surface.switchScreen(3);
+				Player.speedMultiplier = 1;
 			}
-
-			if (user.intersects(c) && (c instanceof Wall)) {
-				
-				user.bounce();
-				
-			}
-			
-			if (user.intersects(c) && (c instanceof Coin)) {
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
+			{
+				if (Coin.doubleValue) {
+					ShopMenu.coinsCollected += 2;
+				} else {
 				ShopMenu.coinsCollected++;
-				System.out.println(ShopMenu.coinsCollected);
+				}
+			
 				obstacles.remove(obstacles.get(i));
 				i--;
+				
 			}
-			
 			if ( !user.intersects(screenRect))
 			{
-				System.out.println("hi");
+				
 				spawnNewPlayer();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
@@ -157,6 +174,7 @@ public class LevelTwo extends Screen {
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
+			
 		}
 	}
 
@@ -166,14 +184,15 @@ public class LevelTwo extends Screen {
 	public void spawnNewPlayer() {
 		
 		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
-		obstacles.add(user);
+		//obstacles.add(user); x coord - -340
 	}
 
 	/**
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), DRAWING_WIDTH / 2 + 200, DRAWING_HEIGHT - 150, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300, -DRAWING_HEIGHT/2+650, 50, 100);
+		obstacles.add(door);
 	}
 
 	/**
@@ -196,14 +215,23 @@ public class LevelTwo extends Screen {
 	 */
 	public void spawnNewSaw() {
 		saw = new Saw(surface.loadImage("img/SAW.png"), 100, 100, 50, 50);
+		obstacles.add(saw);
 	}
-	
+	/**
+	 * spawns in new coin
+	 */
 	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
 	}
+	/**
+	 * changes the angle to rotate the screen
+	 */
 	public void rotate(double angle1) {
 		angle += angle1;
+		angleDifference = angle1;
 	}
+	
+	
 }
