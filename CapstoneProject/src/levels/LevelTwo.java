@@ -197,33 +197,68 @@ public class LevelTwo extends Screen {
 
 	/**
 	 * spawns new spike
-	 * 
-	 * @param spike  spike to be spawned
-	 * @param x      x-coordinate
-	 * @param y      y-coordinate
-	 * @param width  width of spike
+	 * @param spike object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of spike
 	 * @param height height of spike
 	 */
-	public void spawnNewSpike(Spike spike, int x, int y, int width, int height) {
-
-		spike = new Spike(surface.loadImage("img/SPIKE.png"), x, y, width, height);
+	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
+		
+		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
-
 	/**
-	 * spawns in new saw
+	 * spawns new down spike
+	 * @param spike object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of spike
+	 * @param height height of spike
 	 */
-	public void spawnNewSaw() {
-		saw = new Saw(surface.loadImage("img/SAW.png"), 100, 100, 50, 50);
-		obstacles.add(saw);
+public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) {
+		
+		spike = new Spike(surface.loadImage("img/SPIKEDOWN.png"),x,y,width,height);
+		obstacles.add(spike);
 	}
-	/**
-	 * spawns in new coin
-	 */
+/**
+ * spawns new coin
+ * @param coin object to spawn in
+ * @param x x-coordinate
+ * @param y y-coordinate
+ * @param width width of coin
+ * @param height height of coin
+ */
 	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
 	{
 		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
 		obstacles.add(coin);
+	}
+	/**
+	 * spawns new speedboost
+	 * @param sCoin object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of speedBoost
+	 * @param height height of speedBoost
+	 */
+	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x,int y, int width, int height)
+	{
+		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"),x,y,width,height);
+		obstacles.add(sCoin);
+	}
+	/**
+	 * spawns new powerCoin
+	 * @param pCoin object to spawn in
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 * @param width width of powerCoin
+	 * @param height height of powerCoin
+	 */
+	public void spawnNewPowerCoin(PowerCoin pCoin, int x,int y, int width, int height)
+	{
+		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);
+		obstacles.add(pCoin);
 	}
 	/**
 	 * changes the angle to rotate the screen
