@@ -5,7 +5,7 @@ import processing.core.PImage;
 /**
  * 
  * @author vihaanchinthakindi and kevinvalencia
- * SpeedBoost class represents a coin in the Revolve Game that can be used to buy buffs from the Shop
+ * SpeedBoost class represents a coin in the Revolve Game that can be used to speed up the player 
  */
 public class SpeedBoost extends Obstacle { //extends shape
 

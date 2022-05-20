@@ -5,7 +5,7 @@ import processing.core.PImage;
 /**
  * 
  * @author vihaanchinthakindi and kevinvalencia
- * PowerCoin class represents a coin in the Revolve Game that can be used to buy buffs from the Shop
+ * PowerCoin class represents a coin in the Revolve Game that can be used to add x2 the value of Coin to a players balance
  */
 public class PowerCoin extends Obstacle { //extends shape
 
