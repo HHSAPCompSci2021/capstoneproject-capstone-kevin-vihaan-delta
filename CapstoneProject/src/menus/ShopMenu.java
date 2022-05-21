@@ -16,7 +16,7 @@ import processing.core.PImage;
  */
 public class ShopMenu extends Screen {
 	private Rectangle powerup1;
-	private DrawingSurface surface;
+	//private DrawingSurface surface;
 	private PImage image;
 	private Rectangle powerup2;
 	/**

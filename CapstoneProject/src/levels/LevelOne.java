@@ -39,7 +39,7 @@ public class LevelOne extends Screen {
 	private Player user;
 	private int iX;
 	private int iY;
-	private ArrayList<Obstacle> obstacles;
+
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
@@ -283,6 +283,15 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	{
 		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);
 		obstacles.add(pCoin);
+	}
+	
+	/**
+	 * spawns in new saw
+	 */
+	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) 
+	{
+		saw = new Saw(surface.loadImage("img/SAW.png"),x,y,width,height);
+		obstacles.add(saw);
 	}
 	/**
 	 * rotates the level

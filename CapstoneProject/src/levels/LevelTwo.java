@@ -177,7 +177,14 @@ public class LevelTwo extends Screen {
 			
 		}
 	}
-
+	/**
+	 * spawns in new saw
+	 */
+	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) 
+	{
+		saw = new Saw(surface.loadImage("img/SAW.png"),x,y,width,height);
+		obstacles.add(saw);
+	}
 	/**
 	 * spawns new player
 	 */

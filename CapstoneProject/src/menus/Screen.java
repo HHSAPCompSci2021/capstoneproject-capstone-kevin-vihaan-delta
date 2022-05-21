@@ -1,6 +1,9 @@
 package menus;
 
+import java.util.ArrayList;
+
 import core.DrawingSurface;
+import obstacles.Obstacle;
 
 /**
  * 
@@ -15,6 +18,7 @@ public abstract class Screen {
 	 */
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
 	public DrawingSurface surface;
+	public ArrayList<Obstacle> obstacles;
 	
 	/**
 	 * 
