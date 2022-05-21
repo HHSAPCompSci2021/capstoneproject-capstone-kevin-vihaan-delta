@@ -8,7 +8,7 @@ import processing.core.PImage;
  * Class Represents the Walls in each level that player cannot pass
  */
 public class Wall extends Obstacle{
-public Wall(int x, int y, int w, int h) {
+public Wall(double x, double y, double w, double h) {
 	super(x,y,w,h);
 }
 }

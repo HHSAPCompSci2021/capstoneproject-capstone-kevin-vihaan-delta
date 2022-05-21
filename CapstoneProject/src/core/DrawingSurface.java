@@ -86,6 +86,10 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		push();
 
 		scale(ratioX, ratioY);
+		//if (activeScreen instanceof LevelTwo) {
+		///	rectMode(CENTER);
+			//System.out.println(CENTER);
+		//	}
 
 		translate(400,400);
 		activeScreen.draw();

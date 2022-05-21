@@ -42,6 +42,10 @@ public class Obstacle extends Rectangle2D.Double {
 	
 	
 	public void draw(PApplet g) {
+		//g.rectMode(3);
+	//	x = x+width/2;
+		//y = y + height/2;
+		
 		if (image != null)
 			g.image(image,(float)x,(float)y,(float)width,(float)height);
 		else {
