@@ -310,10 +310,7 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	 * @param width width of Saw
 	 * @param height height of Saw
 	 */
-	public void spawnNewSaw(Saw saw, int x, int y, int width, int height)
-	{
-		saw = new Saw(surface.loadImage("img/SAW.png"),x,y,width,height);
-	}
+	
 	/**
 	 * rotates spawn
 	 */
