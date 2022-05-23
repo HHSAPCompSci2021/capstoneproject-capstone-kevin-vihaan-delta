@@ -74,9 +74,11 @@ public class LevelOne extends Screen {
 		
 		status = 0;
 		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/4+50,200,200 ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2-80,0,-DRAWING_HEIGHT/2+DRAWING_WIDTH/2+28,50 ));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2-80,-DRAWING_HEIGHT/2,DRAWING_WIDTH/2,50 ));
 		
 	}
 	/**
@@ -204,6 +206,7 @@ public class LevelOne extends Screen {
 				i--;
 			}
 			
+			
 		
 		}
 		
@@ -229,7 +232,7 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+ DRAWING_WIDTH/2 + 60, -DRAWING_HEIGHT/2+ DRAWING_HEIGHT/2-250, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+ DRAWING_WIDTH/2 + 60, -DRAWING_HEIGHT/2+ DRAWING_HEIGHT/2-270, 50, 120);
 		obstacles.add(door);
 	}
 	/**
@@ -299,15 +302,6 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	}
 	
 
-
-	/**
-	 * rotates the level
-	 */
-	
-	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
-		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
-		obstacles.add(saw);
-	}
 
 	/**
 	 * 

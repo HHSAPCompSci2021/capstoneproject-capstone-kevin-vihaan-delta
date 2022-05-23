@@ -9,6 +9,7 @@ import obstacles.PowerCoin;
 import obstacles.Saw;
 import obstacles.SpeedBoost;
 import obstacles.Spike;
+import obstacles.Wall;
 import processing.core.PImage;
 
 
@@ -23,6 +24,7 @@ public class Player extends Obstacle{
 	public static double jumpHeight;
 	public static double speedMultiplier;
 	private double xVel, yVel, gravity;
+
 	/**
 	 * variables to determine if player canJump or is onsurface
 	 */
@@ -44,6 +46,7 @@ public class Player extends Obstacle{
 		 jumpHeight = 3;
 		 gravity = 0.03;
 		 speedMultiplier = 1;
+	
 	
 	}
 	/**
@@ -87,21 +90,45 @@ public void act(List<Obstacle> obstacles) {
 			{
 				canJump = true;
 				y = s.y-super.height;
-			} else if (x < s.x)
+			}
+			
+			if ( x < s.x && y > s.y)
+			{
+				
+				canJump = false;
+				x = s.x-super.width;
+			
+			}
+			
+			if (x > s.x && y >s.y)
+			{
+				canJump = false;
+				x = s.x+super.width+25;
+			}
+			if (x < s.x && y > s.y)
 			{
 				canJump = false;
 				x = s.x-super.width;
 			}
 			
-			
-			else 
+			if ( (x > s.x && x < s.x +s.width) && (y > s.y && y < s.y+s.height))
 			{
-				canJump = false;
-				x = s.x+super.width+25;
+				
+			
+				
 			}
+//			else if (x < s.x)
+//			{
+//				canJump = false;
+//				x = s.x-super.width+50;
+//				System.out.println(true);
+//			}
 			
 			
-			
+//			{
+//				canJump = false;
+//				x = s.x+super.width+25;
+//			}
 			onSurface = true;
 		}
 	}
