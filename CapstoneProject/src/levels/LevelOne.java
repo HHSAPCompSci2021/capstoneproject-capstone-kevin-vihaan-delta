@@ -166,7 +166,7 @@ public class LevelOne extends Screen {
 			 Main.changeSong(4);
 				
 			 	spawnNewPlayer();
-				//setup();
+				setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
@@ -174,6 +174,7 @@ public class LevelOne extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 				Main.changeSong(3);
 				spawnNewPlayer();
+				setup();
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
 			}
@@ -194,6 +195,7 @@ public class LevelOne extends Screen {
 			{
 				
 				spawnNewPlayer();
+				setup();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
 			{

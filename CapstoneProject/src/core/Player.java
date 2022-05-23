@@ -111,6 +111,11 @@ public void act(List<Obstacle> obstacles) {
 				x = s.x-super.width;
 			}
 			
+			if (x > s.x && y > s.y)
+			{
+				canJump = true;
+				x = s.x+s.width ;
+			}
 			if ( (x > s.x && x < s.x +s.width) && (y > s.y && y < s.y+s.height))
 			{
 				

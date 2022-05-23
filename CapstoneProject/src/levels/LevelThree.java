@@ -147,7 +147,7 @@ public class LevelThree extends Screen {
 			 Main.changeSong(4);
 				
 			 	spawnNewPlayer();
-				//setup();
+				setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
@@ -165,8 +165,9 @@ public class LevelThree extends Screen {
 				} else {
 				ShopMenu.coinsCollected++;
 				}
-			
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				setup();
 				i--;
 				
 			}
@@ -174,11 +175,13 @@ public class LevelThree extends Screen {
 			{
 				
 				spawnNewPlayer();
+				setup();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
 			{
 				
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
@@ -186,6 +189,7 @@ public class LevelThree extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
 			{
 				Player.speedMultiplier += 0.5;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
@@ -193,16 +197,12 @@ public class LevelThree extends Screen {
 			{
 				
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
 			
-			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
-			{
-				Player.speedMultiplier += 0.5;
-				obstacles.remove(obstacles.get(i));
-				i--;
-			}
+			
 			
 			
 			

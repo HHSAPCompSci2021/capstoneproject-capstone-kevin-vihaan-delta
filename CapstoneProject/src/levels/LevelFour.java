@@ -30,13 +30,14 @@ import obstacles.Wall;
 public class LevelFour extends Screen {
 	private DrawingSurface surface;
 	private Rectangle screenRect;
-//	private Door door;
+	private Door door;
 	private Player user;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Obstacle> initial;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
+	private Spike spike4;
 	private Coin coin;
 	private double angle;
 	
@@ -61,7 +62,7 @@ public class LevelFour extends Screen {
 		
 		
 		 obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3+100, DRAWING_HEIGHT - DRAWING_HEIGHT / 3+50));
+		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3+100, 50));
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 75, DRAWING_WIDTH / 2-200, 75));
 		
 		
@@ -70,14 +71,14 @@ public class LevelFour extends Screen {
 
 		status = 0;
 		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+100,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+50,50,125));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+250,250,50));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+100,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+125,50,125));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+35,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+250,250,50));
 		
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+50+ -DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+115,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+50,235,220));
 	
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 + DRAWING_WIDTH/2+20, -DRAWING_WIDTH/2 ,DRAWING_WIDTH/2,DRAWING_HEIGHT/2));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 + DRAWING_WIDTH/2+20, -DRAWING_WIDTH/2 ,DRAWING_WIDTH/2,50));
 		
-		obstacles.add(new Wall (-DRAWING_WIDTH/2 + DRAWING_WIDTH/2+20 +DRAWING_WIDTH/2 -50, 0 ,30,180));
+		obstacles.add(new Wall (-DRAWING_WIDTH/2 + DRAWING_WIDTH/2+20 +DRAWING_WIDTH/2 -50, -DRAWING_HEIGHT/2 ,30,DRAWING_HEIGHT/2+185));
 //		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 100,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 + 90, 50));
 //// above is one which door is on
 //		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH - 50,
@@ -97,10 +98,11 @@ public class LevelFour extends Screen {
 		spawnNewPlayer();
 
 		 spawnNewDoor();
-		 spawnNewSpike(spike1, 0,0,50,50);
-		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 60,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 
+		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2-200, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -170, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -140,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2-35,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT -185, 50, 50);
 		 spawnNewCoin(coin, 100, 700, 30, 30);
 	
 		 for (Obstacle a: obstacles) {
@@ -236,9 +238,8 @@ public class LevelFour extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		// door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300,
-		// -DRAWING_HEIGHT/2+650, 50, 100);
-		// obstacles.add(door);
+		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+650,-DRAWING_HEIGHT/2+480, 50, 100);
+		 obstacles.add(door);
 	}
 
 	/**

@@ -30,7 +30,7 @@ import obstacles.Wall;
 public class LevelFive extends Screen {
 	private DrawingSurface surface;
 	private Rectangle screenRect;
-//	private Door door;
+	private Door door;
 	private Player user;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Obstacle> initial;
@@ -101,10 +101,13 @@ public class LevelFive extends Screen {
 		spawnNewPlayer();
 		
 		 spawnNewDoor();
-		 spawnNewSpike(spike1, 0,0,50,50);
-		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 60,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 
+		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2+10, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 40, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 70,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 
+		 
+		 
 		 spawnNewCoin(coin, 100, 700, 30, 30);
 	
 		 for (Obstacle a: obstacles) {
@@ -240,9 +243,8 @@ public class LevelFive extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		// door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300,
-		// -DRAWING_HEIGHT/2+650, 50, 100);
-		// obstacles.add(door);
+		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+650,-DRAWING_HEIGHT/2+360, 50, 70);
+		 obstacles.add(door);
 	}
 
 	/**
