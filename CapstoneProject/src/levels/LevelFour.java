@@ -95,9 +95,7 @@ public class LevelFour extends Screen {
 	 */
 	public void setup() {
 		spawnNewPlayer();
-		for (Obstacle a: obstacles) {
-			initial.add(a);
-		}
+
 		 spawnNewDoor();
 		 spawnNewSpike(spike1, 0,0,50,50);
 		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
@@ -105,7 +103,9 @@ public class LevelFour extends Screen {
 		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 60,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewCoin(coin, 100, 700, 30, 30);
 	
-
+		 for (Obstacle a: obstacles) {
+				initial.add(a);
+			}
 	}
 
 	/**

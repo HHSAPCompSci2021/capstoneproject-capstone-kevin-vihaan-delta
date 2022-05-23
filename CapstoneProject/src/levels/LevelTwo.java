@@ -70,8 +70,7 @@ public class LevelTwo extends Screen {
 	
 		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 100,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 + 90, 50));
 // above is one which door is on
-		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH - 50,
-		 -DRAWING_HEIGHT/2+DRAWING_HEIGHT, 50, -DRAWING_HEIGHT));
+		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
 		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 +
 		 50,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT / 4 + 50, 200, 200));
 		 obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 2 - 80, 0,

@@ -105,6 +105,7 @@ public class LevelOne extends Screen {
 	for (Obstacle a: obstacles) {
 		initial.add(a);
 	}
+	
 	}
 	/**
 	 * draws the window, checks intersections

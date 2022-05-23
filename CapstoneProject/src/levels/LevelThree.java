@@ -21,6 +21,7 @@ import obstacles.Wall;
 
 public class LevelThree extends Screen {
 	private ArrayList<Obstacle> obstacles;
+	private ArrayList<Obstacle> initial;
 	private Coin coin;
 	private double angle;
 	private boolean hasRotated;
@@ -52,7 +53,7 @@ public class LevelThree extends Screen {
 		this.surface = surface;
 		hasRotated = false;
 		obstacles = new ArrayList<Obstacle>();
-
+		initial = new ArrayList<Obstacle>();
 		iX =  -DRAWING_WIDTH/2+DRAWING_WIDTH-100;
 		iY = -DRAWING_HEIGHT/2+700;
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -86,6 +87,10 @@ public class LevelThree extends Screen {
 		
 		spawnNewPlayer();
 		spawnNewDoor();
+		
+		for (Obstacle a: obstacles) {
+			initial.add(a);
+		}
 	}
 	public void draw() {
 		
@@ -262,6 +267,8 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	 */
 	public void spawnNewPlayer()
 	{
+		status = 0;
+		angle = 0;
 		user = new Player(surface.loadImage("img/PLAYERSIDE.png"), -DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
 		//obstacles.add(user);
 	}
