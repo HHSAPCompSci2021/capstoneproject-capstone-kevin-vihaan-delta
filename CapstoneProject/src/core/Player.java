@@ -96,31 +96,31 @@ public void act(List<Obstacle> obstacles) {
 			if ( x < s.x && y > s.y)
 			{
 				
-				canJump = true;
+				canJump = false;
 				x = s.x-super.width;
 			
 			}
 			
 			if (x > s.x && y >s.y)
 			{
-				canJump = true;
+				canJump = false;
 				x = s.x+super.width+25;
 			}
 			if (x < s.x && y > s.y)
 			{
-				canJump = true;
+				canJump = false;
 				x = s.x-super.width;
 			}
 			
 			if (x > s.x && y > s.y)
 			{
-				canJump = true;
+				canJump = false;
 				x = s.x+s.width ;
 			}
 			if ( (x > s.x && x < s.x +s.width) && (y > s.y && y < s.y+s.height))
 			{
 				
-			
+			y=100000;
 				
 			}
 //			else if (x < s.x)

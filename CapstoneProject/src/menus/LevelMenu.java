@@ -22,6 +22,9 @@ public class LevelMenu extends Screen {
 	private Rectangle level3;
 	private Rectangle level4;
 	private Rectangle level5;
+	private Rectangle level6;
+	private Rectangle level7;
+	
 	private PImage image;
 
 	/**
@@ -38,6 +41,9 @@ public class LevelMenu extends Screen {
 		level3 = new Rectangle(500, 100, 100, 100);
 		level4 = new Rectangle(100,300,100,100);
 		level5 = new Rectangle(300,300,100,100);
+		level6 = new Rectangle(300,300,100,100);
+		level7 = new Rectangle(300,300,100,100);
+		
 		// TODO Auto-generated constructor stub
 	}
 	public void setup()
@@ -100,6 +106,26 @@ public class LevelMenu extends Screen {
 		surface.textSize(30);
 		surface.text(str5, -100 + level5.width / 2 - w4 / 2, -100 + level5.height / 2);
 		
+		
+		surface.fill(255);
+		surface.rect(100, -100, level6.width, level6.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str6 = "Level 6";
+		float w5 = surface.textWidth(str6);
+	
+		surface.textSize(30);
+		surface.text(str6, 100 + level6.width / 2 - w5 / 2, -100 + level6.height / 2);
+		
+		
+		surface.fill(255);
+		surface.rect(-300, 100, level7.width, level7.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str7 = "Level 7";
+		float w6 = surface.textWidth(str7);
+	
+		surface.textSize(30);
+		surface.text(str7, -300 + level7.width / 2 - w6 / 2, 100 + level7.height / 2);
+		
 	}
 
 	public void mousePressed() {
@@ -114,6 +140,11 @@ public class LevelMenu extends Screen {
 			surface.switchScreen(ScreenSwitcher.LEVEL_FOUR);
 		if (level5.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_FIVE);
+		if (level6.contains(p))
+			surface.switchScreen(ScreenSwitcher.LEVEL_SIX);
+		if (level7.contains(p))
+			surface.switchScreen(ScreenSwitcher.LEVEL_SEVEN);
+			
 
 	}
 }

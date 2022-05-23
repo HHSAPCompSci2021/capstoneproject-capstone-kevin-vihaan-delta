@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import levels.LevelFive;
 import levels.LevelFour;
 import levels.LevelOne;
+import levels.LevelSeven;
+import levels.LevelSix;
 import levels.LevelThree;
 import levels.LevelTwo;
 import processing.core.PApplet;
@@ -70,6 +72,12 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		
 		LevelFive screen8 = new LevelFive(this);
 		screens.add(screen8);
+		
+		LevelSix screen9 = new LevelSix(this);
+		screens.add(screen9);
+		
+		LevelSeven screen10 = new LevelSeven(this);
+		screens.add(screen10);
 		// add shop menu
 		activeScreen = screens.get(0);
 	}
