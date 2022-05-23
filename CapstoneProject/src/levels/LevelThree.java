@@ -47,6 +47,8 @@ public class LevelThree extends Screen {
 	private Door door;
 	private Player user;
 	
+	public int status;
+	
 	public LevelThree(DrawingSurface surface) {
 		super(800, 800);
 		
@@ -56,6 +58,9 @@ public class LevelThree extends Screen {
 		initial = new ArrayList<Obstacle>();
 		iX =  -DRAWING_WIDTH/2+DRAWING_WIDTH-100;
 		iY = -DRAWING_HEIGHT/2+700;
+		
+		status = 0;
+		
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
@@ -96,15 +101,29 @@ public class LevelThree extends Screen {
 		
 		surface.background(211,211,211);
 		user.draw(surface);
-		surface.rotate((float) angle);
 		
-		for (Obstacle c : obstacles)
-		{
+		
+		if (status == 0) {
+			// clear and add new here?
+			//obstacles = initial
+			obstacles.clear();
+			for (Obstacle a: initial) {
+				obstacles.add(a);
+			}
+		} else if (status == 1) {
 			
+			obstacles = rotateAll(initial, Math.PI/2);
+		} else if (status == 2) {
+			obstacles = rotateAll(initial, Math.PI);
+		} else if (status == 3) {
+			obstacles = rotateAll(initial, 3*Math.PI/2);
+		}
+
+		for (int i = 0; i < obstacles.size(); i++) {
+			Obstacle c = obstacles.get(i);
+			// System.out.println(c.x + " " + c.y);
 			c.draw(surface);
-			
-			
-			
+
 		}
 		
 		
