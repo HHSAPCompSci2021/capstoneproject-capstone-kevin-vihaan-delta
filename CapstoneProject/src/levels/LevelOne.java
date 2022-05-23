@@ -87,8 +87,13 @@ public class LevelOne extends Screen {
 	public void setup()
 	{
 	//	spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
-		spawnNewPlayer();
+		doorDown = surface.loadImage("img/DOORDOWN.png");
+		doorRight = surface.loadImage("img/DOORRIGHT.png");
+		doorLeft = surface.loadImage("img/DOORLEFT.png");
+		doorUp = surface.loadImage("img/GRAYDOOR2.jpg");
 		spawnNewDoor();
+		spawnNewPlayer();
+		
 		
 		
 		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
@@ -122,18 +127,25 @@ public class LevelOne extends Screen {
 		
 		if (status == 0) {
 			// clear and add new here?
-			//obstacles = initial
+			// obstacles = initial
 			obstacles.clear();
-			for (Obstacle a: initial) {
+			for (int i = 0; i <initial.size(); i++) {
+				Obstacle a = initial.get(i);
+				
+				if (a instanceof Door) {
+					a.image = doorUp;
+				}
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
-			
-			obstacles = rotateAll(initial, Math.PI/2);
+			door.image = doorRight;
+			obstacles = rotateAll(initial, Math.PI / 2);
 		} else if (status == 2) {
+			door.image = doorDown;
 			obstacles = rotateAll(initial, Math.PI);
 		} else if (status == 3) {
-			obstacles = rotateAll(initial, 3*Math.PI/2);
+			door.image = doorLeft;
+			obstacles = rotateAll(initial, 3 * Math.PI / 2);
 		}
 
 		for (int i = 0; i < obstacles.size(); i++) {

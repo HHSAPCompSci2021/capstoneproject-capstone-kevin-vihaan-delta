@@ -326,35 +326,7 @@ public class LevelTwo extends Screen {
 
 	}
 
-	public void changeDoor() {
-		for (int i = 0; i < obstacles.size(); i++) {
-			Obstacle a = obstacles.get(i);
-			if (a instanceof Door) {
-				if (status == 0) {
-					System.out.println(0);
-					a.image = doorUp;
-					
-				}
-				if (status == 3) {
-					a.image = doorLeft;
-					System.out.println(3);
-				}
-				if (status == 2) {
-
-					a.image = doorDown;
-					
-					System.out.println(2);
-				}
-				if (status == 1) {
-					a.image = doorRight;
-					System.out.println(1);
-					
-				}
-
-			}
-
-		}
-		
+	
 		
 	}
-}
+
