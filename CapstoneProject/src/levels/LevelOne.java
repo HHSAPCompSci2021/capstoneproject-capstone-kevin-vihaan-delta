@@ -259,19 +259,7 @@ public class LevelOne extends Screen {
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
-	/**
-	 * spawns new down spike
-	 * @param spike object to spawn in
-	 * @param x x-coordinate
-	 * @param y y-coordinate
-	 * @param width width of spike
-	 * @param height height of spike
-	 */
-public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) {
-		
-		spike = new Spike(surface.loadImage("img/SPIKEDOWN.png"),x,y,width,height);
-		obstacles.add(spike);
-	}
+	
 /**
  * spawns new coin
  * @param coin object to spawn in

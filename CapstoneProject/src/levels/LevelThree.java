@@ -83,9 +83,9 @@ public class LevelThree extends Screen {
 		spawnNewSpike(spike4,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+120,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		
-		spawnNewSpikeDown(spike6,-DRAWING_WIDTH/2+DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
-		spawnNewSpikeDown(spike7,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
-		spawnNewSpikeDown(spike8,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
+		spawnNewSpike(spike6,-DRAWING_WIDTH/2+DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
+		spawnNewSpike(spike7,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
+		spawnNewSpike(spike8,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
 
 		spawnNewPowerCoin(pCoin,iX - 75, iY, 30,30);
 		spawnNewSpeedBoost(sCoin,iX - 100, iY, 30,30);
@@ -245,19 +245,7 @@ public class LevelThree extends Screen {
 		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
 		obstacles.add(spike);
 	}
-	/**
-	 * spawns new down spike
-	 * @param spike object to spawn in
-	 * @param x x-coordinate
-	 * @param y y-coordinate
-	 * @param width width of spike
-	 * @param height height of spike
-	 */
-public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) {
-		
-		spike = new Spike(surface.loadImage("img/SPIKEDOWN.png"),x,y,width,height);
-		obstacles.add(spike);
-	}
+	
 /**
  * spawns new coin
  * @param coin object to spawn in
