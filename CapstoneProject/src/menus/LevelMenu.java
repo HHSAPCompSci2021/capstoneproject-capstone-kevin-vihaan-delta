@@ -21,6 +21,7 @@ public class LevelMenu extends Screen {
 	private Rectangle level2;
 	private Rectangle level3;
 	private Rectangle level4;
+	private Rectangle level5;
 	private PImage image;
 
 	/**
@@ -36,6 +37,7 @@ public class LevelMenu extends Screen {
 		level1 = new Rectangle(100, 100, 100, 100);
 		level3 = new Rectangle(500, 100, 100, 100);
 		level4 = new Rectangle(100,300,100,100);
+		level5 = new Rectangle(300,300,100,100);
 		// TODO Auto-generated constructor stub
 	}
 	public void setup()
@@ -89,7 +91,14 @@ public class LevelMenu extends Screen {
 		surface.text(str4, -300 + level4.width / 2 - w3 / 2, -100 + level4.height / 2);
 		
 		
-		
+		surface.fill(255);
+		surface.rect(-100, -100, level5.width, level5.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str5 = "Level 5";
+		float w4 = surface.textWidth(str5);
+	
+		surface.textSize(30);
+		surface.text(str5, -100 + level5.width / 2 - w4 / 2, -100 + level5.height / 2);
 		
 	}
 
@@ -103,6 +112,8 @@ public class LevelMenu extends Screen {
 			surface.switchScreen(ScreenSwitcher.LEVEL_THREE);
 		if (level4.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_FOUR);
+		if (level5.contains(p))
+			surface.switchScreen(ScreenSwitcher.LEVEL_FIVE);
 
 	}
 }
