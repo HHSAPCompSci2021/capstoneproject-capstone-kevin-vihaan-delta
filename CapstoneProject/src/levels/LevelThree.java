@@ -18,6 +18,11 @@ import obstacles.Saw;
 import obstacles.SpeedBoost;
 import obstacles.Spike;
 import obstacles.Wall;
+/**
+ * class represents level three
+ * @author vihaanchinthakindi and kevinvalencia
+ *
+ */
 
 public class LevelThree extends Screen {
 	private ArrayList<Obstacle> obstacles;
@@ -193,10 +198,10 @@ public class LevelThree extends Screen {
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
-			 Main.changeSong(4);
+				Main.playSoundEffect(Main.effectNumber);
 				
 			 	spawnNewPlayer();
-				setup();
+				//setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}

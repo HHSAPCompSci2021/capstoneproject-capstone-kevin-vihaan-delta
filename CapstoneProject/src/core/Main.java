@@ -29,22 +29,27 @@ public class Main implements JayLayerListener {
 
 	public static JFrame window;
 	private static JayLayer sound;
+	public static int effectNumber;
 	
-	//ArrayList<String> soundEffects = new ArrayList<String>();
+	ArrayList<String> soundEffects = new ArrayList<String>();
 	//ArrayList<String> songs = new ArrayList<String>();
 
 	/**
 	 * constructor to initialize all Music elements, and start playing MainMenu song.
 	 */
 	public Main() {
+		effectNumber = 0;
 		
 		//songs.add("game1.mp3");
 		//soundEffects.add("door.mp3");
 		//soundEffects.add("death.mp3");
-		
+		for (int i = 0; i <200; i++) {
+			soundEffects.add("death.mp3");
+		}
 		
 		sound = new JayLayer("audio/","audio/", false);
 		sound.addPlayList();
+		sound.addSoundEffects(soundEffects);
 		sound.addSong(0, "Vice.mp3");
 		
 		//playlist 0
@@ -145,6 +150,7 @@ public static void changeSong( int i) {
  */
 public static void playSoundEffect(int i) {
 	sound.playSoundEffect(i);
+	effectNumber++;
 	//sound.
 	
 }

@@ -22,7 +22,7 @@ import obstacles.Spike;
 import obstacles.Wall;
 
 /**
- * Class represents leveltwo
+ * Class represents level four
  * 
  * @author vihaanchinthakindi and kevinvalencia
  *
@@ -217,7 +217,7 @@ public class LevelFour extends Screen {
 		for (int i = obstacles.size() - 1; i >= 0; i--) {
 			if (user.intersects(obstacles.get(i))
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
-				Main.changeSong(4);
+				Main.playSoundEffect(Main.effectNumber);
 
 				spawnNewPlayer();
 				// setup();
@@ -275,9 +275,11 @@ public class LevelFour extends Screen {
 	 * spawns new player
 	 */
 	public void spawnNewPlayer() {
+		
 		status = 0;
 		angle = 0;
 		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
+		
 		// obstacles.add(user); x coord - -340
 	}
 

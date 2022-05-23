@@ -211,10 +211,10 @@ public class LevelOne extends Screen {
 		{
 			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
 			{
-			 Main.changeSong(4);
+				Main.playSoundEffect(Main.effectNumber);
 				
 			 	spawnNewPlayer();
-				setup();
+				//setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
@@ -222,7 +222,7 @@ public class LevelOne extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 				Main.changeSong(3);
 				spawnNewPlayer();
-				setup();
+				//setup();
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
 			}
