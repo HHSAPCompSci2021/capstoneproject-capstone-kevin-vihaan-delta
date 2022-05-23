@@ -39,7 +39,8 @@ public class LevelOne extends Screen {
 	private Player user;
 	private int iX;
 	private int iY;
-
+	private ArrayList<Obstacle> obstacles;
+	private ArrayList<Obstacle> initial;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
@@ -50,6 +51,7 @@ public class LevelOne extends Screen {
 	private double angle;
 	private PowerCoin pCoin;
 	private SpeedBoost sCoin;
+	public int status;
 	
 	/**
 	 * Initializes level
@@ -63,12 +65,15 @@ public class LevelOne extends Screen {
 		iY = -DRAWING_HEIGHT/2+700;
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles = new ArrayList<Obstacle>();
-		
+		initial = new ArrayList<Obstacle>();
 		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/16,DRAWING_HEIGHT)); 
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 + 52,-DRAWING_HEIGHT/2,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
 //		
+		
+		status = 0;
+		
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT,50,-DRAWING_HEIGHT ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/4+50,200,200 ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2-80,0,-DRAWING_HEIGHT/2+DRAWING_WIDTH/2+28,50 ));
@@ -79,9 +84,13 @@ public class LevelOne extends Screen {
 	 */
 	public void setup()
 	{
-		spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
+	//	spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
 		spawnNewPlayer();
 		spawnNewDoor();
+		
+		for (Obstacle a: obstacles) {
+			initial.add(a);
+		}
 		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike2,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike3,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
@@ -102,27 +111,31 @@ public class LevelOne extends Screen {
 		surface.background(211,211,211);
 		
 		user.draw(surface);
-		surface.rotate((float)angle);
+		
 		
 	//	System.out.println(angle);
 		
-		if ( angle != 0 )
-		{
-			//System.out.println(true);
-		rotateObstacles(obstacles, angle);
-		angle = 0;
-		}
-	//	System.out.println(door.x);
-		
-		
-		for (Obstacle c : obstacles)
-		{
-			if (! (c instanceof Player))
-			{
-			c.draw(surface);
-		
+		if (status == 0) {
+			// clear and add new here?
+			//obstacles = initial
+			obstacles.clear();
+			for (Obstacle a: initial) {
+				obstacles.add(a);
 			}
+		} else if (status == 1) {
 			
+			obstacles = rotateAll(initial, Math.PI/2);
+		} else if (status == 2) {
+			obstacles = rotateAll(initial, Math.PI);
+		} else if (status == 3) {
+			obstacles = rotateAll(initial, 3*Math.PI/2);
+		}
+
+		for (int i = 0; i < obstacles.size(); i++) {
+			Obstacle c = obstacles.get(i);
+			// System.out.println(c.x + " " + c.y);
+			c.draw(surface);
+
 		}
 		
 	
@@ -216,7 +229,7 @@ public class LevelOne extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300, -DRAWING_HEIGHT/2+650, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+ DRAWING_WIDTH/2 + 60, -DRAWING_HEIGHT/2+ DRAWING_HEIGHT/2-250, 50, 100);
 		obstacles.add(door);
 	}
 	/**
@@ -286,20 +299,16 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	}
 	
 
+
 	/**
 	 * rotates the level
 	 */
-	public void rotate(double angle1) {
-		
-		
-		angle += angle1;
-		
-	}
 	
 	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
 		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
 		obstacles.add(saw);
 	}
+
 	/**
 	 * 
 	 * @param saw object to spawn in
@@ -318,34 +327,57 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 		int temp = iX;
 	//	iX = iX*Math.cos(angle) - iY*Math.sin(angle);
 	}
+//	/**
+//	 * rotates all obstacles to get correct points
+//	 * @param list list of obstacles
+//	 * @param angle3  angle that is rotated by
+//	 */
+//	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
+//	{
+//		
+//		double temp = 0;
+//		for (Obstacle c : list)
+//		{
+//			temp = c.x;
+//			c.x = c.x * Math.cos(angle3) - c.y*Math.sin(angle3);
+//			c.y = c.y*Math.cos(angle3)  + temp*Math.sin(angle3);
+//			
+//		if ( angle % Math.PI/2 == 0 && angle % Math.PI != 0)
+//		{
+//			double temp1 = c.height;
+//			c.height = c.width;
+//			c.width = temp1;
+//			
+//			
+//		}
+//			
+//				
+//			
+//			
+//		}
+//	}
 	/**
-	 * rotates all obstacles to get correct points
-	 * @param list list of obstacles
-	 * @param angle3  angle that is rotated by
+	 * changes the angle to rotate the screen
 	 */
-	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
-	{
-		
-		double temp = 0;
-		for (Obstacle c : list)
-		{
-			temp = c.x;
-			c.x = c.x * Math.cos(angle3) - c.y*Math.sin(angle3);
-			c.y = c.y*Math.cos(angle3)  + temp*Math.sin(angle3);
-			
-		if ( angle % Math.PI/2 == 0 && angle % Math.PI != 0)
-		{
-			double temp1 = c.height;
-			c.height = c.width;
-			c.width = temp1;
-			
-			
+	public void rotate(double angle1) {
+		angle += angle1;
+		if (equals(angle, 2 * Math.PI) || equals(angle, -2 * Math.PI)) {
+			angle = 0;
+
 		}
-			
-				
-			
-			
+		if (equals(angle, 0)) {
+			status = 0;
 		}
+		if (equals(angle, 3 * Math.PI / 2) || equals(angle, -Math.PI / 2)) {
+			status = 3;
+		}
+		if (equals(angle, Math.PI / 2) || equals(angle, -3 * Math.PI / 2)) {
+			status = 1;
+		}
+		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
+			status = 2;
+		}
+
 	}
 	
 }
