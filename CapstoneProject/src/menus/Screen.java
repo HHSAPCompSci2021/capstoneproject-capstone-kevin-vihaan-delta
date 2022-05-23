@@ -55,7 +55,10 @@ public abstract class Screen {
 	public void mousePressed() {
 
 	}
-
+/**
+ * method to rotate obstacles
+ * @param d angle to rotate by
+ */
 	public void rotate(double d) {
 		// TODO Auto-generated method stub
 
@@ -82,14 +85,24 @@ public abstract class Screen {
 	public double rotateYPoint(double x, double y, double angle) {
 		return y * Math.cos(angle) + x * Math.sin(angle);
 	}
-
+/**
+ * Method finds if doubles are equal factoring in runoff error
+ * @param a first double
+ * @param b second double to be compared
+ * @return if the two doubles are equal
+ */
 	public boolean equals(double a, double b) {
 		double change = 0.0001d;
 		if (Math.abs(a - b) < change)
 			return true;
 		return false;
 	}
-
+/**
+ * Finds topLeft corner 
+ * @param hey ArrayList of Points representing corners
+ * @param angle angle to be rotated by
+ * @return Point2D object representing top left corner
+ */
 	public Point2D findTopLeftCorner(ArrayList<Point2D> hey, double angle) {
 	
 	ArrayList<Point2D>corners1 = new ArrayList<Point2D>();
@@ -139,7 +152,14 @@ public abstract class Screen {
 		return null;
 
 	}
-
+/**
+ * gets all corners of an obstacle
+ * @param x Top Left corner x-coordinate
+ * @param y Top-Left corner y-coordinate
+ * @param width width of Obstacle
+ * @param height Height of Obstacle
+ * @return ArrayList of Points representing all 4 corners.
+ */
 	public ArrayList<Point2D> getAllCorners(double x, double y, double width, double height) {
 		ArrayList<Point2D> corners = new ArrayList<Point2D>();
 		corners.add(new Point2D.Double(x, y));
@@ -148,7 +168,12 @@ public abstract class Screen {
 		corners.add(new Point2D.Double(x, y + height));
 		return corners;
 	}
-	
+	/**
+	 * Rotates all obstacles in given arraylist
+	 * @param hey arraylist of obstacles to be rotated
+	 * @param angle angle to rotate by
+	 * @return arraylist of rotated obstacles with correct coordinates
+	 */
 	public ArrayList<Obstacle> rotateAll(ArrayList<Obstacle> hey, double angle){
 		ArrayList<Obstacle>obstacle1 = new ArrayList<Obstacle>();
 		for (Obstacle a: hey) {

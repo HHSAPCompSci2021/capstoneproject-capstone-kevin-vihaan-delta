@@ -39,7 +39,7 @@ public class LevelTwo extends Screen {
 	private Spike spike3;
 	private Coin coin;
 	private double angle;
-	private double angleDifference;
+	
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
 
 	private Saw saw;
@@ -123,9 +123,9 @@ public class LevelTwo extends Screen {
 			}
 		} else if (status == 1) {
 			
-			obstacles = findStatus1();
+			obstacles = rotateAll(initial, Math.PI/2);
 		} else if (status == 2) {
-			obstacles = findStatus2();
+			obstacles = rotateAll(initial, Math.PI);
 		} else if (status == 3) {
 			obstacles = rotateAll(initial, 3*Math.PI/2);
 		}
@@ -323,12 +323,6 @@ public class LevelTwo extends Screen {
 		}
 
 	}
-	public ArrayList<Obstacle> findStatus1(){
-		return rotateAll(initial, Math.PI/2);
-	}
-	public ArrayList<Obstacle> findStatus2(){
-		
-		return rotateAll(initial, Math.PI);
-	}
+	
 
 }
