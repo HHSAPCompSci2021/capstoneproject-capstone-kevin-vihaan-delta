@@ -38,7 +38,13 @@ public class LevelSeven extends Screen {
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
+	
+	private Spike spike4;
+	private Spike spike5;
+	private Spike spike6;
+	
 	private Coin coin;
+	private SpeedBoost sCoin;
 	private double angle;
 
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
@@ -58,22 +64,24 @@ public class LevelSeven extends Screen {
 // -DRAWING_WIDTH/2     -DRAWING_HEIGHT/2    
 		obstacles = new ArrayList<Obstacle>();
 		initial = new ArrayList<Obstacle>();
+		
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
-				DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
+//		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
+//				DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
 
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 - 100, 50));
 
 		status = 0;
 
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 100, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,
-				DRAWING_WIDTH / 2 + 90, 50));
-// above is one which door is on
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH - 50, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 50,
-				-DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 4 + 50, 200, 200));
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 - 80, 0,
-				-DRAWING_HEIGHT / 2 + DRAWING_WIDTH / 2 + 28, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH / 5, 50));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 + DRAWING_WIDTH / 2 + DRAWING_WIDTH / 5 + 100, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH/6+10,50 ));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH-50, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT/2+50));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH-50, -DRAWING_HEIGHT / 2 +DRAWING_HEIGHT/2+150, 50,200));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, DRAWING_WIDTH, 50));
 
 		// TODO Auto-generated constructor stub
 	}
@@ -94,9 +102,18 @@ public class LevelSeven extends Screen {
 		spawnNewDoor();
 		spawnNewPlayer();
 
-		spawnNewSpike(spike1, -DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, 30, 50);
-		spawnNewSpike(spike2, DRAWING_WIDTH / 2 + 30, DRAWING_HEIGHT - 50, 30, 50);
-		spawnNewSpike(spike3, DRAWING_WIDTH / 2 + 60, DRAWING_HEIGHT - 50, 30, 50);
+		
+		spawnNewLeftSpike(spike1, -DRAWING_WIDTH / 2+ DRAWING_WIDTH-50, -DRAWING_HEIGHT /3 + 50, 30, 50);
+		spawnNewLeftSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 100, 30, 50);
+		spawnNewLeftSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 150, 30, 50);
+		
+		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+30,30,30);
+		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+30,30,30);
+		spawnNewDownSpike(spike6,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2 +90,-DRAWING_HEIGHT/2+30,30,30);
+		
+		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,-DRAWING_HEIGHT / 2+80,30,30);
+		
+		
 		spawnNewCoin(coin, 100, 700, 30, 30);
 		for (Obstacle a : obstacles) {
 			initial.add(a);
@@ -273,8 +290,37 @@ public class LevelSeven extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		door = new Door(doorUp, -DRAWING_WIDTH / 2 + 300, -DRAWING_HEIGHT / 2 + 650, 50, 100);
+		door = new Door(doorUp, -DRAWING_WIDTH / 2 + 100, -DRAWING_HEIGHT / 2 + 50, 50, 100);
 		obstacles.add(door);
+	}
+	
+	/**
+	 * spawns new down spike
+	 * 
+	 * @param spike  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of spike
+	 * @param height height of spike
+	 */
+	public void spawnNewDownSpike(Spike spike, int x, int y, int width, int height) {
+
+		spike = new Spike(surface.loadImage("img/DOWNSPIKE.png"), x, y, width, height);
+		obstacles.add(spike);
+	}
+	/**
+	 * spawns new left spike
+	 * 
+	 * @param spike  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of spike
+	 * @param height height of spike
+	 */
+	public void spawnNewLeftSpike(Spike spike, int x, int y, int width, int height) {
+
+		spike = new Spike(surface.loadImage("img/LEFTSPIKE.png"), x, y, width, height);
+		obstacles.add(spike);
 	}
 
 	/**
