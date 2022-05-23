@@ -41,8 +41,8 @@ public class LevelMenu extends Screen {
 		level3 = new Rectangle(500, 100, 100, 100);
 		level4 = new Rectangle(100,300,100,100);
 		level5 = new Rectangle(300,300,100,100);
-		level6 = new Rectangle(300,300,100,100);
-		level7 = new Rectangle(300,300,100,100);
+		level6 = new Rectangle(500,300,100,100);
+		level7 = new Rectangle(100,500,100,100);
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -141,7 +141,10 @@ public class LevelMenu extends Screen {
 		if (level5.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_FIVE);
 		if (level6.contains(p))
+		
+			
 			surface.switchScreen(ScreenSwitcher.LEVEL_SIX);
+		
 		if (level7.contains(p))
 			surface.switchScreen(ScreenSwitcher.LEVEL_SEVEN);
 			
