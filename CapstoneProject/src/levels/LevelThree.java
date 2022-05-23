@@ -24,7 +24,7 @@ public class LevelThree extends Screen {
 	private ArrayList<Obstacle> initial;
 	private Coin coin;
 	private double angle;
-	private boolean hasRotated;
+	
 	//set1
 	private Rectangle screenRect;
 	private Spike spike1;
@@ -53,7 +53,7 @@ public class LevelThree extends Screen {
 		super(800, 800);
 		
 		this.surface = surface;
-		hasRotated = false;
+		
 		obstacles = new ArrayList<Obstacle>();
 		initial = new ArrayList<Obstacle>();
 		iX =  -DRAWING_WIDTH/2+DRAWING_WIDTH-100;
@@ -175,7 +175,7 @@ public class LevelThree extends Screen {
 			{
 				
 				spawnNewPlayer();
-				setup();
+				//setup();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
 			{
@@ -212,8 +212,24 @@ public class LevelThree extends Screen {
 
 	public void rotate(double angle1)
 	{
-	
 		angle += angle1;
+		if (equals(angle, 2 * Math.PI) || equals(angle, -2 * Math.PI)) {
+			angle = 0;
+
+		}
+		if (equals(angle, 0)) {
+			status = 0;
+		}
+		if (equals(angle, 3 * Math.PI / 2) || equals(angle, -Math.PI / 2)) {
+			status = 3;
+		}
+		if (equals(angle, Math.PI / 2) || equals(angle, -3 * Math.PI / 2)) {
+			status = 1;
+		}
+		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
+			status = 2;
+		}
+		
 		
 	}
 	/**

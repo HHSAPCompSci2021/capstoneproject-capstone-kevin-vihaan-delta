@@ -195,7 +195,7 @@ public class LevelOne extends Screen {
 			{
 				
 				spawnNewPlayer();
-				setup();
+				//setup();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
 			{
@@ -323,44 +323,7 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 	 * @param height height of Saw
 	 */
 	
-	/**
-	 * rotates spawn
-	 */
 
-	public void rotateSpawn()
-	{
-		int temp = iX;
-	//	iX = iX*Math.cos(angle) - iY*Math.sin(angle);
-	}
-//	/**
-//	 * rotates all obstacles to get correct points
-//	 * @param list list of obstacles
-//	 * @param angle3  angle that is rotated by
-//	 */
-//	public void rotateObstacles(ArrayList<Obstacle> list, double angle3)
-//	{
-//		
-//		double temp = 0;
-//		for (Obstacle c : list)
-//		{
-//			temp = c.x;
-//			c.x = c.x * Math.cos(angle3) - c.y*Math.sin(angle3);
-//			c.y = c.y*Math.cos(angle3)  + temp*Math.sin(angle3);
-//			
-//		if ( angle % Math.PI/2 == 0 && angle % Math.PI != 0)
-//		{
-//			double temp1 = c.height;
-//			c.height = c.width;
-//			c.width = temp1;
-//			
-//			
-//		}
-//			
-//				
-//			
-//			
-//		}
-//	}
 	/**
 	 * changes the angle to rotate the screen
 	 */

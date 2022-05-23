@@ -225,7 +225,7 @@ public class LevelTwo extends Screen {
 	public void spawnNewPlayer() {
 		status = 0;
 		angle = 0;
-		rotate(0);
+		//rotate(0);
 		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
 		// obstacles.add(user); x coord - -340
 	}
