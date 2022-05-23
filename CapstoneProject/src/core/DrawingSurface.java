@@ -95,7 +95,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	 */
 	public void draw() {
 		
-		
+		if (Main.effectNumber > 497 || Main.jumpNumber > 997) {
+			exit();
+		}
 		ratioX = (float) width / activeScreen.DRAWING_WIDTH;
 		ratioY = (float) height / activeScreen.DRAWING_HEIGHT;
 
@@ -212,6 +214,12 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 			Main.stopSong();
 		}
 		if (i==7) {
+			Main.stopSong();
+		}
+		if (i==8) {
+			Main.stopSong();
+		}
+		if (i==9) {
 			Main.stopSong();
 		}
 	}

@@ -40,12 +40,12 @@ public class Main implements JayLayerListener {
 	 */
 	public Main() {
 		effectNumber = 0;
-		jumpNumber = 200;
+		jumpNumber = 500;
 		
 		//songs.add("game1.mp3");
 		//soundEffects.add("door.mp3");
 		//soundEffects.add("death.mp3");
-		for (int i = 0; i <200; i++) {
+		for (int i = 0; i <500; i++) {
 			soundEffects.add("death.mp3");
 		}
 		for (int i = 0; i < 500;i++ ) {
