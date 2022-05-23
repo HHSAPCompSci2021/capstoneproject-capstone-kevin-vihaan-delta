@@ -25,7 +25,7 @@ public abstract class Screen {
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
 	public DrawingSurface surface;
 	public ArrayList<Obstacle> obstacles;
-	public PImage doorDown, doorLeft ,doorRight, doorUp;
+	public PImage doorDown, doorLeft ,doorRight, doorUp, spikeUp, spikeRight, spikeLeft, spikeDown;
 
 	/**
 	 * 
