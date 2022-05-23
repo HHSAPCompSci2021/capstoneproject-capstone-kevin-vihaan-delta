@@ -90,9 +90,7 @@ public class LevelOne extends Screen {
 		spawnNewPlayer();
 		spawnNewDoor();
 		
-		for (Obstacle a: obstacles) {
-			initial.add(a);
-		}
+		
 		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike2,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike3,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
@@ -103,6 +101,10 @@ public class LevelOne extends Screen {
 		//spawnNewPowerCoin(pCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50, 30,30);
 	spawnNewPowerCoin(pCoin,iX + 75, iY, 30,30);
 	spawnNewSpeedBoost(sCoin,iX + 100, iY, 30,30);
+	
+	for (Obstacle a: obstacles) {
+		initial.add(a);
+	}
 	}
 	/**
 	 * draws the window, checks intersections
@@ -181,8 +183,9 @@ public class LevelOne extends Screen {
 				} else {
 				ShopMenu.coinsCollected++;
 				}
-			
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 				
 			}
@@ -195,14 +198,18 @@ public class LevelOne extends Screen {
 			{
 				
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 			}
 			
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
 			{
 				Player.speedMultiplier += 0.5;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 			}
 			
