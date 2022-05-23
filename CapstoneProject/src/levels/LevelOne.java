@@ -219,9 +219,10 @@ public class LevelOne extends Screen {
 	public void spawnNewPlayer()
 	
 	{
-		
+		status = 0;
+		angle = 0;
 		user = new Player(surface.loadImage("img/PLAYER.png"), iX,iY, 25, 50);
-		obstacles.add(user);
+		//obstacles.add(user);
 		
 	}
 	/**
