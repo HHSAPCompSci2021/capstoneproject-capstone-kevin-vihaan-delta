@@ -12,8 +12,8 @@ public class Coin extends Obstacle { //extends shape
 	
 	public static boolean doubleValue;
 	
-	public Coin(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Coin(PImage img, double d, double e, double f, double g) {
+		super(img, d, e, f, g);
 		doubleValue = false;
 		// TODO Auto-generated constructor stub
 	}

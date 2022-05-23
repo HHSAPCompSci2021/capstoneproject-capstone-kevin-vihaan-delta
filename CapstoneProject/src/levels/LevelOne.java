@@ -295,6 +295,11 @@ public void spawnNewSpikeDown(Spike spike, int x ,int y, int width, int height) 
 		angle += angle1;
 		
 	}
+	
+	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
+		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
+		obstacles.add(saw);
+	}
 	/**
 	 * 
 	 * @param saw object to spawn in

@@ -20,6 +20,7 @@ import obstacles.Saw;
 import obstacles.SpeedBoost;
 import obstacles.Spike;
 import obstacles.Wall;
+import processing.core.PImage;
 
 /**
  * Class represents leveltwo
@@ -30,7 +31,7 @@ import obstacles.Wall;
 public class LevelTwo extends Screen {
 	private DrawingSurface surface;
 	private Rectangle screenRect;
-//	private Door door;
+   private Door door;
 	private Player user;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Obstacle> initial;
@@ -39,6 +40,7 @@ public class LevelTwo extends Screen {
 	private Spike spike3;
 	private Coin coin;
 	private double angle;
+	
 	
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
 
@@ -82,17 +84,21 @@ public class LevelTwo extends Screen {
 	 * Sets up player, spike, door
 	 */
 	public void setup() {
+		doorDown = surface.loadImage("img/DOORDOWN.png");
+		doorRight = surface.loadImage("img/DOORRIGHT.png");
+		doorLeft = surface.loadImage("img/DOORLEFT.png");
+		doorUp = surface.loadImage("img/GRAYDOOR2.jpg");
 		spawnNewPlayer();
-		for (Obstacle a: obstacles) {
-			initial.add(a);
-		}
+		
 		 spawnNewDoor();
 		spawnNewSpike(spike1, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewSpike(spike2, DRAWING_WIDTH / 2 + 30, DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewSpike(spike3, DRAWING_WIDTH / 2 + 60, DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewCoin(coin, 100, 700, 30, 30);
+		 for (Obstacle a: obstacles) {
+				initial.add(a);
+			}
 	
-
 	}
 
 	/**
@@ -153,6 +159,11 @@ public class LevelTwo extends Screen {
 		user.act(obstacles);
 
 		for (int i = obstacles.size() - 1; i >= 0; i--) {
+			
+			if(user.contains(obstacles.get(i)) &&  obstacles.get(i) instanceof Wall) {
+				System.out.println("HEY");
+			}
+		
 			if (user.intersects(obstacles.get(i))
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
 				Main.changeSong(4);
@@ -215,6 +226,7 @@ public class LevelTwo extends Screen {
 	public void spawnNewPlayer() {
 		status = 0;
 		angle = 0;
+		rotate(0);
 		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
 		// obstacles.add(user); x coord - -340
 	}
@@ -223,9 +235,8 @@ public class LevelTwo extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		// door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+300,
-		// -DRAWING_HEIGHT/2+650, 50, 100);
-		// obstacles.add(door);
+		 door = new Door(doorUp, -DRAWING_WIDTH/2+300,-DRAWING_HEIGHT/2+650, 50, 100);
+		obstacles.add(door);
 	}
 
 	/**
@@ -321,8 +332,13 @@ public class LevelTwo extends Screen {
 		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
 			status = 2;
 		}
+		
+		
+		
+			}
+		
 
 	}
 	
 
-}
+

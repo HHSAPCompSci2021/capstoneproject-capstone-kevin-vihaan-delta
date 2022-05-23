@@ -10,8 +10,8 @@ import processing.core.PImage;
  */
 public class Spike extends Obstacle {
 
-	public Spike(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Spike(PImage img, double d, double e, double f, double g) {
+		super(img, d, e, f, g);
 		// TODO Auto-generated constructor stub
 	}
 

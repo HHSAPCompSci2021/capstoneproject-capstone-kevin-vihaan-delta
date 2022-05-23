@@ -13,12 +13,11 @@ import processing.core.PImage;
  */
 public class Door extends Obstacle {
 
-	public Door(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Door(PImage img, double d, double e, double f, double g) {
+		super(img, d, e, f, g);
 		// TODO Auto-generated constructor stub
 	}
 
-
-
+	
 	
 }

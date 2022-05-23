@@ -12,8 +12,8 @@ public class SpeedBoost extends Obstacle { //extends shape
 	/*
 	 * represents a speedboost
 	 */
-	public SpeedBoost(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public SpeedBoost(PImage img, double d, double e, double f, double g) {
+		super(img, d, e, f, g);
 		// TODO Auto-generated constructor stub
 	}
 	
