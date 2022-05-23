@@ -79,7 +79,7 @@ public class LevelOne extends Screen {
 	 */
 	public void setup()
 	{
-		spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
+	//	spawnNewSaw(saw,DRAWING_WIDTH/2-100,DRAWING_HEIGHT-75,25,25);
 		spawnNewPlayer();
 		spawnNewDoor();
 		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);

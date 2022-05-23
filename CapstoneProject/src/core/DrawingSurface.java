@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import levels.LevelFour;
 import levels.LevelOne;
 import levels.LevelThree;
 import levels.LevelTwo;
@@ -58,8 +59,13 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		screens.add(screen5);
 		
 		
+		
+		
 		LevelThree screen6 = new LevelThree(this);
 		screens.add(screen6);
+		
+		LevelFour screen7 = new LevelFour(this);
+		screens.add(screen7);
 		// add shop menu
 		activeScreen = screens.get(0);
 	}
