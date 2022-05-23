@@ -210,6 +210,7 @@ public class LevelFour extends Screen {
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
 			user.move(1);
 		if (surface.isPressed(KeyEvent.VK_UP))
+			
 			user.jump();
 
 		user.act(obstacles);

@@ -54,6 +54,7 @@ public class Player extends Obstacle{
 	 */
 	public void jump() {
 		if (onSurface && canJump) {
+			Main.playSoundEffect(Main.jumpNumber);
 			yVel =-jumpHeight;
 		}
 		//super.moveByAmount(0, -50);
