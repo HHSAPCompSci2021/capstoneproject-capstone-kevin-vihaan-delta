@@ -99,6 +99,10 @@ public class LevelFour extends Screen {
 		doorRight = surface.loadImage("img/DOORRIGHT.png");
 		doorLeft = surface.loadImage("img/DOORLEFT.png");
 		doorUp = surface.loadImage("img/GRAYDOOR2.jpg");
+		spikeDown = surface.loadImage("img/DOWNSPIKE.png");
+		spikeRight = surface.loadImage("img/RIGHTSPIKE.png");
+		spikeLeft = surface.loadImage("img/LEFTSPIKE.png");
+		spikeUp = surface.loadImage("img/SPIKE.png");
 		spawnNewDoor();
 		spawnNewPlayer();
 		
