@@ -199,9 +199,7 @@ public class LevelTwo extends Screen {
 
 		for (int i = obstacles.size() - 1; i >= 0; i--) {
 
-			if (user.contains(obstacles.get(i)) && obstacles.get(i) instanceof Wall) {
-				System.out.println("HEY");
-			}
+			
 
 			if (user.intersects(obstacles.get(i))
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
