@@ -43,7 +43,7 @@ public class LevelSeven extends Screen {
 	private Spike spike5;
 	private Spike spike6;
 	
-	private Coin coin;
+	
 	private SpeedBoost sCoin;
 	private double angle;
 

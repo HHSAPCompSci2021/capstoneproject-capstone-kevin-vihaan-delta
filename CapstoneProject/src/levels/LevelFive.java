@@ -39,7 +39,6 @@ public class LevelFive extends Screen {
 	private Spike spike3;
 	private Spike spike4;
 	private Spike spike5;
-	private Saw saw1;
 	private SpeedBoost b1;
 	
 	

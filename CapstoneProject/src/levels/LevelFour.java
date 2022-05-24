@@ -37,7 +37,6 @@ public class LevelFour extends Screen {
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
-	private Spike spike4;
 	private Coin coin;
 	private double angle;
 	
