@@ -25,13 +25,13 @@ import obstacles.Wall;
  */
 
 public class LevelThree extends Screen {
-	private ArrayList<Obstacle> obstacles;
-	private ArrayList<Obstacle> initial;
+	//private ArrayList<Obstacle> obstacles;
+	//private ArrayList<Obstacle> initial;
 	private Coin coin;
-	private double angle;
+	//private double angle;
 	
 	//set1
-	private Rectangle screenRect;
+
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
@@ -42,17 +42,14 @@ public class LevelThree extends Screen {
 	private int iX;
 	private int iY;
 	
-	private Spike spike6;
-	private Spike spike7;
-	private Spike spike8;
+	
 
 	private PowerCoin pCoin;
 	private SpeedBoost sCoin;
 	
-	private Door door;
-	private Player user;
 	
-	public int status;
+	
+	//public int status;
 	
 	public LevelThree(DrawingSurface surface) {
 		super(800, 800);
@@ -94,8 +91,8 @@ public class LevelThree extends Screen {
 		spikeLeft = surface.loadImage("img/LEFTSPIKE.png");
 		spikeUp = surface.loadImage("img/SPIKE.png");
 		
-		spawnNewDoor();
-		spawnNewPlayer();
+		spawnNewDoor(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-160, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+400, 50, 100);
+		spawnNewPlayer(-DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
 		spawnNewCoin(coin,100,700,30,30);
 		spawnNewSpike(spike1,-DRAWING_WIDTH/2+DRAWING_WIDTH/2,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike2,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
@@ -202,7 +199,7 @@ public class LevelThree extends Screen {
 			{
 				Main.playSoundEffect(Main.effectNumber);
 				
-			 	spawnNewPlayer();
+				spawnNewPlayer(-DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
 				//setup();
 			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
@@ -210,7 +207,7 @@ public class LevelThree extends Screen {
 			
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 				Main.playSoundEffect(Main.doorNumber);
-				spawnNewPlayer();
+				spawnNewPlayer(-DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
 			}
@@ -230,7 +227,7 @@ public class LevelThree extends Screen {
 			if ( !user.intersects(screenRect))
 			{
 				
-				spawnNewPlayer();
+				spawnNewPlayer(-DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
 				//setup();
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
@@ -266,97 +263,7 @@ public class LevelThree extends Screen {
 		}
 	}
 
-	public void rotate(double angle1)
-	{
-		angle += angle1;
-		if (equals(angle, 2 * Math.PI) || equals(angle, -2 * Math.PI)) {
-			angle = 0;
-
-		}
-		if (equals(angle, 0)) {
-			status = 0;
-		}
-		if (equals(angle, 3 * Math.PI / 2) || equals(angle, -Math.PI / 2)) {
-			status = 3;
-		}
-		if (equals(angle, Math.PI / 2) || equals(angle, -3 * Math.PI / 2)) {
-			status = 1;
-		}
-		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
-			status = 2;
-		}
-		
-		
-	}
-	/**
-	 * spawns new spike
-	 * @param spike object to spawn in
-	 * @param x x-coordinate
-	 * @param y y-coordinate
-	 * @param width width of spike
-	 * @param height height of spike
-	 */
-	public void spawnNewSpike(Spike spike, int x ,int y, int width, int height) {
-		
-		spike = new Spike(surface.loadImage("img/SPIKE.png"),x,y,width,height);
-		obstacles.add(spike);
-	}
 	
-/**
- * spawns new coin
- * @param coin object to spawn in
- * @param x x-coordinate
- * @param y y-coordinate
- * @param width width of coin
- * @param height height of coin
- */
-	public void spawnNewCoin(Coin coin, int x,int y, int width, int height)
-	{
-		coin = new Coin(surface.loadImage("img/COIN.png"),x,y,width,height);
-		obstacles.add(coin);
-	}
-	/**
-	 * spawns new speedboost
-	 * @param sCoin object to spawn in
-	 * @param x x-coordinate
-	 * @param y y-coordinate
-	 * @param width width of speedBoost
-	 * @param height height of speedBoost
-	 */
-	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x,int y, int width, int height)
-	{
-		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"),x,y,width,height);
-		obstacles.add(sCoin);
-	}
-	/**
-	 * spawns new powerCoin
-	 * @param pCoin object to spawn in
-	 * @param x x-coordinate
-	 * @param y y-coordinate
-	 * @param width width of powerCoin
-	 * @param height height of powerCoin
-	 */
-	public void spawnNewPowerCoin(PowerCoin pCoin, int x,int y, int width, int height)
-	{
-		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"),x,y,width,height);
-		obstacles.add(pCoin);
-	}
-	/**
-	 * spawns new player
-	 */
-	public void spawnNewPlayer()
-	{
-		status = 0;
-		angle = 0;
-		user = new Player(surface.loadImage("img/PLAYERSIDE.png"), -DRAWING_WIDTH/2+DRAWING_WIDTH-100,-DRAWING_HEIGHT/2+700, 25, 50);
-		//obstacles.add(user);
-	}
-	/**
-	 * spawns new door
-	 */
-	public void spawnNewDoor()
-	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-160, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+400, 50, 100);
-		obstacles.add(door);
-	}
+	
+	
 }

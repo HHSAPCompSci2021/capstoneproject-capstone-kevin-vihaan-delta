@@ -28,20 +28,17 @@ import obstacles.Wall;
  *
  */
 public class LevelFour extends Screen {
-	private DrawingSurface surface;
-	private Rectangle screenRect;
-	private Door door;
-	private Player user;
-	private ArrayList<Obstacle> obstacles;
-	private ArrayList<Obstacle> initial;
+	
+	//private ArrayList<Obstacle> obstacles;
+	//private ArrayList<Obstacle> initial;
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
-	private Spike spike4;
-	private Coin coin;
-	private double angle;
 	
-	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
+	private Coin coin;
+	//private double angle;
+	
+	//public int status; // 0 is initial, 1 is 90 degree to left,2, 3
 
 	private Saw saw;
 
@@ -103,8 +100,8 @@ public class LevelFour extends Screen {
 		spikeRight = surface.loadImage("img/RIGHTSPIKE.png");
 		spikeLeft = surface.loadImage("img/LEFTSPIKE.png");
 		spikeUp = surface.loadImage("img/SPIKE.png");
-		spawnNewDoor();
-		spawnNewPlayer();
+		spawnNewDoor(surface.loadImage("img/GRAYDOOR2.jpg"), 270,0, 100, 50);
+		spawnNewPlayer(-340, 300, 25, 50);
 		
 		 
 		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2-200, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
@@ -112,6 +109,7 @@ public class LevelFour extends Screen {
 		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -140,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2-35,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT -185, 50, 50);
 		 spawnNewCoin(coin, 100, 700, 30, 30);
+		 spawnNewSaw(saw,350,-100,20,20);
 	
 		 for (Obstacle a: obstacles) {
 				initial.add(a);
@@ -145,16 +143,14 @@ public class LevelFour extends Screen {
 				Obstacle a = initial.get(i);
 
 				if (a instanceof Door) {
-					a.image = doorUp;
+					a.image = doorLeft;
 				}
 
-				if (a instanceof Spike) {
-					a.image = spikeUp;
-				}
+				
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
-			door.image = doorRight;
+			door.image = doorUp;
 			
 			obstacles = rotateAll(initial, Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -166,7 +162,7 @@ public class LevelFour extends Screen {
 
 			}
 		} else if (status == 2) {
-			door.image = doorDown;
+			door.image = doorRight;
 			
 			obstacles = rotateAll(initial, Math.PI);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -178,7 +174,7 @@ public class LevelFour extends Screen {
 
 			}
 		} else if (status == 3) {
-			door.image = doorLeft;
+			door.image = doorDown;
 			
 			obstacles = rotateAll(initial, 3 * Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -220,7 +216,7 @@ public class LevelFour extends Screen {
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
 				Main.playSoundEffect(Main.effectNumber);
 
-				spawnNewPlayer();
+				spawnNewPlayer(-340, 300, 25, 50);
 				// setup();
 				// obstacles.remove(i);
 				ShopMenu.coinsCollected--;
@@ -229,7 +225,7 @@ public class LevelFour extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 
 				Main.playSoundEffect(Main.doorNumber);
-				spawnNewPlayer();
+				spawnNewPlayer(-340, 300, 25, 50);
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
 			}
@@ -246,7 +242,7 @@ public class LevelFour extends Screen {
 			}
 			if (!user.intersects(screenRect)) {
 
-				spawnNewPlayer();
+				spawnNewPlayer(-340, 300, 25, 50);
 			}
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) {
 
@@ -264,115 +260,11 @@ public class LevelFour extends Screen {
 		}
 	}
 
-	/**
-	 * spawns in new saw
-	 */
-	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
-		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
-		obstacles.add(saw);
-	}
-
-	/**
-	 * spawns new player
-	 */
-	public void spawnNewPlayer() {
-		
-		status = 0;
-		angle = 0;
-		user = new Player(surface.loadImage("img/PLAYER.png"), -340, 300, 25, 50);
-		
-		// obstacles.add(user); x coord - -340
-	}
-
-	/**
-	 * spawns new door
-	 */
-	public void spawnNewDoor() {
-		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+600,-DRAWING_HEIGHT/2+480, 50, 100);
-		 obstacles.add(door);
-	}
-
-	/**
-	 * spawns new spike
-	 * 
-	 * @param spike  object to spawn in
-	 * @param x      x-coordinate
-	 * @param y      y-coordinate
-	 * @param width  width of spike
-	 * @param height height of spike
-	 */
-	public void spawnNewSpike(Spike spike, int x, int y, int width, int height) {
-
-		spike = new Spike(surface.loadImage("img/SPIKE.png"), x, y, width, height);
-		obstacles.add(spike);
-	}
-
 	
-	/**
-	 * spawns new coin
-	 * 
-	 * @param coin   object to spawn in
-	 * @param x      x-coordinate
-	 * @param y      y-coordinate
-	 * @param width  width of coin
-	 * @param height height of coin
-	 */
-	public void spawnNewCoin(Coin coin, int x, int y, int width, int height) {
-		coin = new Coin(surface.loadImage("img/COIN.png"), x, y, width, height);
-		obstacles.add(coin);
-	}
+	
+	
 
-	/**
-	 * spawns new speedboost
-	 * 
-	 * @param sCoin  object to spawn in
-	 * @param x      x-coordinate
-	 * @param y      y-coordinate
-	 * @param width  width of speedBoost
-	 * @param height height of speedBoost
-	 */
-	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x, int y, int width, int height) {
-		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"), x, y, width, height);
-		obstacles.add(sCoin);
-	}
 
-	/**
-	 * spawns new powerCoin
-	 * 
-	 * @param pCoin  object to spawn in
-	 * @param x      x-coordinate
-	 * @param y      y-coordinate
-	 * @param width  width of powerCoin
-	 * @param height height of powerCoin
-	 */
-	public void spawnNewPowerCoin(PowerCoin pCoin, int x, int y, int width, int height) {
-		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"), x, y, width, height);
-		obstacles.add(pCoin);
-	}
-
-	/**
-	 * changes the angle to rotate the screen
-	 */
-	public void rotate(double angle1) {
-		angle += angle1;
-		if (equals(angle, 2 * Math.PI) || equals(angle, -2 * Math.PI)) {
-			angle = 0;
-
-		}
-		if (equals(angle, 0)) {
-			status = 0;
-		}
-		if (equals(angle, 3 * Math.PI / 2) || equals(angle, -Math.PI / 2)) {
-			status = 3;
-		}
-		if (equals(angle, Math.PI / 2) || equals(angle, -3 * Math.PI / 2)) {
-			status = 1;
-		}
-		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
-			status = 2;
-		}
-
-	}
 	
 
 }

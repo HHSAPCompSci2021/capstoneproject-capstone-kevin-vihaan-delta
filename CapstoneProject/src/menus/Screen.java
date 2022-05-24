@@ -1,14 +1,13 @@
 package menus;
 
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 
 import core.DrawingSurface;
-import obstacles.Obstacle;
-import obstacles.Wall;
+import core.Player;
 import processing.core.PImage;
-import obstacles.Spike;
 import obstacles.*;
 
 /**
@@ -23,9 +22,15 @@ public abstract class Screen {
 	 * DRAWING_WIDTH and DRAWING_HEIGHT descrie the dimensions of the Screen
 	 */
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
+	public int status;
+	public double angle;
 	public DrawingSurface surface;
 	public ArrayList<Obstacle> obstacles;
+	public ArrayList<Obstacle> initial;
 	public PImage doorDown, doorLeft ,doorRight, doorUp, spikeUp, spikeRight, spikeLeft, spikeDown;
+	public Player user;
+	public Door door;
+	public Rectangle screenRect;
 
 	/**
 	 * 
@@ -60,15 +65,7 @@ public abstract class Screen {
 
 	}
 
-	/**
-	 * method to rotate obstacles
-	 * 
-	 * @param d angle to rotate by
-	 */
-	public void rotate(double d) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	/**
 	 * 
@@ -250,6 +247,161 @@ public abstract class Screen {
 			}
 		}
 		return obstacle1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	/**
+	 * spawns in new saw
+	 */
+	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
+		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
+		obstacles.add(saw);
+	}
+
+	/**
+	 * spawns new player
+	 */
+	public void spawnNewPlayer(int x, int y, int width, int height) {
+		status = 0;
+		angle = 0;
+		// rotate(0);
+		user = new Player(surface.loadImage("img/PLAYER.png"), x,y,width,height);
+		
+		// obstacles.add(user); x coord - -340
+	}
+
+	/**
+	 * spawns new door
+	 */
+	public void spawnNewDoor(PImage img, int x, int y, int width, int height) {
+		door = new Door(img,x,y,width,height);
+		obstacles.add(door);
+	}
+	
+	/**
+	 * spawns new down spike
+	 * 
+	 * @param spike  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of spike
+	 * @param height height of spike
+	 */
+	public void spawnNewDownSpike(Spike spike, int x, int y, int width, int height) {
+
+		spike = new Spike(surface.loadImage("img/DOWNSPIKE.png"), x, y, width, height);
+		obstacles.add(spike);
+	}
+	/**
+	 * spawns new left spike
+	 * 
+	 * @param spike  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of spike
+	 * @param height height of spike
+	 */
+	public void spawnNewLeftSpike(Spike spike, int x, int y, int width, int height) {
+
+		spike = new Spike(surface.loadImage("img/LEFTSPIKE.png"), x, y, width, height);
+		obstacles.add(spike);
+	}
+
+	/**
+	 * spawns new spike
+	 * 
+	 * @param spike  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of spike
+	 * @param height height of spike
+	 */
+	public void spawnNewSpike(Spike spike, int x, int y, int width, int height) {
+
+		spike = new Spike(surface.loadImage("img/SPIKE.png"), x, y, width, height);
+		obstacles.add(spike);
+	}
+
+	/**
+	 * spawns new coin
+	 * 
+	 * @param coin   object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of coin
+	 * @param height height of coin
+	 */
+	public void spawnNewCoin(Coin coin, int x, int y, int width, int height) {
+		coin = new Coin(surface.loadImage("img/COIN.png"), x, y, width, height);
+		obstacles.add(coin);
+	}
+
+	/**
+	 * spawns new speedboost
+	 * 
+	 * @param sCoin  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of speedBoost
+	 * @param height height of speedBoost
+	 */
+	public void spawnNewSpeedBoost(SpeedBoost sCoin, int x, int y, int width, int height) {
+		sCoin = new SpeedBoost(surface.loadImage("img/SPEEDBOOST.png"), x, y, width, height);
+		obstacles.add(sCoin);
+	}
+
+	/**
+	 * spawns new powerCoin
+	 * 
+	 * @param pCoin  object to spawn in
+	 * @param x      x-coordinate
+	 * @param y      y-coordinate
+	 * @param width  width of powerCoin
+	 * @param height height of powerCoin
+	 */
+	public void spawnNewPowerCoin(PowerCoin pCoin, int x, int y, int width, int height) {
+		pCoin = new PowerCoin(surface.loadImage("img/POWERCOIN.png"), x, y, width, height);
+		obstacles.add(pCoin);
+	}
+
+	/**
+	 * changes the angle to rotate the screen
+	 */
+	public void rotate(double angle1) {
+		angle += angle1;
+		if (equals(angle, 2 * Math.PI) || equals(angle, -2 * Math.PI)) {
+			angle = 0;
+
+		}
+		if (equals(angle, 0)) {
+			status = 0;
+		}
+		if (equals(angle, 3 * Math.PI / 2) || equals(angle, -Math.PI / 2)) {
+			status = 3;
+		}
+		if (equals(angle, Math.PI / 2) || equals(angle, -3 * Math.PI / 2)) {
+			status = 1;
+		}
+		if (equals(angle, Math.PI) || equals(angle, -Math.PI)) {
+			status = 2;
+		}
+		// changeDoor();
+
 	}
 
 }
