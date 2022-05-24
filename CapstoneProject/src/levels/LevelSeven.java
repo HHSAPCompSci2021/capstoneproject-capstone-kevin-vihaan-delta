@@ -107,7 +107,7 @@ public class LevelSeven extends Screen {
 		spawnNewSaw(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50-20, -DRAWING_HEIGHT/3 + 110, 30, 30);
 		spawnNewSaw(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50-20, -DRAWING_HEIGHT/3 + 180, 30, 30);
 		
-		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,-DRAWING_HEIGHT / 2+80,30,30);
+		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,320,30,30);
 		
 		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+50,30,30);
 		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+50,30,30);
