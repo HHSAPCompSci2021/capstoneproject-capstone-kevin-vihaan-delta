@@ -42,7 +42,7 @@ public class LevelSix extends Screen {
 	private double angle;
 
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
-
+	private int up, left, down, right;
 	private Saw saw1;
 	private Saw saw2;
 	private Saw saw3;
@@ -54,30 +54,33 @@ public class LevelSix extends Screen {
 	 */
 	public LevelSix(DrawingSurface surface) {
 		super(800, 800);
-
+		up = 0;
+		right = 1;
+		down = 2;
+		left = 3;
 		this.surface = surface;
 		screenRect = new Rectangle(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, DRAWING_WIDTH, DRAWING_HEIGHT);
 // -DRAWING_WIDTH/2     -DRAWING_HEIGHT/2    
 		obstacles = new ArrayList<Obstacle>();
 		initial = new ArrayList<Obstacle>();
-		
-		
-		
-		
+
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
 //		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
 //				DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
 
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 - 100, 50));
+		obstacles.add(
+				new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 - 100, 50));
 
 		status = 0;
 
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH / 5, 50));
-		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 + DRAWING_WIDTH / 2 + DRAWING_WIDTH / 5 + 100, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH/6+10,50 ));
-		
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH-50, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT-50));
-		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,
+				DRAWING_WIDTH / 5, 50));
+
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + DRAWING_WIDTH / 5 + 100,
+				-DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 6 + 10, 50));
+
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH - 50, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT - 50));
+
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, DRAWING_WIDTH, 50));
 // above is one which door is on
 //		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH - 50, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
@@ -102,18 +105,18 @@ public class LevelSix extends Screen {
 		spikeRight = surface.loadImage("img/RIGHTSPIKE.png");
 		spikeLeft = surface.loadImage("img/LEFTSPIKE.png");
 		spikeUp = surface.loadImage("img/SPIKE.png");
-		
-		
+
 		spawnNewDoor();
 		spawnNewPlayer();
 
-		
-		spawnNewSaw(saw1,-DRAWING_WIDTH / 2+DRAWING_WIDTH-70,-DRAWING_HEIGHT / 2 + DRAWING_HEIGHT/2 ,30,30);
-		spawnNewSaw(saw2,-DRAWING_WIDTH / 2+DRAWING_WIDTH-70,-DRAWING_HEIGHT / 2 + DRAWING_HEIGHT/2+30,30,30);
-		spawnNewSaw(saw3,-DRAWING_WIDTH / 2+DRAWING_WIDTH-70,-DRAWING_HEIGHT / 2 + DRAWING_HEIGHT/2+60,30,30);
-		
-		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 , 30, 50);
-		spawnNewDownSpike(spike2,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2, 30, 50);
+		spawnNewSaw(saw1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2, 30, 30);
+		spawnNewSaw(saw2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 30, 30,
+				30);
+		spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
+				30);
+
+		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 30, 50);
+		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2, 30, 50);
 		spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2, 30, 50);
 		spawnNewCoin(coin, 100, 700, 30, 30);
 		for (Obstacle a : obstacles) {
@@ -147,47 +150,46 @@ public class LevelSix extends Screen {
 				Obstacle a = initial.get(i);
 
 				if (a instanceof Door) {
-					a.image = doorUp;
+					a.image = doorDown;
 				}
 
-				if (a instanceof Spike) {
-					a.image = spikeUp;
-				}
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
-			door.image = doorRight;
-			
+			door.image = doorLeft;
+
 			obstacles = rotateAll(initial, Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeRight;
+					
+
+					a.image = spikeLeft;
 				}
 
 			}
 		} else if (status == 2) {
-			door.image = doorDown;
-			
+			door.image = doorUp;
+
 			obstacles = rotateAll(initial, Math.PI);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeDown;
+					a.image = spikeUp;
 				}
 
 			}
 		} else if (status == 3) {
-			door.image = doorLeft;
-			
+			door.image = doorRight;
+
 			obstacles = rotateAll(initial, 3 * Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeLeft;
+					a.image = spikeRight;
 				}
 
 			}
@@ -217,7 +219,6 @@ public class LevelSix extends Screen {
 
 		for (int i = obstacles.size() - 1; i >= 0; i--) {
 
-			
 			if (user.intersects(obstacles.get(i))
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
 				Main.playSoundEffect(Main.effectNumber);
@@ -290,9 +291,10 @@ public class LevelSix extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		door = new Door(surface.loadImage("img/DOORDOWN.png"), -DRAWING_WIDTH / 2 + 250, -DRAWING_HEIGHT / 2 + 50, 50, 100);
+		door = new Door(doorDown, -DRAWING_WIDTH / 2 + 250, -DRAWING_HEIGHT / 2 + 50, 50, 100);
 		obstacles.add(door);
 	}
+
 	/**
 	 * spawns new down spike
 	 * 
@@ -307,6 +309,7 @@ public class LevelSix extends Screen {
 		spike = new Spike(surface.loadImage("img/DOWNSPIKE.png"), x, y, width, height);
 		obstacles.add(spike);
 	}
+
 	/**
 	 * spawns new spike
 	 * 
@@ -316,7 +319,7 @@ public class LevelSix extends Screen {
 	 * @param width  width of spike
 	 * @param height height of spike
 	 */
-	public void spawnNewSpike(Spike spike, int x, int y, int width, int height) {
+	public void spawnNewSpike(Spike spike, int x, int y, int width, int height, int orientation) {
 
 		spike = new Spike(surface.loadImage("img/SPIKE.png"), x, y, width, height);
 		obstacles.add(spike);

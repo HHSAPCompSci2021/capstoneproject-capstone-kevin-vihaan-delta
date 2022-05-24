@@ -35,9 +35,9 @@ public class LevelSeven extends Screen {
 	private Player user;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Obstacle> initial;
-	private Spike spike1;
-	private Spike spike2;
-	private Spike spike3;
+	private Saw spike1;
+	private Saw spike2;
+	private Saw spike3;
 	
 	private Spike spike4;
 	private Spike spike5;
@@ -103,9 +103,9 @@ public class LevelSeven extends Screen {
 		spawnNewPlayer();
 
 		
-		spawnNewLeftSpike(spike1, -DRAWING_WIDTH / 2+ DRAWING_WIDTH-50, -DRAWING_HEIGHT /3 + 50, 30, 50);
-		spawnNewLeftSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 100, 30, 50);
-		spawnNewLeftSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 150, 30, 50);
+		spawnNewSaw(spike1, -DRAWING_WIDTH / 2+ DRAWING_WIDTH-50, -DRAWING_HEIGHT /3 + 50, 30, 30);
+		spawnNewSaw(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 100, 30, 30);
+		spawnNewSaw(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 150, 30, 30);
 		
 		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+30,30,30);
 		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+30,30,30);
@@ -146,47 +146,45 @@ public class LevelSeven extends Screen {
 				Obstacle a = initial.get(i);
 
 				if (a instanceof Door) {
-					a.image = doorUp;
+					a.image = doorDown;
 				}
 
-				if (a instanceof Spike) {
-					a.image = spikeUp;
-				}
+				
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
-			door.image = doorRight;
+			door.image = doorLeft;
 			
 			obstacles = rotateAll(initial, Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeRight;
+					a.image = spikeLeft;
 				}
 
 			}
 		} else if (status == 2) {
-			door.image = doorDown;
+			door.image = doorUp;
 			
 			obstacles = rotateAll(initial, Math.PI);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeDown;
+					a.image = spikeUp;
 				}
 
 			}
 		} else if (status == 3) {
-			door.image = doorLeft;
+			door.image = doorRight;
 			
 			obstacles = rotateAll(initial, 3 * Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
 				Obstacle a = obstacles.get(i);
 
 				if (a instanceof Spike) {
-					a.image = spikeLeft;
+					a.image = spikeRight;
 				}
 
 			}
