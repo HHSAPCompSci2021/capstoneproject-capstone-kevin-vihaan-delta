@@ -141,8 +141,6 @@ public void act(List<Obstacle> obstacles) {
 }
 /**
  * Method meant to stop collisions into walls
- * @param x x-coordinate of wall
- * @param y y-coordinate of wall;
  */
 public void bounce() {
 	yVel = -yVel;

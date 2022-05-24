@@ -266,7 +266,12 @@ public abstract class Screen {
 	
 
 	/**
-	 * spawns in new saw
+	 * Method spawns a new saw
+	 * @param saw Saw object that contains the new saw
+	 * @param x x-coordinate of top-left corner
+	 * @param y y-coordinate of top-left corner
+	 * @param width width of saw
+	 * @param height height of saw
 	 */
 	public void spawnNewSaw(Saw saw, int x, int y, int width, int height) {
 		saw = new Saw(surface.loadImage("img/SAW.png"), x, y, width, height);
@@ -274,7 +279,11 @@ public abstract class Screen {
 	}
 
 	/**
-	 * spawns new player
+	 * Method spawns a new player
+	 * @param x x-coordinate of top-left corner
+	 * @param y y-coordinate of top-left corner
+	 * @param width width of player
+	 * @param height height of player
 	 */
 	public void spawnNewPlayer(int x, int y, int width, int height) {
 		status = 0;
@@ -286,7 +295,12 @@ public abstract class Screen {
 	}
 
 	/**
-	 * spawns new door
+	 * Method spawns a new Door
+	 * @param img Image that the door will process
+	 * @param x x-coordinate of top-left corner
+	 * @param y y-coordinate of top-left corner
+	 * @param width width of Door
+	 * @param height height of Door
 	 */
 	public void spawnNewDoor(PImage img, int x, int y, int width, int height) {
 		door = new Door(img,x,y,width,height);
@@ -380,7 +394,9 @@ public abstract class Screen {
 	}
 
 	/**
+	 * 
 	 * changes the angle to rotate the screen
+	 * @param angle1 the angle to be rotated by
 	 */
 	public void rotate(double angle1) {
 		angle += angle1;
