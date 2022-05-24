@@ -356,7 +356,7 @@ public class LevelThree extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+450, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-200, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+450, 50, 100);
 		obstacles.add(door);
 	}
 }
