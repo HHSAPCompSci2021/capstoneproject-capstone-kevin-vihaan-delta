@@ -13,15 +13,17 @@ public class Obstacle extends Rectangle2D.Double {
 	
 	
 	public Obstacle(double x, double y, double w, double h) {
+		
 		this(null, x, y, w, h);
+		
 	}
 	
 	public Obstacle(PImage img, double x, double y, double w, double h) {
 		super(x,y,w,h);
 		image = img;
+		
 	}
-	
-	
+
 	// METHODS	
 	public void moveToLocation(double x, double y) {
 		super.x = x;

@@ -58,7 +58,9 @@ public class MainMenu extends Screen {
 		surface.fill(255);
 
 		surface.text("Press ESC to go back to Main Menu.", -380, -310);
-		surface.text("Press 1 to Rotate ", -380, -340);
+		surface.text("Press 1 to Rotate 90 degrees Clockwise", -380, -340);
+		surface.text("Press 2 to Rotate 90 degrees Counter-Clockwise ", -380, -280);
+		surface.text("Sometimes it is not possible to rotate!", -380, -250);
 		surface.rect(-100, -50, shopButton.width, shopButton.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String str = "Shop";
