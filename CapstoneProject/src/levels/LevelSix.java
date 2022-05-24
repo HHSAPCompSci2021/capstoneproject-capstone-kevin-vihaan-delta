@@ -112,13 +112,13 @@ public class LevelSix extends Screen {
 		spawnNewSaw(saw1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2, 30, 30);
 		spawnNewSaw(saw2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 30, 30,
 				30);
-		spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
-				30);
+		//spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
+			//	30);
 
-		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2+50, 30, 50);
-		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2+50, 30, 50);
-		spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2+50, 30, 50);
-		spawnNewCoin(coin, 100, 700, 30, 30);
+		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 25, 70);
+		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2, 25, 70);
+		//spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2, 30, 50);
+		//spawnNewCoin(coin, 100, 300, 30, 30);
 		for (Obstacle a : obstacles) {
 			initial.add(a);
 		}
@@ -243,8 +243,8 @@ public class LevelSix extends Screen {
 					ShopMenu.coinsCollected++;
 				}
 
-				obstacles.remove(obstacles.get(i));
-				i--;
+				obstacles.remove(i);
+				
 
 			}
 			if (!user.intersects(screenRect)) {
@@ -255,13 +255,13 @@ public class LevelSix extends Screen {
 
 				ShopMenu.coinsCollected += 10;
 				obstacles.remove(obstacles.get(i));
-				i--;
+				
 			}
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
 				Player.speedMultiplier += 0.5;
 				obstacles.remove(obstacles.get(i));
-				i--;
+			
 			}
 
 		}
