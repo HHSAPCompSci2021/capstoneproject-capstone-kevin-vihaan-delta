@@ -105,10 +105,10 @@ public class LevelOne extends Screen {
 		spawnNewSpike(spike3,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike4,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
 		spawnNewSpike(spike5,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+120,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,30,50);
-		spawnNewCoin(coin,-DRAWING_WIDTH/2+100,-DRAWING_HEIGHT/2+700,30,30);
+		spawnNewCoin(coin,iX + 170,-DRAWING_HEIGHT/2+700,30,30);
 	//	spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+200, -DRAWING_HEIGHT/2+DRAWING_HEIGHT-100, 30,30);
 		//spawnNewPowerCoin(pCoin,-DRAWING_WIDTH/2+DRAWING_WIDTH/2, -DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50, 30,30);
-	spawnNewPowerCoin(pCoin,iX + 75, iY, 30,30);
+	spawnNewPowerCoin(pCoin,iX + 130, iY, 30,30);
 	spawnNewSpeedBoost(sCoin,iX + 100, iY, 30,30);
 	
 	for (Obstacle a: obstacles) {
@@ -220,7 +220,7 @@ public class LevelOne extends Screen {
 			}
 			
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
-				Main.changeSong(3);
+				Main.playSoundEffect(Main.doorNumber);
 				spawnNewPlayer();
 				//setup();
 				surface.switchScreen(3);

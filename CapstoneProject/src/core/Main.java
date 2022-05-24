@@ -31,6 +31,7 @@ public class Main implements JayLayerListener {
 	private static JayLayer sound;
 	public static int effectNumber;
 	public static int jumpNumber;
+	public static int doorNumber;
 	
 	ArrayList<String> soundEffects = new ArrayList<String>();
 	//ArrayList<String> songs = new ArrayList<String>();
@@ -41,6 +42,7 @@ public class Main implements JayLayerListener {
 	public Main() {
 		effectNumber = 0;
 		jumpNumber = 500;
+		doorNumber = 1000;
 		
 		//songs.add("game1.mp3");
 		//soundEffects.add("door.mp3");
@@ -50,6 +52,10 @@ public class Main implements JayLayerListener {
 		}
 		for (int i = 0; i < 500;i++ ) {
 			soundEffects.add("jumping.mp3");
+		}
+		
+		for (int i = 0; i < 500;i++ ) {
+			soundEffects.add("realDoor.mp3");
 		}
 		
 		sound = new JayLayer("audio/","audio/", false);
@@ -155,11 +161,14 @@ public static void changeSong( int i) {
  */
 public static void playSoundEffect(int i) {
 	sound.playSoundEffect(i);
-	if (i < 200) {
+	if (i < 500) {
 	effectNumber++;
 	}
-	else {
+	else if (i < 1000 && i >=500){
 		jumpNumber++;
+	}
+	else {
+		doorNumber++;
 	}
 	//sound.
 	

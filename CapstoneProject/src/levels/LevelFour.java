@@ -227,7 +227,7 @@ public class LevelFour extends Screen {
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
 
-				Main.changeSong(3);
+				Main.playSoundEffect(Main.doorNumber);
 				spawnNewPlayer();
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
