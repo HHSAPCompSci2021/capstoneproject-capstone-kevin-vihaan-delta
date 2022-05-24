@@ -110,8 +110,8 @@ public class LevelFive extends Screen {
 		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -40,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewSpike(spike4, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -10,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
 		 spawnNewSpike(spike5, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 +20,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSaw(saw, -375, DRAWING_HEIGHT/2-300,40,40);
-		 spawnNewSaw(saw, -375, DRAWING_HEIGHT/2-340,40,40);
+		 spawnNewSaw(saw, -370, DRAWING_HEIGHT/2-300,30,30);
+		 spawnNewSaw(saw, -370, DRAWING_HEIGHT/2-340,30,30);
 		 
 		 spawnNewCoin(coin, 100, 700, 30, 30);
 		 spawnNewSpeedBoost(b1,80,-290,40,40);

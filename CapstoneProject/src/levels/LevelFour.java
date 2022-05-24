@@ -288,7 +288,7 @@ public class LevelFour extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+650,-DRAWING_HEIGHT/2+480, 50, 100);
+		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+600,-DRAWING_HEIGHT/2+480, 50, 100);
 		 obstacles.add(door);
 	}
 
