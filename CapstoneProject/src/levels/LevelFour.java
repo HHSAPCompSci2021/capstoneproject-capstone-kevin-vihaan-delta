@@ -22,7 +22,7 @@ import obstacles.Spike;
 import obstacles.Wall;
 
 /**
- * Class represents level four
+ * Class represents level four 
  * 
  * @author vihaanchinthakindi and kevinvalencia
  *
