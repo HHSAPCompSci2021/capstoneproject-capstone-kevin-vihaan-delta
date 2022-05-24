@@ -261,7 +261,8 @@ public class LevelSeven extends Screen {
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
 				Player.speedMultiplier += 0.5;
-			
+				
+				
 				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
