@@ -103,15 +103,15 @@ public class LevelSeven extends Screen {
 		spawnNewPlayer();
 
 		
-		spawnNewSaw(spike1, -DRAWING_WIDTH / 2+ DRAWING_WIDTH-50, -DRAWING_HEIGHT /3 + 50, 30, 30);
-		spawnNewSaw(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 100, 30, 30);
-		spawnNewSaw(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 150, 30, 30);
+		spawnNewSaw(spike1, -DRAWING_WIDTH / 2+ DRAWING_WIDTH-50-20, -DRAWING_HEIGHT /3 + 40, 30, 30);
+		spawnNewSaw(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50-20, -DRAWING_HEIGHT/3 + 110, 30, 30);
+		spawnNewSaw(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50-20, -DRAWING_HEIGHT/3 + 170, 30, 30);
 		
 		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,-DRAWING_HEIGHT / 2+80,30,30);
 		
-		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+30,30,30);
-		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+30,30,30);
-		spawnNewDownSpike(spike6,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2 +90,-DRAWING_HEIGHT/2+30,30,30);
+		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+50,30,30);
+		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+50,30,30);
+		spawnNewDownSpike(spike6,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2 +90,-DRAWING_HEIGHT/2+50,30,30);
 		
 		
 		
@@ -264,7 +264,7 @@ public class LevelSeven extends Screen {
 			
 				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
-				
+				i--;
 			}
 
 		}

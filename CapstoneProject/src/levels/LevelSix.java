@@ -115,9 +115,9 @@ public class LevelSix extends Screen {
 		spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
 				30);
 
-		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 30, 50);
-		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2, 30, 50);
-		spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2, 30, 50);
+		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2+50, 30, 50);
+		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2+50, 30, 50);
+		spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2+50, 30, 50);
 		spawnNewCoin(coin, 100, 700, 30, 30);
 		for (Obstacle a : obstacles) {
 			initial.add(a);
