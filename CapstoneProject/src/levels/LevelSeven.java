@@ -148,14 +148,14 @@ public class LevelSeven extends Screen {
 				Obstacle a = initial.get(i);
 
 				if (a instanceof Door) {
-					a.image = doorDown;
+					a.image = doorRight;
 				}
 
 				
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
-			door.image = doorLeft;
+			door.image = doorDown;
 			
 			obstacles = rotateAll(initial, Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -167,7 +167,7 @@ public class LevelSeven extends Screen {
 
 			}
 		} else if (status == 2) {
-			door.image = doorUp;
+			door.image = doorLeft;
 			
 			obstacles = rotateAll(initial, Math.PI);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -179,7 +179,7 @@ public class LevelSeven extends Screen {
 
 			}
 		} else if (status == 3) {
-			door.image = doorRight;
+			door.image = doorUp;
 			
 			obstacles = rotateAll(initial, 3 * Math.PI / 2);
 			for (int i = 0; i < obstacles.size(); i++) {
@@ -295,7 +295,7 @@ public class LevelSeven extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		door = new Door(doorRight, -DRAWING_WIDTH / 2 + 100, -DRAWING_HEIGHT / 2 + 400, 50, 100);
+		door = new Door(doorRight, -DRAWING_WIDTH / 2 + 50, -DRAWING_HEIGHT / 2 + 400, 100, 50);
 		obstacles.add(door);
 	}
 	
