@@ -44,6 +44,7 @@ public class LevelTwo extends Screen {
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
 
 	private Saw saw;
+	private PowerCoin pCoin;
 
 	/**
 	 * Constructs walls
@@ -97,7 +98,11 @@ public class LevelTwo extends Screen {
 		spawnNewSpike(spike1, -DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, 30, 50);
 		spawnNewSpike(spike2, DRAWING_WIDTH / 2 + 30, DRAWING_HEIGHT - 50, 30, 50);
 		spawnNewSpike(spike3, DRAWING_WIDTH / 2 + 60, DRAWING_HEIGHT - 50, 30, 50);
-		spawnNewCoin(coin, 100, 700, 30, 30);
+		spawnNewCoin(coin, 100, 300, 30, 30);
+		spawnNewPowerCoin(pCoin,-120,300, 30,30);
+		
+		
+		
 		for (Obstacle a : obstacles) {
 			initial.add(a);
 		}
@@ -225,7 +230,9 @@ public class LevelTwo extends Screen {
 					ShopMenu.coinsCollected++;
 				}
 
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 
 			}
@@ -236,12 +243,14 @@ public class LevelTwo extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) {
 
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
 				Player.speedMultiplier += 0.5;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
@@ -273,7 +282,7 @@ public class LevelTwo extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		door = new Door(doorUp, -DRAWING_WIDTH / 2 + 300, -DRAWING_HEIGHT / 2 + 650, 50, 100);
+		door = new Door(doorUp, -DRAWING_WIDTH / 2 + 600, -DRAWING_HEIGHT / 2 + 650, 50, 100);
 		obstacles.add(door);
 	}
 

@@ -39,6 +39,7 @@ public class LevelSix extends Screen {
 	private Spike spike2;
 	private Spike spike3;
 	private Coin coin;
+	private SpeedBoost b1;
 	private double angle;
 
 	public int status; // 0 is initial, 1 is 90 degree to left,2, 3
@@ -112,13 +113,14 @@ public class LevelSix extends Screen {
 		spawnNewSaw(saw1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2, 30, 30);
 		spawnNewSaw(saw2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 30, 30,
 				30);
-		//spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
-			//	30);
+		spawnNewSaw(saw3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH - 70, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT / 2 + 60, 30,
+				30);
 
 		spawnNewDownSpike(spike1, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 25, 70);
 		spawnNewDownSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 30, -DRAWING_HEIGHT / 2, 25, 70);
 		//spawnNewDownSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2 + 60, -DRAWING_HEIGHT / 2, 30, 50);
-		//spawnNewCoin(coin, 100, 300, 30, 30);
+		spawnNewCoin(coin, 100, 300, 30, 30);
+		spawnNewSpeedBoost(b1, -100, 300, 30, 30);
 		for (Obstacle a : obstacles) {
 			initial.add(a);
 		}
@@ -217,11 +219,13 @@ public class LevelSix extends Screen {
 
 		user.act(obstacles);
 
-		for (int i = obstacles.size() - 1; i >= 0; i--) {
+	for (int i = obstacles.size() - 1; i >= 0; i--) {
+
+			
 
 			if (user.intersects(obstacles.get(i))
 					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
-				Main.playSoundEffect(Main.effectNumber);
+				Main.changeSong(4);
 
 				spawnNewPlayer();
 				// setup();
@@ -243,8 +247,10 @@ public class LevelSix extends Screen {
 					ShopMenu.coinsCollected++;
 				}
 
-				obstacles.remove(i);
+				initial.remove(obstacles.get(i));
+				obstacles.remove(obstacles.get(i));
 				
+				i--;
 
 			}
 			if (!user.intersects(screenRect)) {
@@ -254,14 +260,16 @@ public class LevelSix extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) {
 
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
-				
+				i--;
 			}
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
 				Player.speedMultiplier += 0.5;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
-			
+				i--;
 			}
 
 		}
