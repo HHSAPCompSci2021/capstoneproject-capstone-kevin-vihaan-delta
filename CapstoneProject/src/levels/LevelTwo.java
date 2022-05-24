@@ -60,8 +60,8 @@ public class LevelTwo extends Screen {
 		obstacles = new ArrayList<Obstacle>();
 		initial = new ArrayList<Obstacle>();
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
-				DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
+		//obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
+		//		DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
 
 		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2, 50));
 

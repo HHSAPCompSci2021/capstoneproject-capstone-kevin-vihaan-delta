@@ -214,60 +214,65 @@ public class LevelSeven extends Screen {
 
 		user.act(obstacles);
 
-		for (int i = obstacles.size() - 1; i >= 0; i--) {
-
-			
-
-			if (user.intersects(obstacles.get(i))
-					&& ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw)) {
+		for (int i = obstacles.size()-1; i >= 0; i--)
+		{
+			if (user.intersects(obstacles.get(i)) && ((obstacles.get(i) instanceof Spike) || obstacles.get(i) instanceof Saw))
+			{
 				Main.playSoundEffect(Main.effectNumber);
-
-				spawnNewPlayer();
-				// setup();
-				// obstacles.remove(i);
+				
+			 	spawnNewPlayer();
+				//setup();
+			//	obstacles.remove(i);
 				ShopMenu.coinsCollected--;
 			}
-
+			
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
-
 				Main.changeSong(3);
 				spawnNewPlayer();
+				//setup();
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
 			}
-			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin) {
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Coin)
+			{
 				if (Coin.doubleValue) {
 					ShopMenu.coinsCollected += 2;
 				} else {
-					ShopMenu.coinsCollected++;
+				ShopMenu.coinsCollected++;
 				}
 				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
-				//setup();
+				
 				i--;
-
+				
 			}
-			if (!user.intersects(screenRect)) {
-
+			if ( !user.intersects(screenRect))
+			{
+				
 				spawnNewPlayer();
+				//setup();
 			}
-			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) {
-
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) 
+			{
+				
 				ShopMenu.coinsCollected += 10;
 				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 			}
-
-			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
+			
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost)
+			{
 				Player.speedMultiplier += 0.5;
-				
-				
 				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				
 				i--;
 			}
-
+			
+			
+		
 		}
 	}
 

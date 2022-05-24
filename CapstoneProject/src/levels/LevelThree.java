@@ -105,7 +105,7 @@ public class LevelThree extends Screen {
 //		spawnNewSpike(spike7,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+30,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
 //		spawnNewSpike(spike8,-DRAWING_WIDTH/2+DRAWING_WIDTH/2+60,-DRAWING_HEIGHT/2+DRAWING_HEIGHT/2-50,30,50);
 
-		spawnNewPowerCoin(pCoin,iX - 75, iY, 30,30);
+		spawnNewPowerCoin(pCoin,iX - 350, iY, 30,30);
 		spawnNewSpeedBoost(sCoin,iX - 100, iY, 30,30);
 		
 		
@@ -356,7 +356,7 @@ public class LevelThree extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-200, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+450, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+450, 50, 100);
 		obstacles.add(door);
 	}
 }

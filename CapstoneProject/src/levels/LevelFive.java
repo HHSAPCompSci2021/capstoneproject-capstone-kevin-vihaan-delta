@@ -114,7 +114,7 @@ public class LevelFive extends Screen {
 		 spawnNewSaw(saw, -370, DRAWING_HEIGHT/2-340,30,30);
 		 
 		 spawnNewCoin(coin, 100, 700, 30, 30);
-		 spawnNewSpeedBoost(b1,80,-290,40,40);
+		 spawnNewSpeedBoost(b1,250,310,40,40);
 	
 		 for (Obstacle a: obstacles) {
 				initial.add(a);
