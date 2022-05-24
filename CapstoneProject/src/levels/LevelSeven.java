@@ -107,14 +107,16 @@ public class LevelSeven extends Screen {
 		spawnNewLeftSpike(spike2, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 100, 30, 50);
 		spawnNewLeftSpike(spike3, -DRAWING_WIDTH / 2 + DRAWING_WIDTH-50, -DRAWING_HEIGHT/3 + 150, 30, 50);
 		
+		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,-DRAWING_HEIGHT / 2+80,30,30);
+		
 		spawnNewDownSpike(spike4,-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+30,-DRAWING_HEIGHT/2+30,30,30);
 		spawnNewDownSpike(spike5,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2+60,-DRAWING_HEIGHT/2+30,30,30);
 		spawnNewDownSpike(spike6,-DRAWING_WIDTH / 2+ DRAWING_WIDTH / 2 +90,-DRAWING_HEIGHT/2+30,30,30);
 		
-		spawnNewSpeedBoost(sCoin,-DRAWING_WIDTH / 2+DRAWING_WIDTH-85,-DRAWING_HEIGHT / 2+80,30,30);
 		
 		
-		spawnNewCoin(coin, 100, 700, 30, 30);
+		
+//		spawnNewCoin(coin, 100, 700, 30, 30);
 		for (Obstacle a : obstacles) {
 			initial.add(a);
 		}
@@ -241,8 +243,9 @@ public class LevelSeven extends Screen {
 				} else {
 					ShopMenu.coinsCollected++;
 				}
-
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
+				//setup();
 				i--;
 
 			}
@@ -253,14 +256,17 @@ public class LevelSeven extends Screen {
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof PowerCoin) {
 
 				ShopMenu.coinsCollected += 10;
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
 				i--;
 			}
 
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof SpeedBoost) {
 				Player.speedMultiplier += 0.5;
+			
+				initial.remove(obstacles.get(i));
 				obstacles.remove(obstacles.get(i));
-				i--;
+				
 			}
 
 		}
