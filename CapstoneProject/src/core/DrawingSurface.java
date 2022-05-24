@@ -95,7 +95,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	 */
 	public void draw() {
 		
-		if (Main.effectNumber > 497 || Main.jumpNumber > 997) {
+		if (Main.effectNumber > 497 || Main.jumpNumber > 997 || Main.doorNumber > 1497) {
 			exit();
 		}
 		ratioX = (float) width / activeScreen.DRAWING_WIDTH;

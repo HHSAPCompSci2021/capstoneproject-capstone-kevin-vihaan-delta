@@ -68,15 +68,14 @@ public class LevelThree extends Screen {
 		
 		screenRect = new Rectangle(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_WIDTH,DRAWING_HEIGHT);
 		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH/2+150,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50 ));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-50,-DRAWING_HEIGHT/2,50,DRAWING_HEIGHT ));
+		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH-20,-DRAWING_HEIGHT/2,20,DRAWING_HEIGHT ));
 		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,20,DRAWING_HEIGHT ));
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2+90,-DRAWING_HEIGHT/2-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4+60,DRAWING_HEIGHT+100)); 
-//		obstacles.add(new Wall(-DRAWING_WIDTH/2,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4,DRAWING_HEIGHT+100)); 
+
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 ,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-50,DRAWING_HEIGHT/4+DRAWING_HEIGHT/4,DRAWING_HEIGHT/4)); 
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 ,-DRAWING_HEIGHT/2,DRAWING_HEIGHT,20)); 
 		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-80,60,30)); 
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 +50+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-100,60,50)); 
 		
 //		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4-10,DRAWING_HEIGHT/2)); 
 	///	obstacles.add(new Wall(52,20,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
@@ -94,6 +93,7 @@ public class LevelThree extends Screen {
 		spikeRight = surface.loadImage("img/RIGHTSPIKE.png");
 		spikeLeft = surface.loadImage("img/LEFTSPIKE.png");
 		spikeUp = surface.loadImage("img/SPIKE.png");
+		
 		spawnNewDoor();
 		spawnNewPlayer();
 		spawnNewCoin(coin,100,700,30,30);
@@ -133,9 +133,7 @@ public class LevelThree extends Screen {
 					a.image = doorUp;
 				}
 
-				if (a instanceof Spike) {
-					a.image = spikeUp;
-				}
+				
 				obstacles.add(a);
 			}
 		} else if (status == 1) {
@@ -210,8 +208,8 @@ public class LevelThree extends Screen {
 				ShopMenu.coinsCollected--;
 			}
 			
-			if (user.intersects(door)) {
-				Main.changeSong(3);
+			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
+				Main.playSoundEffect(Main.doorNumber);
 				spawnNewPlayer();
 				surface.switchScreen(3);
 				Player.speedMultiplier = 1;
@@ -358,7 +356,7 @@ public class LevelThree extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-210, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+420, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-160, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+400, 50, 100);
 		obstacles.add(door);
 	}
 }

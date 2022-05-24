@@ -232,7 +232,7 @@ public class LevelSix extends Screen {
 			}
 			
 			if (user.intersects(obstacles.get(i)) && obstacles.get(i) instanceof Door) {
-				Main.changeSong(3);
+				Main.playSoundEffect(Main.doorNumber);
 				spawnNewPlayer();
 				//setup();
 				surface.switchScreen(3);
