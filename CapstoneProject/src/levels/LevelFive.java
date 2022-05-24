@@ -37,6 +37,10 @@ public class LevelFive extends Screen {
 	private Spike spike1;
 	private Spike spike2;
 	private Spike spike3;
+	private Spike spike4;
+	private Spike spike5;
+	
+	
 	private Coin coin;
 	private double angle;
 	
@@ -59,21 +63,29 @@ public class LevelFive extends Screen {
 		initial = new ArrayList<Obstacle>();
 		
 		
-		
-		 obstacles.add(new Wall(-DRAWING_WIDTH/2, -DRAWING_HEIGHT/2, 50, DRAWING_HEIGHT));
-		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52, -DRAWING_HEIGHT/2, DRAWING_WIDTH / 3+100, DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100));
-		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 200, DRAWING_WIDTH / 2-200, 200));
-		
-		obstacles.add(new Wall( -DRAWING_WIDTH/2 + 52 + DRAWING_WIDTH / 3+100, -DRAWING_HEIGHT/2-100, DRAWING_WIDTH / 3+120, DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100));
+		//side left
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, 50, DRAWING_HEIGHT));
+//		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + 52, -DRAWING_HEIGHT / 2, DRAWING_WIDTH / 3,
+//				DRAWING_HEIGHT - DRAWING_HEIGHT / 3));
 
-		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50, DRAWING_WIDTH / 2 - 100, 50));
 
 		status = 0;
+
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2 + DRAWING_WIDTH / 2+60, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH / 3+70, 50));
+//		
+//		obstacles.add(new Wall(-DRAWING_WIDTH/2 + DRAWING_WIDTH / 2 + DRAWING_WIDTH / 5 + 100, -DRAWING_HEIGHT / 2 + DRAWING_HEIGHT - 50,DRAWING_WIDTH/6+10,50 ));
 		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH / 3+50,-DRAWING_HEIGHT / 2 +DRAWING_HEIGHT - DRAWING_HEIGHT / 3+65,100,DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100 ));
 		
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH / 3+250,-DRAWING_HEIGHT / 2 +DRAWING_HEIGHT - DRAWING_HEIGHT / 3+65,100,DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100 ));
-		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH / 3+350,-DRAWING_HEIGHT / 2 +DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100,200,DRAWING_HEIGHT - DRAWING_HEIGHT / 3-100 ));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH-50, -DRAWING_HEIGHT / 2 +DRAWING_HEIGHT/2+150, 50,200));
+		
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH-50, -DRAWING_HEIGHT / 2+50, 50,400));
+		
+		//top
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2, DRAWING_WIDTH, 50));
+		obstacles.add(new Wall(-DRAWING_WIDTH / 2+DRAWING_WIDTH / 2, -DRAWING_HEIGHT / 2 + 50, DRAWING_WIDTH/5, 50));
+		
 //		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+100,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+50,50,125));
 //		obstacles.add(new Wall(-DRAWING_WIDTH/2+DRAWING_WIDTH / 3+50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT - DRAWING_HEIGHT / 3+250,250,50));
 //		
@@ -109,11 +121,11 @@ public class LevelFive extends Screen {
 		spawnNewDoor();
 		spawnNewPlayer();
 		
-		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2+10, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 40, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
-		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 + 70,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
-		 
-		 
+		 spawnNewSpike(spike1, -DRAWING_WIDTH/2+ DRAWING_WIDTH / 2-100, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike2, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -70, -DRAWING_HEIGHT/2+DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike3, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -40,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike4, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 -10,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
+		 spawnNewSpike(spike5, -DRAWING_WIDTH/2+DRAWING_WIDTH / 2 +20,-DRAWING_HEIGHT/2+ DRAWING_HEIGHT - 50, 30, 50);
 		 
 		 spawnNewCoin(coin, 100, 700, 30, 30);
 	
@@ -289,7 +301,7 @@ public class LevelFive extends Screen {
 	 * spawns new door
 	 */
 	public void spawnNewDoor() {
-		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+650,-DRAWING_HEIGHT/2+360, 50, 70);
+		 door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+50,-DRAWING_HEIGHT/2+360, 50, 70);
 		 obstacles.add(door);
 	}
 
