@@ -76,6 +76,8 @@ public class LevelThree extends Screen {
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_WIDTH/2-10,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/8,DRAWING_HEIGHT/2-50)); 
 		obstacles.add(new Wall(-DRAWING_WIDTH/2 ,-DRAWING_HEIGHT/2,DRAWING_HEIGHT,20)); 
 		
+		obstacles.add(new Wall(-DRAWING_WIDTH/2 +50,-DRAWING_HEIGHT/2+DRAWING_HEIGHT-80,60,30)); 
+		
 //		obstacles.add(new Wall(-DRAWING_WIDTH/2 +DRAWING_HEIGHT/4,-DRAWING_HEIGHT/2,DRAWING_HEIGHT/4-10,DRAWING_HEIGHT/2)); 
 	///	obstacles.add(new Wall(52,20,DRAWING_WIDTH/3,DRAWING_HEIGHT-DRAWING_HEIGHT/3));
 //		obstacles.add(new Wall(0,DRAWING_HEIGHT-50,DRAWING_WIDTH/2,50));
@@ -356,7 +358,7 @@ public class LevelThree extends Screen {
 	 */
 	public void spawnNewDoor()
 	{
-		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+450, 50, 100);
+		door = new Door(surface.loadImage("img/GRAYDOOR2.jpg"), -DRAWING_WIDTH/2+DRAWING_WIDTH/3-210, -DRAWING_HEIGHT/2+DRAWING_WIDTH/4+420, 50, 100);
 		obstacles.add(door);
 	}
 }
